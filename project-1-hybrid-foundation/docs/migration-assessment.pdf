@@ -1,0 +1,24 @@
+# 🌐 Multi-Cloud Migration & Parity Assessment
+## Current State
+- On-prem: vSphere/KVM + RHEL 8/9 + Ubuntu 20.04 + Windows Server 2019
+- Network: Local DC routing, static DNS, isolated AD forest
+- Compliance: Internal audit only
+
+## Target State (Multi-Cloud Parity)
+| Layer                 | AWS                                            | Azure                            | GCP                              | On-Prem/OCI/HCS      |
+|--------------         |----------------------                          |----------------------            |----------------------            |----------------------|
+| Network               | TGW (ASN 64512)                                | vWAN + ExpressRoute              | Cloud Interconnect (ASN 65001)   | Cisco BGP/OSPF       |
+| Compute               | EC2 + EKS nodes                                | VM + AKS nodes                   | GCE + GKE nodes                  | vSphere/KVM clusters |
+| Identity              | AWS Managed AD                                 | Azure AD Connect                 | Cloud Identity Sync              | On-prem AD DS        |
+| Hardening             | CIS L1 + AWS SSM                               | Azure Policy + Defender          | GCP OSConfig + SCC               | Ansible + Chef       |
+| Parity Target         | Same kernel, same CIS, same DNS, same RBAC     | Same                             | Same                             | Same                 |
+
+## Telecom/Enterprise Hybrid Reality Gaps
+- Low-latency BGP peering across AWS/Azure/GCP/on-prem
+- FinTech payment routing redundancy (PCI-DSS aligned)
+- Safaricom ecosystem API gateway placement (low-bandwidth edge)
+
+## Leadership & Process Alignment
+- Architecture review cadence: bi-weekly
+- Infra/security standards: CIS + internal hardening baseline
+- Stakeholder sign-off: Network, Security, Compliance, Finance

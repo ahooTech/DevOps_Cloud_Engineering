@@ -1,0 +1,94 @@
+Vagrant.configure("2") do |config|
+  config.vm.box_check_update = false
+  config.vm.boot_timeout = 3600
+  config.ssh.insert_key = false
+
+  # =====================================================
+  # DEFAULT VIRTUALBOX SETTINGS (Linux VMs only)
+  # =====================================================
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+    vb.gui = false
+    vb.customize ["modifyvm", :id, "--uart1", "off"]
+    vb.customize ["modifyvm", :id, "--uart2", "off"]
+  end
+
+  # =====================================================
+  # UBUNTU
+  # =====================================================
+  config.vm.define "ubuntu-hardened" do |node|
+    node.vm.box = "ubuntu/jammy64"
+    node.vm.hostname = "proj1-ubuntu-hardened"
+
+    node.vm.network "private_network",
+      ip: "10.10.1.10",
+      virtualbox__intnet: "project1_hybrid",
+      netmask: "255.255.0.0"
+
+    node.vm.provider "virtualbox" do |vb|
+      vb.name = "proj1-ubuntu-hardened"
+    end
+
+    node.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "ansible/playbooks/baseline-linux.yml"
+      ansible.install = true
+      ansible.compatibility_mode = "2.0"
+    end
+  end
+
+  # =====================================================
+  # RHEL / ALMALINUX
+  # =====================================================
+  config.vm.define "rhel-hardened" do |node|
+    node.vm.box = "almalinux/9"
+    node.vm.hostname = "proj1-rhel-hardened"
+
+    node.ssh.username = "vagrant"
+
+    node.vm.network "private_network",
+      ip: "10.10.4.10",
+      virtualbox__intnet: "project1_hybrid",
+      netmask: "255.255.0.0"
+
+    node.vm.provider "virtualbox" do |vb|
+      vb.name = "proj1-rhel-hardened"
+    end
+
+    node.vm.provision "shell", path: "scripts/install-ansible-rhel.sh"
+
+    node.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "ansible/playbooks/baseline-linux.yml"
+      ansible.install = false
+      ansible.compatibility_mode = "2.0"
+    end
+  end
+
+  # =====================================================
+  # WINDOWS SERVER 2019 (VMWARE FIXED)
+  # =====================================================
+  # Manual hardening twice
+  config.vm.define "windows2019-hardened" do |node|
+
+    node.vm.box = "gusztavvargadr/windows-server-2019-standard"
+    #node.vm.box = "StefanScherer/windows_2019"
+    #node.vm.box = "peru/windows-server-2019-standard"
+
+    node.vm.hostname = "proj1-windows2019-hardened"
+
+    node.vm.communicator = "winrm"
+
+    node.winrm.username = "vagrant"
+    node.winrm.password = "vagrant"
+
+    # ✅ FIXED: use bridged networking only
+    node.vm.network "public_network", bridge: "Wi-Fi"
+
+    node.vm.provider "vmware_desktop" do |v|
+      v.gui = false
+      v.vmx["displayName"] = "proj1-windows2019-hardened"
+      v.vmx["memsize"] = "4096"
+      v.vmx["numvcpus"] = "2"
+    end
+  end
+end

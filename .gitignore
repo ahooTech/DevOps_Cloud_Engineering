@@ -5,3 +5,6 @@
 *.exe
 *.zip
 *.7z
+*.log
+*.lck
+*.vmem
