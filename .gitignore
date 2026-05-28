@@ -1,4 +1,7 @@
-.terraform/ 
+# =============================================
+# BASE RULES
+# =============================================
+.terraform/
 .vagrant/
 **/.terraform/
 **/.vagrant/
@@ -8,3 +11,80 @@
 *.log
 *.lck
 *.vmem
+
+# =============================================
+# TERRAFORM STATE & BACKEND (Project 1)
+# =============================================
+# Local backend state files & execution artifacts
+infra/hybrid-network/terraform/state/
+infra/hybrid-network/terraform/*.tfstate
+infra/hybrid-network/terraform/*.tfstate.backup
+infra/hybrid-network/terraform/.terraform/
+infra/hybrid-network/terraform/*.tfplan
+infra/hybrid-network/terraform/terraform.tfstate.lock.info
+
+# Optional: ignore all tfstate anywhere in project (uncomment if preferred)
+# **/*.tfstate
+# **/*.tfstate.backup
+
+# =============================================
+# SECRETS & ENV FILES (Never Commit)
+# =============================================
+env.ps1
+env.sh
+*.pem
+*.key
+*-sa-key.json
+*-credentials.json
+*.pfx
+*.p12
+secrets/
+**/secrets/
+identity/ad-sync-config/*-secret.json
+identity/ad-sync-config/*-password.txt
+
+# =============================================
+# VAGRANT & VM ARTIFACTS (Project 1 Lab)
+# =============================================
+provisioning/vm-lab/*.box
+provisioning/vm-lab/.vagrant/
+provisioning/vm-lab/packer/
+virtualization/hybrid-vsphere-oci/*.ovf
+virtualization/hybrid-vsphere-oci/*.ova
+virtualization/hybrid-vsphere-oci/*.vhdx
+virtualization/hybrid-vsphere-oci/*.vmdk
+virtualization/hybrid-vsphere-oci/exports/
+
+# =============================================
+# OS & EDITOR (Windows + VS Code)
+# =============================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.code-workspace
+
+# =============================================
+# NODE & PYTHON (If Used Later)
+# =============================================
+node_modules/
+npm-debug.log
+yarn-error.log
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =============================================
+# DOCUMENTS (Keep drafts local, commit finals)
+# =============================================
+docs/drafts/
+docs/*-draft.pdf
+docs/*-draft.pptx
+# ✅ Final deliverables (e.g., migration-assessment.pdf, linux-hardening-runbook.md) will NOT be ignored

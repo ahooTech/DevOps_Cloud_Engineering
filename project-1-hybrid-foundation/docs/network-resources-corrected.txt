@@ -1,0 +1,55 @@
+# 🌐 Project 1: Hybrid Network Resources (Design-Validated)
+## Generated: 2026-05-26
+## Status: ✅ Terraform config validates | ⏳ Cloud deploy pending credentials
+
+## Parity Summary
+On-Prem CIDR: 10.10.0.0/16
+Cloud CIDRs:
+- AWS: 10.20.0.0/16 (BGP ASN: 64512)
+- Azure: 10.30.0.0/16 (BGP ASN: 65500)
+- GCP: 10.40.0.0/16 (BGP ASN: 65001)
+
+## Resources to Create (26 total)
+
+### AWS (8 resources)
++ aws_vpc.main
++ aws_subnet.public
++ aws_internet_gateway.igw
++ aws_ec2_transit_gateway.tgw
++ aws_ec2_transit_gateway_vpc_attachment.vpc_attach
++ aws_vpn_gateway.vgw
++ aws_customer_gateway.onprem_aws
++ aws_vpn_connection.aws_conn
+
+### Azure (7 resources)
++ azurerm_resource_group.rg
++ azurerm_virtual_network.vnet
++ azurerm_subnet.subnet
++ azurerm_public_ip.pip          ← Required for VPN gateway public IP
++ azurerm_virtual_network_gateway.vgw
++ azurerm_local_network_gateway.onprem
++ azurerm_virtual_network_gateway_connection.azure_conn
+
+### GCP (11 resources)
++ google_compute_network.vpc
++ google_compute_subnetwork.subnet
++ google_compute_router.router   ← BGP router for hybrid peering
++ google_compute_ha_vpn_gateway.gcp_vpn_gw
++ google_compute_external_vpn_gateway.onprem_gcp
++ google_compute_vpn_tunnel.tunnel1
++ google_compute_vpn_tunnel.tunnel2
++ google_compute_router_interface.if1   ← Tunnel 1 BGP interface
++ google_compute_router_interface.if2   ← Tunnel 2 BGP interface
++ google_compute_router_peer.bgp_peer1  ← BGP session 1
++ google_compute_router_peer.bgp_peer2  ← BGP session 2
+
+## Validation
+✅ Terraform config syntax valid (all .tf files parse)
+✅ CIDR parity enforced: non-overlapping 10.x.0.0/16 ranges
+✅ BGP ASN mapping: On-Prem=65000 ↔ AWS=64512 ↔ Azure=65500 ↔ GCP=65001
+✅ Tunnel CIDRs use non-reserved 169.254.x.x ranges (100.x, 101.x)
+✅ Resource count verified: 26 total (8 AWS + 7 Azure + 11 GCP)
+⏳ Cloud deploy: Pending real credentials / budget approval
+
+## Next Step
+Proceed to Step 5: Identity & Virtualization Bridge (ad-sync-config/ + hybrid-vsphere-oci/)
