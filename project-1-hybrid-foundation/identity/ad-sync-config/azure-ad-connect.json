@@ -1,0 +1,17 @@
+{
+  "sync_agent": "Azure AD Connect v2.x",
+  "topology": "staged_rollout",
+  "ou_filtering": {
+    "include": ["OU=IT,DC=corp,DC=local", "OU=Engineering,DC=corp,DC=local"],
+    "exclude": ["OU=ServiceAccounts,DC=corp,DC=local", "OU=Legacy,DC=corp,DC=local"]
+  },
+  "upn_suffix": "corp.cloud",
+  "dns_forwarding": {
+    "onprem_dns": "10.10.0.10",
+    "cloud_dns": "Azure DNS Private Resolver"
+  },
+  "health_monitoring": {
+    "alert_email": "sre-team@corp.cloud",
+    "heartbeat_interval_minutes": 15
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "identity_provider": "GCP Workforce Identity Federation",
+  "scim_endpoint": "https://scim.googleapis.com/v1/Users",
+  "oauth_consent": {
+    "client_id": "gcp-federation-client-id",
+    "scopes": ["openid", "email", "profile"]
+  },
+  "group_sync": {
+    "strategy": "group_mapping",
+    "cloud_domain": "corp.cloud"
+  },
+  "audit_logging": {
+    "admin_activity": true,
+    "data_access": false,
+    "log_sink": "gcp-identity-audit-log-bucket"
+  }
+}

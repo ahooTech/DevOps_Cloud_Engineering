@@ -1,0 +1,17 @@
+{
+  "directory_type": "AWS Managed Microsoft AD",
+  "trust_relationship": {
+    "direction": "bidirectional",
+    "type": "forest_trust",
+    "selective_authentication": true
+  },
+  "conditional_forwarders": [
+    { "domain": "corp.local", "dns_ips": ["10.10.0.10", "10.10.0.11"] },
+    { "domain": "corp.cloud", "dns_ips": ["AmazonProvidedDNS"] }
+  ],
+  "iam_identity_center": {
+    "sso_enabled": true,
+    "attribute_mapping": { "email": "mail", "department": "department" },
+    "session_duration_hours": 8
+  }
+}

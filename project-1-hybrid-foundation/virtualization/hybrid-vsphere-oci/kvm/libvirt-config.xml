@@ -1,0 +1,68 @@
+<!-- virtualization/hybrid-vsphere-oci/kvm/libvirt-config.xml -->
+<domain type='kvm'>
+  <name>hybrid-bridge-sync</name>
+  <memory unit='KiB'>4194304</memory>
+  <vcpu placement='static'>2</vcpu>
+  
+  <os>
+    <type arch='x86_64' machine='pc-q35-7.0'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  
+  <cpu mode='host-passthrough' check='none'/>
+  
+  <clock offset='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/hybrid-bridge.qcow2'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    
+    <interface type='network'>
+      <source network='default'/>
+      <model type='virtio'/>
+      <!-- Bridge sync: route to AWS bridge node IP -->
+      <virtualport type='openvswitch'/>
+      <portgroup name='hybrid-sync'>
+        <vlan>
+          <tag id='100'/>
+        </vlan>
+      </portgroup>
+    </interface>
+    
+    <serial type='pty'>
+      <target type='isa-serial' port='0'>
+        <model name='isa-serial'/>
+      </target>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+  </devices>
+  
+  <!-- Metadata: bridge node IP injected by Terraform -->
+  <metadata>
+    <libvirt:bridge-sync xmlns:libvirt="http://libvirt.org/schemas/domain/1.0">
+      <target-ip>VARIABLE:bridge_node_ip</target-ip>
+      <sync-port>8443</sync-port>
+      <enabled>true</enabled>
+    </libvirt:bridge-sync>
+  </metadata>
+</domain>

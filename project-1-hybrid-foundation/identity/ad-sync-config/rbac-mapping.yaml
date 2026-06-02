@@ -1,0 +1,38 @@
+# identity/ad-sync-config/rbac-mapping.yaml
+rbac_mapping:
+  azure:
+    tenant_id: "00000000-0000-0000-0000-000000000000" # Replace with real Entra ID tenant
+    group_assignments:
+      - ad_group: "cloud-global-admin"
+        role: "Global Administrator"
+        justification: "Break-glass & identity governance"
+        condition: "ip_range in ['10.10.0.0/16']"
+      - ad_group: "cloud-platform-engineers"
+        role: "Contributor"
+        scope: "/subscriptions/$(ARM_SUBSCRIPTION_ID)/resourceGroups/proj1-azure-rg"
+      - ad_group: "cloud-sre-operators"
+        role: "Monitoring Contributor"
+        scope: "/subscriptions/$(ARM_SUBSCRIPTION_ID)"
+
+  aws:
+    account_id: "123456789012" # Replace
+    group_assignments:
+      - ad_group: "cloud-global-admin"
+        role: "AdministratorAccess"
+        condition: "mfa_required && ip_range='10.10.0.0/16'"
+      - ad_group: "cloud-platform-engineers"
+        role: "AmazonEC2FullAccess"
+        scope: "arn:aws:iam::${account_id}:role/PlatformEng"
+      - ad_group: "cloud-sre-operators"
+        role: "CloudWatchFullAccess"
+        scope: "arn:aws:iam::${account_id}:role/SREOps"
+
+  gcp:
+    project_id: "$(TF_VAR_gcp_project_id)"
+    group_assignments:
+      - ad_group: "cloud-global-admin"
+        role: "roles/iam.securityAdmin"
+      - ad_group: "cloud-platform-engineers"
+        role: "roles/compute.admin"
+      - ad_group: "cloud-sre-operators"
+        role: "roles/monitoring.viewer"

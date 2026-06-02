@@ -27,6 +27,11 @@ infra/hybrid-network/terraform/terraform.tfstate.lock.info
 # **/*.tfstate
 # **/*.tfstate.backup
 
+# Global Terraform ignores (for all project folders including virtualization/)
+.terraform.lock.hcl
+terraform.tfvars
+*.tfvars
+
 # =============================================
 # SECRETS & ENV FILES (Never Commit)
 # =============================================
