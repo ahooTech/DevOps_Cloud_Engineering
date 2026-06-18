@@ -14,3 +14,23 @@ resource "google_compute_subnetwork" "subnet" {
   region        = var.gcp_region
   network       = google_compute_network.vpc.id
 }
+
+resource "google_compute_firewall" "allow_vpn" {
+  name    = "proj1-gcp-allow-vpn"
+  network = google_compute_network.vpc.name
+
+  allow {
+    protocol = "udp"
+    ports    = ["500", "4500"]
+  }
+
+  allow {
+    protocol = "esp" # Encapsulating Security Payload (IPSec)
+  }
+
+  allow {
+    protocol = "icmp" # For BGP health checks
+  }
+
+  source_ranges = ["0.0.0.0/0"] # In prod, restrict to your on-prem IP
+}

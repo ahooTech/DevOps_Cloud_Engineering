@@ -74,6 +74,9 @@ resource "google_compute_vpn_tunnel" "tunnel1" {
   shared_secret                   = "Lab-Secure-Preshared-Key-2024!"
   vpn_gateway_interface           = 0
   peer_external_gateway_interface = 0
+  depends_on                      = [google_compute_router.router]
+
+  router = google_compute_router.router.name
 }
 
 resource "google_compute_vpn_tunnel" "tunnel2" {
@@ -84,6 +87,9 @@ resource "google_compute_vpn_tunnel" "tunnel2" {
   shared_secret                   = "Lab-Secure-Preshared-Key-2024!"
   vpn_gateway_interface           = 1
   peer_external_gateway_interface = 0
+  depends_on                      = [google_compute_router.router]
+
+  router = google_compute_router.router.name
 }
 
 # GCP Cloud Router (if not already in gcp_interconnect.tf, keep this. If yes, remove duplicate)

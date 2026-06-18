@@ -12,6 +12,9 @@
 *.lck
 *.vmem
 
+.terragrunt-cache/
+
+
 # =============================================
 # TERRAFORM STATE & BACKEND (Project 1)
 # =============================================
@@ -30,7 +33,14 @@ infra/hybrid-network/terraform/terraform.tfstate.lock.info
 # Global Terraform ignores (for all project folders including virtualization/)
 .terraform.lock.hcl
 terraform.tfvars
+*.auto.tfvars
 *.tfvars
+*.tfstate
+*.tfstate.*
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 
 # =============================================
 # SECRETS & ENV FILES (Never Commit)

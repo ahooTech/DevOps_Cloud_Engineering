@@ -1,0 +1,14 @@
+# terraform.tfvars
+# ⚠️ NEVER commit terraform.tfvars file to Git. It contains sensitive IDs.
+
+# Azure Configuration
+azure_subscription_id = "YOUR-ACTUAL-AZURE-SUBSCRIPTION-ID-HERE"
+
+# GCP Configuration
+gcp_project_id        = "YOUR-ACTUAL-GCP-PROJECT-ID-HERE"
+
+# Optional: Override defaults if needed (otherwise Terraform uses the defaults in variables.tf)
+# aws_region          = "us-east-1"
+# azure_location      = "eastus"
+# gcp_region          = "us-central1"
+# onprem_public_ip_placeholder = "203.0.113.10"

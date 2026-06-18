@@ -57,3 +57,40 @@ resource "aws_vpn_gateway" "vgw" {
     Name = "proj1-aws-vgw"
   }
 }
+
+
+
+
+# Route Table for Public Subnet (Traffic to Internet)
+resource "aws_route_table" "public_rt" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = { Name = "proj1-aws-public-rt" }
+}
+
+resource "aws_route_table_association" "public_assoc" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.public_rt.id
+}
+
+# Route Table for TGW (Traffic to On-Prem/Other Clouds)
+resource "aws_route_table" "tgw_rt" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block         = var.onprem_cidr # Route to on-prem
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
+
+  tags = { Name = "proj1-aws-tgw-rt" }
+}
+
+#resource "aws_route_table_association" "tgw_assoc" {
+#  subnet_id      = aws_subnet.public.id # In prod, this would be your private subnet
+#  route_table_id = aws_route_table.tgw_rt.id
+#}

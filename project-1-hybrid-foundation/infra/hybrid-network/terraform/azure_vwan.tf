@@ -27,7 +27,12 @@ resource "azurerm_virtual_network_gateway" "vgw" {
   vpn_type      = "RouteBased"
   active_active = false
   #enable_bgp    = true -> depreciated, BGP is now controlled via:.gateway SKU (VpnGw1, VpnGw2, etc.) connection configuration (later in your setup)
-  sku = "VpnGw1"
+  sku = "VpnGw1AZ"
+
+  bgp_settings {
+    asn         = var.azure_bgp_asn
+    peer_weight = 0
+  }
 
   ip_configuration {
     name                          = "vnetGatewayConfig"
@@ -43,4 +48,30 @@ resource "azurerm_public_ip" "pip" {
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
+
+  zones = ["1"]
 }
+
+resource "azurerm_network_security_group" "vpn_nsg" {
+  name                = "proj1-azure-vpn-nsg"
+  location            = var.azure_location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  security_rule {
+    name                       = "Allow-VPN-Traffic"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Udp"
+    source_port_range          = "*"
+    destination_port_ranges    = ["500", "4500"]
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+#Azure doesn't allow NSGs on GatewaySubnet. Remove or comment out the NSG association.
+#resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
+#  subnet_id                 = azurerm_subnet.subnet.id
+#  network_security_group_id = azurerm_network_security_group.vpn_nsg.id
+#}
