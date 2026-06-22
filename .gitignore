@@ -103,3 +103,8 @@ docs/drafts/
 docs/*-draft.pdf
 docs/*-draft.pptx
 # ✅ Final deliverables (e.g., migration-assessment.pdf, linux-hardening-runbook.md) will NOT be ignored
+
+# Pulumi
+
+Setup.md
+Pulumi.dev.yaml

@@ -1,0 +1,4 @@
+pulumi>=3.100.0
+pulumi-aws>=6.20.0
+pulumi-azure-native>=2.25.0
+pulumi-gcp>=7.10.0

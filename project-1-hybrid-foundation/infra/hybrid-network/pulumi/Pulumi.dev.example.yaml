@@ -1,0 +1,7 @@
+config:
+  aws:region: us-east-1
+  azure-native:location: eastus
+  gcp:region: us-central1
+  gcp:project: project-2978a6d6-7hf54-b6dg-056
+  azure-native:subscriptionId: 4d369de9-84e3-4d1d-a240- mk845gh46n35
+  azure-native:tenantId: 4e42bbf5-4301-42ca-a78e-l09d4hf53fd7
