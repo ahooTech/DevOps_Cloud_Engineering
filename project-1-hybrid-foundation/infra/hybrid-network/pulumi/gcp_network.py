@@ -82,7 +82,7 @@ def create_gcp_network() -> dict:
     # ==========================================
     # VPN Tunnels (CRITICAL: These MUST be created explicitly)
     # ==========================================
-    tunnel1 = gcp.compute.VpnTunnel(
+    tunnel1 = gcp.compute.VPNTunnel(
         "proj1-gcp-tunnel-1",
         region=GCP_REGION,
         vpn_gateway=ha_vpn_gw.id,
@@ -94,7 +94,7 @@ def create_gcp_network() -> dict:
         ike_version=2,
     )
 
-    tunnel2 = gcp.compute.VpnTunnel(
+    tunnel2 = gcp.compute.VPNTunnel(
         "proj1-gcp-tunnel-2",
         region=GCP_REGION,
         vpn_gateway=ha_vpn_gw.id,
@@ -128,7 +128,7 @@ def create_gcp_network() -> dict:
     # ==========================================
     # BGP Peers (CRITICAL: These MUST be created explicitly)
     # ==========================================
-    bgp_peer1 = gcp.compute.RouterBgpPeer(
+    bgp_peer1 = gcp.compute.RouterPeer(
         "proj1-gcp-bgp-peer-1",
         router=router.name,
         region=GCP_REGION,
@@ -138,7 +138,7 @@ def create_gcp_network() -> dict:
         advertised_route_priority=100,
     )
 
-    bgp_peer2 = gcp.compute.RouterBgpPeer(
+    bgp_peer2 = gcp.compute.RouterPeer(
         "proj1-gcp-bgp-peer-2",
         router=router.name,
         region=GCP_REGION,
