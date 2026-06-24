@@ -158,3 +158,23 @@ Resources:
 Duration: 41m27s
 
 (venv) PS C:\Users\DAYLIFF\Desktop\DevOps.E_Cloud.E_Platform.E_Infrastructure.E_DevSecOps._Site_Realiability.E\projects\project-1-hybrid-foundation\infra\hybrid-network\pulumi>
+
+
+
+
+
+
+🚀 How They Work Together (The Workflow)
+When you sit down at your computer to deploy this project, here is the exact chain of events:
+Gather the Tools: You run pip install -r requirements.txt. Python reads the shopping list and downloads the AWS, Azure, and GCP translator libraries into your venv folder.
+Initialize the Site: You run pulumi stack init dev. Pulumi creates a new tracking file called Pulumi.dev.yaml to hold your environment settings.
+Set the Addresses: You run pulumi config set aws:region us-east-1. Pulumi writes that setting into Pulumi.dev.yaml.
+Start Building: You run pulumi up.
+Pulumi reads Pulumi.yaml and says, "Okay, this is a Python project, let me load the venv environment."
+Pulumi reads Pulumi.dev.yaml and says, "Got it, I need to deploy to us-east-1 in AWS and eastus in Azure."
+Pulumi executes your Python code (__main__.py), using the translator libraries from requirements.txt, to build the actual infrastructure!
+
+🎯 Summary
+Pulumi.yaml = What are we building? (A Python project).
+Pulumi.dev.yaml = Where are we building it? (Regions and Account IDs).
+requirements.txt = What tools do we need to build it? (Cloud SDKs).

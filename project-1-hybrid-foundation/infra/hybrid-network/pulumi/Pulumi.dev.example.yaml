@@ -5,3 +5,15 @@ config:
   gcp:project: project-2978a6d6-7hf54-b6dg-056
   azure-native:subscriptionId: 4d369de9-84e3-4d1d-a240- mk845gh46n35
   azure-native:tenantId: 4e42bbf5-4301-42ca-a78e-l09d4hf53fd7
+
+
+# 2. Pulumi.dev.yaml (The Environment Address Book)
+# In Pulumi, a "Stack" is a specific instance of your project (like dev, staging, or prod). This file is the configuration specifically for your dev stack.
+# Think of it as the Address Book and Keychain for your deployment. It tells the cloud providers exactly where to build and which accounts to bill.
+# aws:region: us-east-1: Tells AWS to build everything in Northern Virginia.
+# azure-native:location: eastus: Tells Azure to build everything in the US East datacenter.
+# gcp:project: project-2978a6d6...: Tells GCP exactly which billing project to charge.
+# azure-native:subscriptionId & tenantId: These are the "keys" that tell Azure exactly which corporate subscription you are deploying into.
+# 💡 The Big Picture (Why this is genius):
+# Notice how your Python code (config.py) doesn't have your Azure Subscription ID or GCP Project ID hardcoded in it anymore? That's because Pulumi reads this Pulumi.dev.yaml file automatically!
+# If you want to deploy this exact same Python code to a Production environment tomorrow, you just create a Pulumi.prod.yaml file with different regions and account IDs. You don't have to change a single line of Python code! This is the ultimate "Environment Parity."

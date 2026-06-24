@@ -4,3 +4,14 @@ runtime:
   options:
     virtualenv: venv
 description: Multi-cloud hybrid network foundation (AWS + Azure + GCP)
+
+
+
+
+# 1. Pulumi.yaml (The Project Passport)
+# This file is the ID Card for your entire project. It is the very first file the Pulumi engine looks at when you run any command.
+# name: project-1-hybrid-foundation: This is the official name of your project. It’s how Pulumi identifies your work in the Pulumi Service dashboard.
+# runtime: name: python: This tells the Pulumi engine, "Don't look for Terraform HCL files or TypeScript; I am going to give you Python code to execute."
+# options: virtualenv: venv: This tells Pulumi exactly where your Python tools are stored. It says, "When you need to run my Python code, use the isolated virtual environment located in the venv folder."
+# description: Just a human-readable summary of what the project does.
+# 💡 The Big Picture: Without this file, Pulumi wouldn't know what language your code is written in or how to execute it.
