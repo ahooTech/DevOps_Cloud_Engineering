@@ -6,3 +6,12 @@ output "azure_gw_public_ip" { value = azurerm_public_ip.pip.ip_address }
 output "gcp_vpc_network" { value = google_compute_network.vpc.name }
 output "gcp_router_asn" { value = var.gcp_bgp_asn }
 output "parity_status" { value = "On-Prem CIDR: ${var.onprem_cidr} | Cloud CIDRs: AWS=${var.aws_cidr} Azure=${var.azure_cidr} GCP=${var.gcp_cidr}" }
+
+
+
+# 1. outputs.tf (The Final Handover Clipboard)
+# When your construction crew finishes building the multi-cloud network, you need to know the "addresses" and "IDs" of what they built so you can actually use it. This file tells Terraform exactly what information to print to your screen when the deployment finishes.
+# aws_vpc_id & aws_tgw_id: These are the unique ID numbers for your AWS campus and highway interchange. If you ever need to attach a new server to your network later, you'll need these IDs.
+# azure_gw_public_ip: This is the most critical one. It’s the public street address of your Azure branch office. If you want to configure your physical on-premises firewall to connect to Azure, you need this exact IP address.
+# parity_status: This is a custom, human-readable summary. It prints out a neat little message showing all the IP ranges (CIDRs) you used, proving that your network design is consistent across all three clouds.
+# 💡 The Big Picture: Without this file, Terraform would just say "Apply complete!" and you'd have to go hunting through the AWS, Azure, and GCP web consoles to find the IP addresses and IDs of what you just built. outputs.tf hands you the keys directly.
