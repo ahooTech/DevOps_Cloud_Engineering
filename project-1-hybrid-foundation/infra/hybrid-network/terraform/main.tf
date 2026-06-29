@@ -2,8 +2,16 @@ terraform {
   required_version = ">= 1.5.0"
 
   # 🔐 Local state backend (change to s3/azurerm/gcs/Terraform Cloud later)
-  backend "local" {
-    path = "state/terraform.tfstate"
+  # backend "local" {
+  #   path = "state/terraform.tfstate"
+  # }
+  # 🔐 S3 Backend for Remote State
+  backend "s3" {
+    bucket         = "project1-terraform-state-ahootech"  # ⚠️ CHANGE THIS to your unique bucket name
+    key            = "hybrid-network/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    use_lockfile   = true  # For state locking (optional but recommended)
   }
 
   required_providers {

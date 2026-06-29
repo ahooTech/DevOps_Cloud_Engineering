@@ -1,12 +1,69 @@
-output "aws_vpc_id" { value = aws_vpc.main.id }
-output "aws_tgw_id" { value = aws_ec2_transit_gateway.tgw.id }
-output "aws_bgp_asn" { value = var.aws_bgp_asn }
-output "azure_vnet_id" { value = azurerm_virtual_network.vnet.id }
-output "azure_gw_public_ip" { value = azurerm_public_ip.pip.ip_address }
-output "gcp_vpc_network" { value = google_compute_network.vpc.name }
-output "gcp_router_asn" { value = var.gcp_bgp_asn }
-output "parity_status" { value = "On-Prem CIDR: ${var.onprem_cidr} | Cloud CIDRs: AWS=${var.aws_cidr} Azure=${var.azure_cidr} GCP=${var.gcp_cidr}" }
+# ============================================
+# AWS OUTPUTS
+# ============================================
+output "aws_vpc_id" {
+  description = "AWS VPC ID"
+  value       = aws_vpc.main.id
+}
 
+output "aws_subnet_id" {
+  description = "AWS Public Subnet ID"
+  value       = aws_subnet.public.id
+}
+
+output "aws_subnet_cidr" {
+  description = "AWS Public Subnet CIDR"
+  value       = aws_subnet.public.cidr_block
+}
+
+output "aws_vpc_cidr" {
+  description = "AWS VPC CIDR"
+  value       = aws_vpc.main.cidr_block
+}
+
+output "aws_tgw_id" {
+  description = "AWS Transit Gateway ID"
+  value       = aws_ec2_transit_gateway.tgw.id
+}
+
+output "aws_bgp_asn" {
+  description = "AWS BGP ASN"
+  value       = var.aws_bgp_asn
+}
+
+# ============================================
+# AZURE OUTPUTS
+# ============================================
+output "azure_vnet_id" {
+  description = "Azure VNet ID"
+  value       = azurerm_virtual_network.vnet.id
+}
+
+output "azure_gw_public_ip" {
+  description = "Azure VPN Gateway Public IP"
+  value       = azurerm_public_ip.pip.ip_address
+}
+
+# ============================================
+# GCP OUTPUTS
+# ============================================
+output "gcp_vpc_network" {
+  description = "GCP VPC Network Name"
+  value       = google_compute_network.vpc.name
+}
+
+output "gcp_router_asn" {
+  description = "GCP Cloud Router ASN"
+  value       = var.gcp_bgp_asn
+}
+
+# ============================================
+# PARITY STATUS
+# ============================================
+output "parity_status" {
+  description = "Parity validation status"
+  value       = "On-Prem CIDR: ${var.onprem_cidr} | Cloud CIDRs: AWS=${var.aws_cidr} Azure=${var.azure_cidr} GCP=${var.gcp_cidr}"
+}
 
 
 # 1. outputs.tf (The Final Handover Clipboard)

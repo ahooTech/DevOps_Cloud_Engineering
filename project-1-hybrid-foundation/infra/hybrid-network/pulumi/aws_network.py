@@ -145,12 +145,12 @@ def create_aws_network() -> dict:
     # ==========================================
     return {
         "vpc_id": vpc.id,
+        "vpc_cidr": vpc.cidr_block,
         "tgw_id": tgw.id,
         "subnet_id": subnet.id,
+        "subnet_cidr": subnet.cidr_block,
         "vgw_id": vgw.id,
     }
-
-
 
 
 # Think of this `aws_network.py` file as the **AWS Construction Crew**. 

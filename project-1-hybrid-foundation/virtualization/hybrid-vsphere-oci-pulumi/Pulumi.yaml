@@ -1,0 +1,11 @@
+name: hybrid-vsphere-oci-pulumi
+description: Hybrid virtualization bridge (Pulumi version)
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: python

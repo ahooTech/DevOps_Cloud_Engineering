@@ -1,3 +1,12 @@
+Imagine you're a bank:
+You have old servers in your basement (VMware/KVM/Hyper-V)
+You're moving to new servers in AWS/Azure/GCP
+You need both to talk to each other during the move
+This folder creates the "bridge server" that makes them talk.
+
+
+
+
 We are simulating the code, config, and architecture that would connect real on-prem hypervisors (vSphere, KVM, Hyper-V) and alternative clouds (OCI, HCS) to a cloud-based "bridge node" — without needing the actual hardware or paid accounts.
 
 [Your Office: vSphere/KVM/Hyper-V running VMs]
