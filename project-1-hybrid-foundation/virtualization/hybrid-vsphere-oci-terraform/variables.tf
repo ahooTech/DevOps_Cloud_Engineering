@@ -31,7 +31,7 @@ variable "ami_id" {
   description = "Ubuntu 22.04 LTS AMI ID for your region"
   type        = string
   default     = "ami-0c55b159cbfafe1f0" # us-east-1 default
-}
+}  // Not used
 
 variable "instance_type" {
   description = "AWS instance type for the bridge node"
@@ -45,8 +45,21 @@ variable "env_tag" {
   default     = "dev-lab"
 }
 
+# OCI CONFIGURATION VARIABLES
 variable "oci_region" {
-  description = "OCI region for bare-metal config (optional)"
+  description = "OCI region for bare-metal deployment"
   type        = string
-  default     = null
+  default     = "us-ashburn-1"
+}
+
+variable "compartment_id" {
+  description = "OCI compartment OCID for bare-metal instance"
+  type        = string
+  default     = ""  # Empty default - must be provided in terraform.tfvars for real deployment
+}
+
+variable "oci_subnet_id" {
+  description = "OCI subnet OCID for bare-metal instance network attachment"
+  type        = string
+  default     = ""  # Empty default - must be provided in terraform.tfvars for real deployment
 }

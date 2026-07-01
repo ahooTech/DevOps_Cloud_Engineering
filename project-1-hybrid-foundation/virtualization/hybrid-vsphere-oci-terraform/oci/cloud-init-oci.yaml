@@ -1,0 +1,20 @@
+#cloud-config
+# OCI Bare Metal Bridge Node Initialization
+
+package_update: true
+
+packages:
+  - qemu-guest-agent
+  - auditd
+  - fail2ban
+  - curl
+  - jq
+
+runcmd:
+  - systemctl enable --now qemu-guest-agent
+  - 'echo "✅ $(date): OCI Bare Metal booting. Bridge sync target: ${bridge_ip}" >> /var/log/oci-bridge.log'
+  - "sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config"
+  - "sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config"
+  - systemctl restart sshd
+
+final_message: "✅ OCI Bare Metal cloud-init complete. Ready to peer with ${bridge_ip}."

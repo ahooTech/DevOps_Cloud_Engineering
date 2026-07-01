@@ -2,7 +2,7 @@
 
 @{
     # Hyper-V Bridge Sync Configuration
-    BridgeNodeIP = "VARIABLE:bridge_node_ip"  # Replaced by Terraform template
+    BridgeNodeIP = "${bridge_node_ip}"  # Replaced by Terraform template
     SyncPort = 8443
     Enabled = $true
     

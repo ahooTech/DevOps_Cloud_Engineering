@@ -1,3 +1,11 @@
+# ⚠️ The Broadcom Licensing Reality (2024 Update)
+# VMware (now owned by Broadcom) killed the free standalone ESXi license in 2024. You can no longer just download ESXi and run it on bare metal for free.
+# ✅ The "Free Real vSphere" Workaround
+# However, Broadcom made VMware Workstation Pro 100% FREE for personal use.
+# We will use Workstation Pro to run a Nested ESXi 8.0 host (using the 60-day free evaluation). This gives you a 100% real vSphere API that Terraform can talk to.
+
+
+
 # virtualization/hybrid-vsphere-oci/vsphere/vcenter-config.tf
 
 # Input: IP of the AWS bridge node (passed from main.tf)
@@ -11,6 +19,19 @@ data "vsphere_datacenter" "dc" {
 locals {
   vcenter_host        = "vcenter.corp.local"
   bridge_sync_enabled = true
+}
+
+
+# Render a simulated config file to prove the IP is injected
+resource "local_file" "vsphere_config" {
+  content = <<-EOT
+    # vSphere Bridge Sync Configuration
+    vcenter_host = "${local.vcenter_host}"
+    bridge_target_ip = "${var.bridge_node_ip}"
+    bridge_port = 8443
+    sync_enabled = ${local.bridge_sync_enabled}
+  EOT
+  filename = "${path.module}/generated/vsphere-sync.conf"
 }
 
 # Output: Status message for validation

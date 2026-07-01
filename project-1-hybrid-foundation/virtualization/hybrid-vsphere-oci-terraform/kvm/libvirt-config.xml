@@ -60,7 +60,7 @@
   <!-- Metadata: bridge node IP injected by Terraform -->
   <metadata>
     <libvirt:bridge-sync xmlns:libvirt="http://libvirt.org/schemas/domain/1.0">
-      <target-ip>VARIABLE:bridge_node_ip</target-ip>
+      <target-ip>${bridge_node_ip}</target-ip>
       <sync-port>8443</sync-port>
       <enabled>true</enabled>
     </libvirt:bridge-sync>

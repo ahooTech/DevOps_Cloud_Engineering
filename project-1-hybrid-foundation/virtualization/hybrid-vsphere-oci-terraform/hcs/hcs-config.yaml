@@ -6,7 +6,7 @@
 bridge_sync:
   enabled: true
   target:
-    ip: "VARIABLE:bridge_node_ip"  # Replaced by Terraform
+    ip: "${bridge_node_ip}"  # Replaced by Terraform
     port: 8443
     protocol: tls
   auth:
@@ -18,7 +18,7 @@ bare_metal:
   flavor: hcs.bm.2xlarge
   image: ubuntu-22.04-hcs
   network:
-    vpc_id: "${hcs_vpc_id}"  # Injected by Terraform
+    vpc_id: "hcs-vpc-001"    # Hardcoded for simulation
     subnet_id: "${hcs_subnet_id}"
     security_groups:
       - hcs-bridge-sg
