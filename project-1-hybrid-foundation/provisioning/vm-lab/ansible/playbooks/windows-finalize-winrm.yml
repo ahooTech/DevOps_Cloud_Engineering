@@ -1,0 +1,42 @@
+---
+# ============================================================
+# FINAL WINRM LOCKDOWN
+# RUN THIS SECOND USING:
+# ansible_port=5986
+# ansible_winrm_scheme=https
+# ansible-playbook -i ansible/inventory.ini ansible/playbooks/windows-baseline.yml
+# ============================================================
+
+- name: Final Secure WinRM Lockdown
+  hosts: windows
+  gather_facts: false
+
+  tasks:
+
+    - name: Block WinRM HTTP
+      community.windows.win_firewall_rule:
+        name: "Block WinRM HTTP"
+        localport: 5985
+        protocol: tcp
+        action: block
+        direction: in
+        state: present
+
+    - name: Disable Basic Authentication
+      ansible.windows.win_shell: |
+        winrm set winrm/config/service/auth '@{Basic="false"}'
+
+    - name: Disable Unencrypted WinRM
+      ansible.windows.win_shell: |
+        winrm set winrm/config/service '@{AllowUnencrypted="false"}'
+
+    - name: Verify WinRM HTTPS Listener
+      ansible.windows.win_shell: |
+        winrm enumerate winrm/config/listener
+
+    - name: Final Security Message
+      ansible.builtin.debug:
+        msg: >
+          WinRM hardened successfully.
+          HTTP disabled.
+          HTTPS-only management active on port 5986.

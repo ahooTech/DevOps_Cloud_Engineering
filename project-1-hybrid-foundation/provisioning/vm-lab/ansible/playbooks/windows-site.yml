@@ -1,0 +1,4 @@
+---
+- import_playbook: baseline-windows.yml
+
+- import_playbook: deliver-windows-bridge-payloads.yml

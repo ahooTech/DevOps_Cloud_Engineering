@@ -1,0 +1,14 @@
+pulumi>=3.100.0
+pulumi-aws>=6.20.0
+pulumi-azure-native>=2.25.0
+pulumi-gcp>=7.10.0
+
+
+# 3. requirements.txt (The Toolbox Shopping List)
+# Python doesn't know how to talk to AWS, Azure, or GCP out of the box. It needs special translator libraries (called SDKs) to understand cloud APIs. This file is your Shopping List.
+# pulumi>=3.100.0: The core Pulumi Python engine.
+# pulumi-aws>=6.20.0: The translator library that lets Python talk to AWS.
+# pulumi-azure-native>=2.25.0: The translator library for Azure.
+# pulumi-gcp>=7.10.0: The translator library for Google Cloud.
+# 💡 The Big Picture:
+# When you run the command pip install -r requirements.txt, Python goes to the internet, downloads these exact libraries, and installs them into your venv folder. The >= symbol means "get at least this version." This ensures you have the latest features, but prevents your code from breaking if a wildly different version is released.
