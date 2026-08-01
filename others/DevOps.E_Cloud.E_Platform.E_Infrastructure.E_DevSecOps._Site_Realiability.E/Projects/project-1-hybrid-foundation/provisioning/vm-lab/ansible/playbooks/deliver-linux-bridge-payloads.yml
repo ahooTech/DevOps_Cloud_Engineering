@@ -1,0 +1,55 @@
+---
+- name: Deliver Generated Bridge Payloads to Linux Hypervisor VMs
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+
+    - name: Create bridge config directory
+      ansible.builtin.file:
+        path: /etc/hybrid-bridge
+        state: directory
+        mode: "0755"
+
+    - name: Copy KVM Libvirt XML payload
+      ansible.builtin.copy:
+        src: /virtualization/hybrid-vsphere-oci-terraform/kvm/generated/hybrid-bridge-sync.xml
+        dest: /etc/hybrid-bridge/kvm-sync.xml
+        owner: root
+        group: root
+        mode: "0644"
+        remote_src: true
+
+    - name: Copy HCS, OCI and vSphere payloads
+      ansible.builtin.copy:
+        src: "/virtualization/hybrid-vsphere-oci-terraform/{{ item.src }}"
+        dest: "/etc/hybrid-bridge/{{ item.dest }}"
+        owner: root
+        group: root
+        mode: "0640"
+        remote_src: true
+      loop:
+        - src: hcs/generated/hcs-cloud-init.yaml
+          dest: hcs-cloud-init.yaml
+
+        - src: oci/generated/oci-cloud-init.yaml
+          dest: oci-cloud-init.yaml
+
+        - src: vsphere/generated/vsphere-sync.conf
+          dest: vsphere-sync.conf
+
+    - name: Verify Linux KVM payload
+      ansible.builtin.command:
+        cmd: cat /etc/hybrid-bridge/kvm-sync.xml
+      register: linux_kvm_content
+      changed_when: false
+
+    - name: Display Linux success
+      ansible.builtin.debug:
+        msg: >
+          ✅ LINUX SUCCESS!
+          Target IP inside KVM XML:
+          {{ linux_kvm_content.stdout_lines
+             | select('search', 'target-ip')
+             | list }}

@@ -1,0 +1,38 @@
+---
+- name: Deliver Generated Bridge Payloads to Windows Hypervisor VMs
+  hosts: windows
+  gather_facts: true
+
+  tasks:
+    # ==========================================
+    # Create bridge configuration directory
+    # ==========================================
+    - name: Create bridge config directory
+      ansible.windows.win_file:
+        path: C:\hybrid-bridge
+        state: directory
+
+    # ==========================================
+    # Copy Hyper-V configuration
+    # ==========================================
+    - name: Copy Hyper-V PSD1 payload
+      ansible.windows.win_copy:
+        src: "{{ playbook_dir }}/../../../../virtualization/hybrid-vsphere-oci-terraform/hyperv/generated/hyper-v-config.psd1"
+        dest: C:\hybrid-bridge\hyper-v-config.psd1
+
+    # ==========================================
+    # Verify payload
+    # ==========================================
+    - name: Verify Windows Hyper-V payload
+      ansible.windows.win_shell: |
+        Get-Content C:\hybrid-bridge\hyper-v-config.psd1 |
+        Select-String -Pattern "BridgeNodeIP"
+      register: win_hyperv_content
+      changed_when: false
+
+    - name: Display Windows success
+      ansible.builtin.debug:
+        msg: >
+          ✅ WINDOWS SUCCESS!
+          Target IP inside Hyper-V PSD1:
+          {{ win_hyperv_content.stdout_lines }}

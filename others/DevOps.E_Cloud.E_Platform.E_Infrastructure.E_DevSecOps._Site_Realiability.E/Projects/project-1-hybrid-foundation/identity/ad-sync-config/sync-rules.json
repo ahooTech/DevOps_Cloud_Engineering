@@ -1,0 +1,34 @@
+
+{
+  "sync_policy": {
+    "version": "1.0",
+    "description": "Declarative AD-to-Cloud identity sync rules for hybrid parity",
+    "source_directory": "onprem-ad.corp.local",
+    "target_providers": ["azure-entra", "aws-directory-service", "gcp-cloud-identity"],
+    "attributes": {
+      "user_principal_name": { "source": "userPrincipalName", "target": "mail", "format": "{sAMAccountName}@corp.cloud" },
+      "display_name": { "source": "displayName", "target": "displayName" },
+      "object_id": { "source": "objectGUID", "target": "immutableId", "encode": "base64" }
+    },
+    "group_sync": {
+      "strategy": "attribute-based",
+      "filter": "(&(objectClass=group)(groupType:1.2.840.113556.1.4.803:=2147483648))",
+      "map": {
+        "CN=Admins,OU=IT,DC=corp,DC=local": "cloud-global-admin",
+        "CN=DevOps-Engineers,OU=Engineering,DC=corp,DC=local": "cloud-platform-engineers",
+        "CN=SRE-Team,OU=Operations,DC=corp,DC=local": "cloud-sre-operators"
+      }
+    },
+    "password_sync": {
+      "mode": "password_hash_sync",
+      "fallback": "pass_through_authentication",
+      "mfa_enforcement": true
+    },
+    "conflict_resolution": "onprem_wins",
+    "audit": {
+      "log_sync_events": true,
+      "retain_days": 90,
+      "alert_on_failure": true
+    }
+  }
+}

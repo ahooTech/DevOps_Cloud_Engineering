@@ -1,0 +1,9 @@
+---
+# ==========================================================
+# Linux Site Playbook
+# Runs every Linux provisioning task in order
+# ==========================================================
+
+- import_playbook: baseline-linux.yml
+
+- import_playbook: deliver-linux-bridge-payloads.yml
