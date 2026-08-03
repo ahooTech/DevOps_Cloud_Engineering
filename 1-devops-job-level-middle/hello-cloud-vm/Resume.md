@@ -1,16 +1,14 @@
-Oops! **No, that text is definitely NOT perfect for your resume!** 
+It looks like you accidentally copied my "teacher notes" and instructions into your resume draft! That happens all the time. We need to throw away the conversational text and keep **only** the professional resume bullet points.
 
-You accidentally copied my entire lesson response—including my "Congratulations!", the emojis, and the "Type Yes when you're ready" instructions. If you put that on your resume, the hiring manager will be very confused! 
+Here is exactly how to update your resume document.
 
-We need to extract **only the professional parts** and format them cleanly so you can copy and paste them directly into your resume document. 
+### Step 1: Delete the messy text
+Open your resume document and delete everything from "Oops! **No, that text..." all the way down to "...make your resume even stronger)!". 
 
-Here is the **exact, clean text** you should put on your resume. I have also tweaked the words slightly to perfectly match the keywords in **both** the Pavago and Safaricom job descriptions you uploaded.
+### Step 2: Copy and paste ONLY this clean text
+Copy the text in the box below and paste it into the **Projects** section of your resume. 
 
 ***
-
-### ✂️ COPY AND PASTE EXACTLY THIS INTO YOUR RESUME:
-
-**CLOUD INFRASTRUCTURE PROJECTS**
 
 **Multi-Tier Cloud Infrastructure Deployment (AWS)** | *Personal Project*
 * Designed and deployed a secure Virtual Private Cloud (VPC) architecture featuring public and private subnets, Internet Gateways, and custom route tables to isolate sensitive workloads and ensure network security.
@@ -20,15 +18,14 @@ Here is the **exact, clean text** you should put on your resume. I have also twe
 
 ***
 
-###  Why this clean version is perfect for your target jobs:
+### Step 3: Why this specific text will get you the interview
+I wrote these bullet points specifically to trick the "robots" (Applicant Tracking Systems) that the **Pavago** and **Safaricom** recruiters use to filter resumes:
 
-1. **For the Pavago Job:** It directly addresses *"Design, deploy, and manage cloud infrastructure across AWS"*, *"Build scalable, secure... environments"*, and *"Strong scripting skills using Bash"*.
-2. **For the Safaricom Job:** It directly addresses *"automation of IT infrastructure provisioning"*, *"Write automation scripts using Bash"*, *"Public Cloud Platforms... AWS"*, and *"Investigate and resolve technical issues"* (the troubleshooting bullet).
+1. **"Automated IT infrastructure provisioning"** and **"Bash"** directly match the Safaricom JD.
+2. **"Design, deploy, and manage cloud infrastructure"** and **"AWS"** directly match the Pavago JD.
+3. **"Troubleshot network connectivity"** proves you have the "Strong problem-solving and troubleshooting abilities" that Pavago asks for.
 
-### 📝 Your Next Step:
-1. Open your actual Resume document (Word or PDF).
-2. Create a section called **Projects** or **Cloud Infrastructure Projects**.
-3. Copy and paste the clean text above.
-4. Delete the conversational text you accidentally copied.
-
-Once you have cleaned up your resume document, **tell me "Ready"** and we will immediately start **Phase 2: Intermediate** (where we will build the Load Balancer and Cloud Storage to make your resume even stronger)!
+### Your Next Step:
+1. Clean up your resume document using the text above.
+2. Take a deep breath and smile, because you just wrote a Mid-Level DevOps resume bullet point! 
+3. Reply **"Ready"** when your resume is updated, and we will immediately start **Phase 2: Intermediate** (where we will build a Load Balancer and Cloud Storage to make this project even bigger and better).
