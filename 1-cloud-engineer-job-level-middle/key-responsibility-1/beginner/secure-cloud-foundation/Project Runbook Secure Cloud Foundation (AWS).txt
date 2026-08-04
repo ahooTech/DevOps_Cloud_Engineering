@@ -1,0 +1,71 @@
+Project Runbook: Secure Cloud Foundation (AWS)
+Objective: Deploy a secure, segmented VPC with private compute, strict RBAC, and FinOps controls.
+
+Phase 0: Account Preparation & FinOps
+[Done] Select Target Region (e.g., us-east-1)
+[Done] Enable MFA on Root Account
+[Done] Configure AWS Budget Alert (FinOps Governance)
+
+
+Phase 1: Identity & Access Management (RBAC)
+[Done] Enforce IAM Password Policy (Baseline Security)
+[Done] Create IAM Groups: Admins, CloudEngineers, Auditors
+[Done] Create IAM Users & Assign Least-Privilege Roles
+[Done] Validate RBAC (Verify Auditor cannot provision resources)
+                                                                                                           
+Phase 2: Network Architecture (VPC Design) 
+[Done] Provision Custom VPC (10.0.0.0/16)
+[Done] Create Public Subnet (10.0.1.0/24)
+[Done] Create Private Subnet (10.0.2.0/24)
+[Done] Provision & Attach Internet Gateway (IGW)
+[Done] Configure Public Route Table (Route 0.0.0.0/0 to IGW)
+[Done] Configure Private Route Table (Isolate from Internet)
+
+Phase 3: Network Security (Firewalls)
+[Done] Create Bastion Security Group (Restrict SSH to Admin IP)
+[Done] Create Web Security Group (Restrict HTTP to Bastion SG only)
+
+Phase 4: Compute Provisioning
+[Done] Generate SSH Key Pair
+[Done] Deploy Bastion Host (Public Subnet | Public IP Enabled)
+[Done] Deploy Web Server (Private Subnet | Public IP Disabled | Inject User-Data)
+
+Phase 5: Validation & Security Testing
+[Done] Establish SSH Session to Bastion Host
+[Done] Validate Internal Routing (curl Web Server from Bastion)
+[Done] Execute Negative Test (Verify Web Server is unreachable from public internet)
+[Done] Audit EC2 Dashboard (Confirm Web Server lacks Public IP)
+
+Phase 6: Governance & Teardown
+[Done] Apply Resource Tags (Project, CostCenter, DataClassification)
+[Done] Capture Evidence (Screenshots for Architecture Portfolio)
+[Done] Terminate EC2 Instances
+[Done] Decommission VPC, Subnets, and Security Groups
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Prompt:
+I wan't to record a video of myself doing this " Level 1 " end to end but i am not able to speak in the videeo. I wan't you to convert this "  "
+into a format i can copy and paste in word that I can highlight so that the person watching the video can know the point we are at but should not look like I am copying the word document when implementing these steps. I think just heading are enough ? 
+Copy this format "  "
