@@ -1,3 +1,12 @@
+# Setup IP Address in terraform.tfvars
+
+Your IP Address changes everytime your internet connection disconects and reconects again.
+
+
+
+
+
+
 Yes, let's do it. This is the approach I'd use in production anyway, because Terraform should ideally authenticate with a dedicated service account rather than a personal account.
 
 However, there's **one important correction** to what I suggested earlier:
@@ -68,7 +77,7 @@ Billing Account Administrator (roles/billing.admin)
 
 Save the change.
 
-# Tell computer new ssh key for 
+# Tell computer new ssh key for bastion vm instance
 
 ssh-keygen -R xx.xxx.xx.xx -> put the ip address in the ssh command
 
