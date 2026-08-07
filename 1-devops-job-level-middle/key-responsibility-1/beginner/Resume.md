@@ -1,10 +1,10 @@
 Multi-Cloud Network Infrastructure Automation (AWS, Azure, GCP) | Personal Project
 
-Architected and deployed identical, secure network topologies across AWS, Azure, and GCP using Terraform, demonstrating hands-on multi-cloud infrastructure experience and Infrastructure-as-Code (IaC) proficiency.
-Designed custom Virtual Networks (VPC/VNet) featuring public and private subnets, Internet Gateways, and Bastion hosts (Jump Boxes) to securely isolate workloads and enforce least-privilege network security.
-Automated server provisioning using Bash startup scripts to deploy private Apache web servers, ensuring they are completely hidden from the public internet while remaining manageable via the Bastion host.
-Configured Elastic and Static IP addresses on the Bastion hosts to ensure high availability and persistent administrative access, preventing service disruption during instance restarts.
 
+Architected and deployed identical, secure network topologies across AWS, Azure, and GCP using Terraform, demonstrating hands-on multi-cloud infrastructure experience and Infrastructure-as-Code (IaC) proficiency.
+Designed custom Virtual Networks (VPC/VNet) featuring public and private subnets, Internet Gateways, and strict firewall rules to isolate workloads and enforce least-privilege network security.
+Automated server provisioning using Bash startup scripts to deploy Apache web servers, utilizing cost-optimized instance types (e.g., AWS t2.micro, Azure B1s, GCP e2-micro) to demonstrate cloud cost optimization.
+Configured Elastic and Static IP addresses to ensure high availability and persistent access, preventing service disruption during instance restarts and improving overall system reliability.
 
 
 

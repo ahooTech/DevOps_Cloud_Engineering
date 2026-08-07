@@ -87,7 +87,6 @@ icacls .\jubilee-gcp-foundation-key.pem /inheritance:r
 icacls .\jubilee-gcp-foundation-key.pem /grant:r "${env:USERNAME}:(R)"
 
 
-
 # Get ssh command to connect to bastion in the public subnet 
 
 terraform output ssh_command
