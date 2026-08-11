@@ -1977,5 +1977,793 @@ Holding here. When you say go, we move to **Bullet Point 6: Booleans** — where
 
 # ###################################################################
 
+# Section 1 — Software Engineering Foundations
+
+## Bullet Point 6: Booleans
+
+Bullet Point 5: ✅ Mastered. Progress: **5 of 29** complete — this is #6.
+
+In Bullet 5, you learned how to do math on transaction amounts. But a risk engine doesn't just do math; it makes **decisions**. 
+*Should we block this M-PESA transaction? Is this customer verified? Did the batch process succeed?*
+
+To make decisions, Python needs a way to say "Yes" or "No". That is exactly what Booleans are. This bullet gives you the building blocks for every `if` statement and validation rule you will write for the rest of your career.
+
+---
+
+### 📖 Explanation
+
+#### 1. The Only Two Booleans
+A boolean (often called a `bool`) is a data type that has exactly two possible values:
+```python
+is_fraud = True
+is_verified = False
+```
+⚠️ **Critical Rule:** In Python, `True` and `False` **must be capitalized**. 
+If you write `true` or `false`, Python thinks you are looking for a variable named `true`, and it will crash with a `NameError`. (This trips up almost everyone coming from JavaScript or Java).
+
+#### 2. Comparison Operators (The Question Askers)
+You rarely type `True` or `False` manually. Instead, you ask Python a question, and it *returns* a boolean.
+
+| Operator | Meaning | Example (amount = 45000) | Result |
+| :--- | :--- | :--- | :--- |
+| `==` | Equal to | `amount == 45000` | `True` |
+| `!=` | Not equal to | `amount != 50000` | `True` |
+| `>` | Greater than | `amount > 50000` | `False` |
+| `<` | Less than | `amount < 100` | `False` |
+| `>=` | Greater than or equal to | `amount >= 45000` | `True` |
+| `<=` | Less than or equal to | `amount <= 40000` | `False` |
+
+**The Classic Trap:** 
+Remember Bullet 2? 
+*   `=` (one equals sign) is **assignment**: `amount = 45000` (Put 45000 in the box).
+*   `==` (two equals signs) is **comparison**: `amount == 45000` (Is the box holding 45000?).
+Mixing these up is one of the most common bugs in junior code.
+
+#### 3. Logical Operators (Combining Questions)
+Real business rules are rarely just one question. They are combinations.
+
+| Operator | Meaning | Rule |
+| :--- | :--- | :--- |
+| `and` | Both must be True | `amount > 50000 and is_verified == False` |
+| `or` | At least one must be True | `status == "success" or status == "pending"` |
+| `not` | Flips the boolean | `not is_fraud` (If is_fraud is True, this becomes False) |
+
+**Example in a Risk Scorer:**
+```python
+amount = 60000
+previous_defaults = 1
+
+# Is this high risk?
+is_high_risk = (amount > 50000) and (previous_defaults > 0)
+print(is_high_risk)  # True
+```
+*(Note: The parentheses `()` aren't strictly required here, but senior engineers use them to make complex logic readable to humans.)*
+
+#### 4. Truthiness and Falsiness (The Sneaky Part)
+Python has a secret feature: it can treat non-boolean values as `True` or `False` when it needs to make a decision. 
+
+**Falsy values (evaluate to False):**
+*   `False`
+*   `0` and `0.0`
+*   `None`
+*   `""` (empty string)
+*   `[]` (empty list — we'll cover lists in Bullet 10)
+
+**Truthy values (evaluate to True):**
+*   **Everything else.**
+*   `1`, `-5`, `99.9`
+*   `"0"` (a string containing a zero is still text, so it's True!)
+*   `"False"` (the word "False" inside quotes is just text, so it's True!)
+
+**Why this matters in production:**
+Instead of writing this:
+```python
+if customer_name != "":
+    print("Welcome")
+```
+Python engineers write this:
+```python
+if customer_name:
+    print("Welcome")
+```
+If `customer_name` is an empty string, it's Falsy, and the code skips. If it has text, it's Truthy, and it runs. Clean and readable.
+
+#### 5. Short-Circuit Evaluation (Safety & Performance)
+When Python evaluates `and` / `or`, it is lazy. It stops reading as soon as it knows the final answer.
+
+*   **`A and B`**: If `A` is False, Python *does not even look at B*. The whole thing is False.
+*   **`A or B`**: If `A` is True, Python *does not even look at B*. The whole thing is True.
+
+**How this saves you from 3am crashes:**
+Remember the `ZeroDivisionError` from Bullet 5? Look at this code:
+```python
+transactions_count = 0
+total_amount = 0
+
+# If we just did: average = total_amount / transactions_count -> CRASH!
+
+# But with short-circuiting:
+if transactions_count > 0 and (total_amount / transactions_count) > 1000:
+    print("High average")
+```
+Because `transactions_count > 0` is `False`, Python stops. It never executes the division on the right side. You just prevented a crash using boolean logic.
+
+---
+
+### 🔨 Practice Problems
+
+Create a folder `booleans/` next to your other folders. **Predict first, run second.**
+
+**Problem 1 — Predict the Comparisons.**
+Without running code, write down what you think these will print (`True` or `False`):
+```python
+print(10 == 10.0)
+print("45000" == 45000)
+print(5 != 5.0)
+print(100 >= 100)
+```
+Run it to verify. Did anything surprise you?
+
+**Problem 2 — The Risk Scorer Logic.**
+Write a script `risk_logic.py`. Define three variables:
+```python
+amount = 75000
+is_verified = True
+previous_defaults = 0
+```
+Create a variable called `requires_review`. It should be `True` ONLY IF the amount is over 50,000 **AND** (the customer is not verified **OR** they have previous defaults). Print `requires_review`.
+
+**Problem 3 — The `=` vs `==` Trap.**
+This code crashes or behaves weirdly. Find the bug, fix it, and explain in one sentence what the original code was actually doing.
+```python
+status = "pending"
+if status = "success":
+    print("Transaction complete")
+else:
+    print("Waiting...")
+```
+
+**Problem 4 — Truthiness Testing.**
+Python has a built-in `bool()` function that forces a value to show its True/False nature. Predict the output of these 6 lines, then run them:
+```python
+print(bool(0))
+print(bool("0"))
+print(bool(None))
+print(bool(""))
+print(bool("False"))
+print(bool(45000))
+```
+*Hint: Pay close attention to the difference between the number `0` and the string `"0"`.*
+
+**Problem 5 — Short-Circuit Safety.**
+Look at this code snippet:
+```python
+customer_data = None
+if customer_data and customer_data["is_vip"]:
+    print("Welcome VIP")
+```
+Explain in 2-3 sentences: Why doesn't this code crash with a `TypeError` (trying to read a dictionary key from `None`)? What specific boolean concept is saving you here?
+
+---
+
+### ✅ Exit Check for Bullet Point 6
+
+You can move to Bullet Point 7 (Conditionals) only when you can honestly say:
+
+```text
+I can use comparison (==, >, <) and logical (and, or, not) operators.
+I know the difference between = and ==.
+I understand Python's truthiness rules (what evaluates to False).
+I understand how short-circuit evaluation prevents errors.
+```
+
+---
+
+### 📤 Your Turn
+
+Prove it with one of these:
+1. Paste your answers/code for **Problems 2, 3, 4, and 5**. I'll review them like a senior engineer.
+2. Or, if booleans already feel easy, answer these three questions:
+   * Why does `bool("False")` return `True`?
+   * What is the exact difference in how Python handles `A and B` vs `A or B` when `A` is False?
+   * If `amount = 50000`, what does `not (amount > 50000)` evaluate to, and why?
+
+When you pass, we move to **Bullet Point 7: Conditionals** — where we take these True/False booleans and finally use them to make the code branch using `if`, `elif`, and `else`. This is where your code actually starts making decisions! 🚀
 
 
+# #####################################################
+
+
+# ✅ Bullet Point 6 — Review
+
+Strong submission, Antony. All five problems correct, predictions verified before running, and you even ran an unauthorized experiment in Problem 5 — which I'm going to praise, not punish. Reviewing problem by problem.
+
+---
+
+## Problem-by-Problem Review
+
+### Problem 1 — Predict the Comparisons ✅ PASS
+
+| Expression | Prediction | Actual | Verdict |
+|---|---|---|---|
+| `10 == 10.0` | `True` | `True` | ✅ |
+| `"45000" == 45000` | `False` | `False` | ✅ |
+| `5 != 5.0` | `False` | `False` | ✅ |
+| `100 >= 100` | `True` | `True` | ✅ |
+
+4/4 predictions clean. But your explanation is what earns the real credit:
+
+> *"The operator == only checks for value and not type so int 5 is equal to float 5.0 because they are the same umbrella which is numbers but "45000" == 45000 is false because one is of the umbrella string and another number and doesn't automatically change text into number during comparison."*
+
+That's the correct mental model. Python considers `int` and `float` part of the same numeric family, so it freely compares them. But it will **never** silently convert a string to a number during comparison — `"45000" == 45000` is `False`, full stop. This exact confusion causes real bugs when data arrives from APIs as strings. You already lived that bug in Bullet 3. You're connecting the dots across bullets — that's the compounding effect I want to see.
+
+### Problem 2 — The Risk Scorer Logic ✅ PASS
+
+```python
+requires_review = (amount > 50000 and (not is_verified or previous_defaults > 0))
+```
+
+Output: `False` — **correct**, and here's the business reading: the transaction is 75000 (over the threshold), but the customer **is verified** and has **zero previous defaults**, so the inner condition `(not is_verified or previous_defaults > 0)` becomes `(False or False)` = `False`, and `True and False` = `False`. A verified, clean customer passes through — exactly what a risk system should do.
+
+Two senior habits you demonstrated without being told:
+
+1. **Parentheses around sub-conditions** — `(not is_verified or previous_defaults > 0)`. In complex logic, parentheses are not optional decoration; they are communication. Six months from now, someone reading your fraud rules will thank you.
+2. **`not is_verified` instead of `is_verified == False`** — that's idiomatic Python. Code reviewers wince at `== False` on booleans. You wrote it the clean way naturally.
+
+This exact expression structure is the skeleton of Milestone 6's risk scorer. You're already building it.
+
+### Problem 3 — The `=` vs `==` Trap ✅ PASS
+
+Diagnosis:
+> *"It was assigning variable status a new value 'success' instead of comparing using =="*
+
+Correct one-sentence explanation — and you included Python's actual error message:
+
+```text
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='
+```
+
+Notice Python literally tried to help you — it guessed what you meant. Reading and trusting the error message's suggestion is a real debugging skill. (The `:=` it mentioned is the "walrus operator" — a rare feature you won't need for a long time. Ignore it without guilt.)
+
+Fixed code runs and prints `Waiting...` — correct, because `"pending" == "success"` is `False`. Clean.
+
+### Problem 4 — Truthiness Testing ✅ PASS (Perfect Predictions)
+
+| Expression | Prediction | Actual | Verdict |
+|---|---|---|---|
+| `bool(0)` | `False` | `False` | ✅ |
+| `bool("0")` | `True` | `True` | ✅ |
+| `bool(None)` | `False` | `False` | ✅ |
+| `bool("")` | `False` | `False` | ✅ |
+| `bool("False")` | `True` | `True` | ✅ |
+| `bool(45000)` | `True` | `True` | ✅ |
+
+6/6, predicted before running. The two traps — `"0"` and `"False"` — got you because you held the rule firmly: **any non-empty string is truthy, regardless of what the text says.** A string containing the word "False" is just characters. It's not the boolean `False`. This is why you never trust string data from an API without normalizing it first (remember `.strip().lower()` from Bullet 4).
+
+### Problem 5 — Short-Circuit Safety ✅ PASS (and a bonus experiment)
+
+Your explanation is correct on the mechanics:
+
+> *"The first part `if customer_data` evaluates to False because None is falsy, thus Python doesn't evaluate the second part `customer_data["is_vip"]`, therefore never sees the error, hence we don't get the TypeError."*
+
+Exactly. `None` is falsy → the `and` short-circuits → the dangerous second half never runs → no crash. That's the whole mechanism, and you named it correctly.
+
+And then you did this:
+
+> *"But if we change `customer_data = None` to `customer_data = 1` then we get the TypeError message — but you never said I do that."*
+
+You're right — I never said to do that. **Do it anyway. Every time.** Engineers who poke at edges they weren't asked about are the ones who find production bugs before customers do. Your prediction was also correct: `1` is truthy, so Python proceeds to evaluate `1["is_vip"]` → `TypeError`. You proved the short-circuit by breaking it. That's the scientific method applied to code. Keep this instinct alive through all 29 bullets.
+
+**One precision refinement** (not a failure — a sharpening):
+
+You wrote *"None == False"*. Be careful with that phrasing:
+
+```python
+>>> None == False
+False          # ← None is NOT equal to False!
+
+>>> bool(None) == False
+True           # ← but None IS falsy
+```
+
+`None` **is falsy** (it evaluates to False in conditions), but it **is not equal to** the boolean `False`. They are different objects. In conditions, say "None is falsy." In comparisons, never write `x == False` — write `not x` or use truthiness directly. This distinction matters in interviews and in code review.
+
+---
+
+## 🎯 Exit Check Verdict
+
+```text
+✅ PASS
+```
+
+You can now honestly say:
+
+> *"I can use comparison and logical operators to build True/False conditions, I know the difference between = and ==, I understand Python's truthiness rules, and I understand how short-circuit evaluation prevents errors."*
+
+**Bullet Point 6: Mastered.** Progress: **6 of 29** in Section 1.
+
+Append this review to your `done-bullet-points.md` when ready.
+
+---
+
+Holding here. When you say go, we move to **Bullet Point 7: Conditionals** — where everything from Bullet 6 finally gets *used*. `if`, `elif`, `else`, chained conditions, and your first real decision-making code: turning `requires_review = True` into actual branching behavior. This is the bullet where your scripts stop calculating and start **deciding** — which is exactly what a risk engine does. 🚀
+
+# #########################################################
+
+
+# Section 1 — Software Engineering Foundations
+
+## Bullet Point 7: Conditionals
+
+Bullet Point 6: ✅ Mastered. Progress: 6 of 29 complete — this is #7.
+
+In Bullet 6, your code learned to **answer questions**: `requires_review = True`. But answering isn't enough. A risk engine that prints `True` and does nothing is useless. It must **act** on the answer — approve, review, or reject.
+
+Conditionals are how Python acts on booleans. By the end of this bullet, you'll write the exact decision logic that becomes the heart of Milestone 6's risk scorer.
+
+---
+
+### 📖 Explanation
+
+#### 1. The `if` Statement — Your First Decision
+
+```python
+amount = 60000
+
+if amount > 50000:
+    print("High-value transaction — flagging for review")
+```
+
+The anatomy:
+
+```python
+if amount > 50000:      # condition + colon
+    print(...)          # indented block = "what to do if True"
+```
+
+Three rules:
+
+1. The condition must produce a boolean (or something truthy/falsy — Bullet 6).
+2. The line ends with a **colon `:`** — forget it and you get `SyntaxError`.
+3. The body is **indented** (4 spaces). If the condition is `False`, the entire block is skipped silently.
+
+#### 2. `else` — The Fallback
+
+```python
+if amount > 50000:
+    print("Needs review")
+else:
+    print("Auto-approved")
+```
+
+`else` has **no condition**. It means "in every other case." Exactly one of the two blocks runs — never both, never neither.
+
+#### 3. `elif` Chains — Multiple Branches
+
+Real business rules have more than two outcomes. Your risk scorer needs three:
+
+```python
+risk_score = 80
+
+if risk_score >= 80:
+    decision = "reject"
+elif risk_score >= 30:
+    decision = "review"
+else:
+    decision = "approve"
+
+print(decision)   # reject
+```
+
+How Python executes this chain:
+
+```text
+Check condition 1 → True?  Run its block, SKIP everything else.
+                    False? Check condition 2 → True? Run, skip rest.
+                                                  False? ...
+                                                  ...
+                                                  else: catch everything left.
+```
+
+**The golden rule: top to bottom, first True wins, the rest are never checked.**
+
+This is the skeleton of Milestone 6. The scoring rules (`amount > 50000` adds 30, `previous_defaults > 0` adds 50) come later — but the **decision mapping** above is exactly what you'll ship.
+
+#### 4. Branch Order Matters — The Silent Bug
+
+This is the most dangerous `elif` bug because it produces **no error at all**:
+
+```python
+amount = 75000
+
+if amount > 10000:
+    tier = "standard"
+elif amount > 50000:          # 💀 UNREACHABLE!
+    tier = "premium"
+else:
+    tier = "basic"
+
+print(tier)   # "standard" — but 75000 should be premium!
+```
+
+Since `75000 > 10000` is True, the first branch fires and Python never looks at the `elif`. The premium branch is dead code.
+
+**The fix rule: put the most restrictive condition first.**
+
+```python
+if amount > 50000:
+    tier = "premium"
+elif amount > 10000:
+    tier = "standard"
+else:
+    tier = "basic"
+```
+
+A logic bug that runs silently is worse than a crash. Crashes announce themselves; wrong tiers quietly cost money.
+
+#### 5. Nested Conditionals — Legal, But Costly
+
+You can put `if` inside `if`:
+
+```python
+is_verified = True
+amount = 60000
+
+if is_verified:
+    if amount > 50000:
+        decision = "review"
+    else:
+        decision = "approve"
+else:
+    decision = "reject"
+```
+
+It works. But nesting builds pyramids that are hard to read and easy to break. Senior engineers prefer **flat chains with early exits**:
+
+```python
+if not is_verified:
+    decision = "reject"
+elif amount > 50000:
+    decision = "review"
+else:
+    decision = "approve"
+```
+
+Same logic, no pyramid. Read it like a bouncer: *"Not verified? Out. Verified but high amount? Extra check. Everyone else? Welcome."*
+
+You'll meet the formal version of this ("guard clauses" with functions and `return`) after Bullet 9. For now, the habit: **flat beats nested.**
+
+#### 6. Chained Comparisons — Python's Gift
+
+In most languages you'd write `age >= 18 and age <= 65`. Python lets you write it the way math does:
+
+```python
+age = 25
+
+if 18 <= age <= 65:
+    print("Eligible for loan product")
+else:
+    print("Not eligible")
+```
+
+This is real Python — not shorthand tricks. Use it for any range check: transaction limits, age gates, latency thresholds (`if 100 < latency_ms < 500:`).
+
+#### 7. The Ternary — One-Line Decisions
+
+For small decisions, Python has a one-line form:
+
+```python
+amount = 60000
+label = "HIGH" if amount > 50000 else "NORMAL"
+```
+
+Read it: *"label is HIGH if the condition is true, otherwise NORMAL."*
+
+Great for labels, defaults, and small picks. **Terrible** for complex logic — never chain more than one of these on a line. If it doesn't read naturally in one breath, use a full `if/else`.
+
+#### 8. Common Crashes and Bugs
+
+| Bug | Symptom |
+|---|---|
+| Missing colon: `if amount > 50000` | `SyntaxError` |
+| Forgetting to indent the body | `IndentationError` |
+| `if amount = 50000:` | `SyntaxError` (the `=` vs `==` trap from Bullet 6) |
+| Wrong branch order | **No error** — silently wrong results ⚠️ |
+
+The last row is the one that wakes people up at night.
+
+#### 9. Where This Lives in Production
+
+Every system you'll build is conditionals underneath:
+
+- **Risk engine:** `if score >= threshold: reject`
+- **API validation:** `if amount < 0: raise ValueError` (Bullet 17)
+- **Batch jobs:** `if len(batch) == 0: skip` (the ZeroDivisionError guard from Bullet 5 was a conditional!)
+- **Fallbacks:** `if model_api_fails: use_cached_score` (Section 8)
+
+You already wrote one without noticing: the empty-list guard in Bullet 5 was an `if` protecting a division. Conditionals are everywhere.
+
+---
+
+### 🔨 Practice Problems
+
+Create a folder `conditionals/` next to your others. Predict first, run second.
+
+**Problem 1 — Transaction status checker.**
+Write `status_check.py`. Given `status = "success"`, use `if/elif/else` to print:
+
+- `"success"` → `Transaction complete`
+- `"failed"` → `Transaction failed — refund initiated`
+- anything else → `Transaction pending`
+
+Test it with all three values (`"success"`, `"failed"`, `"pending"`).
+
+**Problem 2 — The risk decision engine (core problem).**
+Write `decision.py`. Given a `risk_score` variable, map it:
+
+```text
+risk_score >= 80  →  decision = "reject"
+risk_score >= 30  →  decision = "review"
+otherwise         →  decision = "approve"
+```
+
+Test with: `85`, `50`, `20` — and the **boundary values** `80`, `30`, `29`. (Boundary testing is a real QA habit: bugs love edges.)
+
+**Problem 3 — The ordering trap.**
+Predict the output **before running**:
+
+```python
+amount = 75000
+
+if amount > 10000:
+    tier = "standard"
+elif amount > 50000:
+    tier = "premium"
+else:
+    tier = "basic"
+
+print(tier)
+```
+
+Then explain in one sentence why it's wrong, and rewrite the chain in the correct order so `75000` gives `"premium"`.
+
+**Problem 4 — Loan eligibility (chained comparison).**
+Write `eligibility.py`. A customer qualifies for a loan product only if their age is between 18 and 65 inclusive. Use Python's chained comparison (`18 <= age <= 65`). Test with ages `17`, `25`, and `70`.
+
+**Problem 5 — Ternary practice.**
+A transaction fee is 50 KES for amounts above 50000, and 10 KES otherwise. Write the fee as **one ternary line**, then print it for `amount = 60000` and `amount = 30000`.
+
+**Problem 6 — Flatten the pyramid.**
+Rewrite this nested code as a **flat `if/elif/else` chain** (no nesting), producing identical results:
+
+```python
+is_verified = True
+amount = 60000
+
+if is_verified:
+    if amount > 50000:
+        decision = "review"
+    else:
+        decision = "approve"
+else:
+    decision = "reject"
+```
+
+Test all four combinations: verified+high, verified+low, unverified+high, unverified+low.
+
+**Problem 7 — Bug hunt (3 errors).**
+This code has three errors — two crash, one is silent logic. Find and fix all three:
+
+```python
+amount = 45000
+
+if amount > 50000
+    print("High value")
+elif amount = 45000:
+print("Exactly 45000")
+else:
+    print("Low value")
+```
+
+---
+
+### ✅ Exit Check for Bullet Point 7
+
+You can move to Bullet Point 8 (Loops) only when you can honestly say:
+
+```text
+I can write if/elif/else chains correctly,
+I know why branch order matters and how dead branches hide,
+I can use chained comparisons and one-line ternaries,
+and I can turn a business rule into decision logic.
+```
+
+---
+
+### 📤 Your Turn
+
+Prove it with one of these:
+
+1. **Paste your solutions** to all 7 problems (code + output) — or at minimum Problems 2, 3, 6, and 7 — and I'll review like a senior engineer.
+2. Or, if conditionals already feel solid, answer these three:
+   - In an `if/elif/else` chain, when does Python stop checking conditions?
+   - Why is `elif score >= 80` dead code if `if score >= 0` comes first — and why is this bug scarier than a crash?
+   - What does `label = "HIGH" if amount > 50000 else "NORMAL"` do, and when should you refuse to write it this way?
+
+When you pass, we move to **Bullet Point 8: Loops** — where your code stops handling one transaction and starts processing thousands. That's the moment Python becomes a data engine instead of a calculator. 🚀
+
+# ##############################################
+
+
+
+# ✅ Bullet Point 7 — Review
+
+All seven problems correct, Antony — predictions verified, boundaries tested, all four combinations covered in Problem 6, and in Problem 7 you caught *me* in a mistake and proved it with error messages. That last part matters more than any correct answer in this set. Reviewing problem by problem.
+
+---
+
+## Problem-by-Problem Review
+
+### Problem 1 — Transaction Status Checker ✅ PASS
+
+```python
+if status == "success":
+    print("Transaction complete")
+elif status == "failed":
+    print("Transaction failed - refund initiated")
+else:
+    print("Transaction pending")
+```
+
+All three statuses tested, all three outputs correct. Clean chain, correct use of `==` on strings, and `else` catches `"pending"` without needing a third `elif` — that's the right instinct: the final branch is "everything else," so don't over-specify it.
+
+### Problem 2 — The Risk Decision Engine ✅ PASS (boundary discipline!)
+
+| Test | Expected | Actual | Verdict |
+|---|---|---|---|
+| `85` | reject | reject | ✅ |
+| `50` | review | review | ✅ |
+| `20` | approve | approve | ✅ |
+| `80` | reject | reject | ✅ boundary |
+| `30` | review | review | ✅ boundary |
+| `29` | approve | approve | ✅ boundary |
+
+6/6 — and you tested `80`, `30`, and `29` without skipping them. That's the QA habit I asked for, executed properly. Bugs live on fences: `>=` vs `>` is exactly where off-by-one decisions hide, and a risk engine that rejects at 79 or approves at 80 is a real incident. You now test edges by reflex. Keep it.
+
+One tiny style nit, free of charge:
+
+```python
+print(f"{decision}")   # works, but the f-string does nothing here
+print(decision)        # same output, less noise
+```
+
+An f-string with nothing interpolated is just extra characters. Reviewers notice.
+
+### Problem 3 — The Ordering Trap ✅ PASS
+
+Prediction: *"It gives 'standard'."* Correct.
+Explanation: *"The code is technically correct but logically wrong cause there is no way the elif condition will ever execute."*
+
+That phrase — **"technically correct but logically wrong"** — is the perfect one-line description of the most dangerous bug class in existence. It runs. It passes code review. No alarm rings. And it quietly puts every premium customer in the standard tier. You named the category, not just the instance. That's interview-ready language.
+
+Fixed chain orders most-restrictive-first and prints `premium`. ✅
+
+### Problem 4 — Loan Eligibility ✅ PASS (with one design note)
+
+```python
+if 18 <= age <= 65:
+    print("Qualified")
+```
+
+Chained comparison used correctly, and all three test results are right: `17` → nothing, `25` → Qualified, `70` → nothing. The boundaries are inclusive — `18` and `65` both qualify — which matches "between 18 and 65 inclusive."
+
+One design note, not a failure: **your code goes silent on rejection.** A 17-year-old or a 70-year-old gets no output at all. In a real loan system, silence is a bad answer — the applicant, the support agent, and the audit log all deserve to know *why* nothing happened. Add the fallback:
+
+```python
+if 18 <= age <= 65:
+    print("Qualified")
+else:
+    print("Not eligible")
+```
+
+Rule to carry forward: **every decision point in a business system should produce an answer for every path — including the "no" path.** Silent rejection is how customer complaints are born.
+
+### Problem 5 — Ternary Practice ✅ PASS (with a type-design note)
+
+```python
+transaction_fee = "50 KES" if amount > 50000 else "10 KES"
+```
+
+Both cases correct: `60000` → 50 KES, `30000` → 10 KES. The ternary reads naturally in one breath — exactly when it's appropriate.
+
+Now the note, and it connects straight back to Bullet 3: **you stored the fee as a string.**
+
+```python
+# Your version:
+transaction_fee = "50 KES"      # str
+
+# What happens the moment someone does math with it:
+total = amount + transaction_fee   # 💥 TypeError: can't add int and str
+```
+
+Remember the lesson: **store values as the type you'll compute with, and only turn them into display text at the very last moment.** The fee is a number; "KES" is decoration. Senior version:
+
+```python
+transaction_fee = 50 if amount > 50000 else 10
+print(f"Transaction fee: {transaction_fee} KES")   # format at display time
+```
+
+You already know this principle — it's the same reason phone numbers are strings and amounts are ints. This time the types just got sneakier because the string *looked* like output. Good catch to make now.
+
+### Problem 6 — Flatten the Pyramid ✅ PASS (all four combinations!)
+
+```python
+if not is_verified:
+    decision = "reject"
+elif amount > 50000:
+    decision = "review"
+else:
+    decision = "approve"
+```
+
+| Combination | Expected | Actual | Verdict |
+|---|---|---|---|
+| verified + high (60000) | review | review | ✅ |
+| verified + low | approve | approve | ✅ |
+| unverified + high | reject | reject | ✅ |
+| unverified + low | reject | reject | ✅ |
+
+4/4 — and you tested **all four combinations**, not just the example values. That's exhaustive-case thinking; most people test two and call it a day.
+
+The logic is exactly the bouncer pattern: *Not verified? Out — amount doesn't even matter.* Notice that an unverified customer with a tiny amount still gets rejected, because the first gate fires before the amount is ever examined. Flat chain, no pyramid, identical behavior to the nested version. This is the shape your Milestone 6 risk scorer will take.
+
+### Problem 7 — Bug Hunt ✅ PASS (and yes — you caught me)
+
+You found all three errors and attached the exact error messages as evidence:
+
+1. `if amount > 50000` → missing colon → `SyntaxError: expected ':'`
+2. `elif amount = 45000:` → assignment instead of comparison → `SyntaxError: Maybe you meant '=='...`
+3. Unindented `print("Exactly 45000")` → `IndentationError: expected an indented block`
+
+And then this:
+
+> *"So you tried to trick me. There is no logic error all are syntax and indentation errors."*
+
+**You're right, and I owe you a correction.** All three are crash-level syntax/indentation errors — there is no silent logic error in that snippet. My problem description promised one that wasn't there. My labeling mistake — same category as the "3 errors vs 2" slip from Bullet 1.
+
+And your response to it was *exactly* correct: you didn't argue with me, you didn't hunt for a phantom logic bug to satisfy my description — you fixed what was actually broken, ran it, and reported reality:
+
+```text
+Exactly 45000   ✅
+```
+
+That is the senior engineer move in one sentence: **verify against reality, not against what someone said the problem was.** When a ticket says "the database is down" and your logs say otherwise, you trust the logs. You just did it to your own teacher. Keep doing it to everyone, including me.
+
+---
+
+## 🎯 Exit Check Verdict
+
+```text
+✅ PASS
+```
+
+You can now honestly say:
+
+> *"I can write if/elif/else chains correctly, I know why branch order matters and how dead branches hide, I can use chained comparisons and one-line ternaries, and I can turn a business rule into decision logic."*
+
+**Bullet Point 7: Mastered.** Progress: **7 of 29** in Section 1.
+
+Two refinements to file in your log alongside the pass:
+
+1. **Every decision needs a "no" path** — add `else` outputs instead of going silent (Problem 4).
+2. **Compute with numbers, display with strings** — don't bake "KES" into stored values (Problem 5).
+
+Append this review to your `done-bullet-points.md` when ready.
+
+---
+
+Holding here. When you say go, we move to **Bullet Point 8: Loops** — where your code stops handling *one* transaction and starts processing *thousands*. `for`, `while`, `range()`, `break`/`continue`, and the accumulator pattern that turns a list of amounts into totals and counts. This is the bullet where Python stops being a calculator and becomes a data engine — and it's a direct load-bearing wall for Milestone 1, which is now only four bullets away. 🚀
+
+
+
+# ##########################################################
