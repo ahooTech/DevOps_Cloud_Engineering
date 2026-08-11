@@ -1090,3 +1090,892 @@ Feel free to append this review to your `done-bullet-points.md` log in the same 
 
 Holding here as requested. When you're ready, tell me to move on — **Bullet Point 4: Strings**, where you'll finally meet **f-strings** and collapse that gymnastic `print` line from your customer profile into one clean line, plus the string operations you'll use constantly for parsing logs and masking phone numbers. 🚀
 
+
+
+# ####################################################################
+
+
+# Section 1 — Software Engineering Foundations
+
+## Bullet Point 4: Strings
+
+**Bullet Point 3: ✅ Mastered.** Progress: 3 of 29 complete — this is #4.
+
+Time to collect on a promise. In Bullet 2, you did gymnastics with commas and `+` to print a welcome message. In Bullet 3, you learned why floats print ugly money values. This bullet solves both — and gives you the tool you'll use every single day for the rest of your career: **f-strings**. Plus the string operations that real engineers use to parse logs, clean messy input, and mask phone numbers.
+
+---
+
+### 📖 Explanation
+
+#### 1. A String Is a Sequence of Characters
+
+```python
+customer_id = "C1001"
+```
+
+That's not one blob to Python — it's an ordered sequence: `C`, `1`, `0`, `0`, `1`, each in its own position. Because strings are sequences, you can reach into them, measure them, and cut them. That's what makes log parsing and phone-number masking possible.
+
+#### 2. Creating Strings — Three Quote Styles
+
+```python
+single = 'M-PESA'          # single quotes
+double = "M-PESA"          # double quotes — identical to Python
+message = """Dear customer,
+your transaction was successful."""   # triple quotes = multi-line
+```
+
+Single and double quotes are exactly the same to Python. Pick one style and be consistent (most teams use double quotes). Triple quotes are for multi-line text — you'll see them constantly later as **docstrings** on functions.
+
+**Practical tip:** if your text contains an apostrophe, use double quotes so you don't fight escaping:
+
+```python
+message = "Customer's balance updated"   # easy
+```
+
+#### 3. Escape Characters
+
+A backslash `\` inserts special characters:
+
+```python
+print("Line one\nLine two")   # \n = new line
+print("Col1\tCol2")           # \t = tab
+print("She said \"hi\"")      # \" = a literal quote mark
+print("C:\\logs\\data.txt")   # \\ = a literal backslash (file paths!)
+```
+
+The file-path one matters on Windows. You'll also see raw strings that ignore escapes:
+
+```python
+path = r"C:\logs\data.txt"    # r-prefix: backslashes are literal
+```
+
+#### 4. Indexing and Slicing — Positions Start at 0
+
+```python
+phone = "0745026402"
+
+phone[0]      # '0'    ← first character
+phone[1]      # '7'
+phone[-1]     # '2'    ← last character (negative = from the end)
+```
+
+**Slicing** cuts out a piece: `[start:stop]` — start included, stop excluded.
+
+```python
+phone[0:4]    # '0745'   ← positions 0,1,2,3
+phone[4:]     # '026402' ← from position 4 to the end
+phone[:4]     # '0745'   ← from the start up to (not including) 4
+```
+
+Memorize this rhythm: **start is included, stop is excluded.** Every slicing confusion you'll ever have is that rule.
+
+#### 5. `len()` and `in`
+
+```python
+code = "MPESA2026"
+
+len(code)          # 9 — how many characters
+"2026" in code     # True — substring search
+"2025" in code     # False
+```
+
+`len()` works on strings now and on lists/dictionaries later — it's Python's universal "how big is this?" tool.
+
+#### 6. Strings Are Immutable (Cannot Be Changed In Place)
+
+This surprises everyone once:
+
+```python
+name = "jane"
+name[0] = "J"     # 💥 TypeError: 'str' object does not support item assignment
+```
+
+You cannot edit a string character by character. You can only build a **new** string:
+
+```python
+name = "J" + name[1:]     # "Jane" — new string, old one untouched
+```
+
+Every string method you'll learn (`.lower()`, `.strip()`, `.replace()`) returns a **new** string. The original never changes:
+
+```python
+status = " SUCCESS "
+clean = status.strip()
+print(status)   # " SUCCESS "  ← still dirty!
+print(clean)    # "SUCCESS"
+```
+
+If you forget to assign the result back, your "cleaning" silently did nothing. That's a classic bug.
+
+#### 7. The Essential String Methods
+
+You don't need all ~50 methods. You need these nine cold:
+
+| Method | What it does | Example |
+|---|---|---|
+| `.strip()` | Removes whitespace at both ends | `" ok \n".strip()` → `"ok"` |
+| `.lower()` / `.upper()` | Case conversion | `"Success".lower()` → `"success"` |
+| `.replace(a, b)` | Swap substrings | `"C-1001".replace("-", "")` → `"C1001"` |
+| `.split(sep)` | Breaks into a **list** | `"a,b,c".split(",")` → `['a', 'b', 'c']` |
+| `sep.join(list)` | Glues a list into a string | `"-".join(["a", "b"])` → `"a-b"` |
+| `.startswith(x)` | Boolean check | `"0745...".startswith("07")` → `True` |
+| `.endswith(x)` | Boolean check | `"log.txt".endswith(".txt")` → `True` |
+| `.find(x)` | Position of first match (-1 if missing) | `"MPESA".find("E")` → `1` |
+| `.count(x)` | How many times | `"banana".count("a")` → `3` |
+
+Two of these deserve special attention because they power real data work:
+
+**`.split()` — the log parser's best friend:**
+
+```python
+log_line = "2026-01-15,C1001,45000"
+parts = log_line.split(",")          # ['2026-01-15', 'C1001', '45000']
+```
+
+⚠️ Note the difference: `.split(",")` cuts on commas. `.split()` with no argument cuts on any whitespace (spaces, tabs, newlines).
+
+**`.strip()` — the input cleaner.** Data from users, files, and APIs is dirty: extra spaces, trailing newlines. Strip first, always:
+
+```python
+raw_status = "  SUCCESS \n"
+status = raw_status.strip().lower()   # "success"
+```
+
+Notice the chaining — methods return strings, so you can call the next method immediately. Read it left to right: strip whitespace, then lowercase.
+
+#### 8. f-strings — The Main Event
+
+An **f-string** lets you embed variables and expressions directly inside a string with `{}`:
+
+```python
+first_name = "Jane"
+last_name = "Doe"
+account_balance = 75000
+
+print(f"Welcome back {first_name} {last_name}, your balance is {account_balance}")
+# Welcome back Jane Doe, your balance is 75000
+```
+
+That gymnastic comma-and-plus line from Bullet 2 is now one clean line. Rules:
+
+- Prefix the string with `f`
+- Anything inside `{}` is evaluated as Python
+
+```python
+amount = 60000
+fee = 500
+print(f"Total charged: {amount + fee}")        # expressions work: 60500
+print(f"High value: {amount > 50000}")         # even comparisons: True
+```
+
+**Format specifiers** — the `:` inside the braces controls display:
+
+```python
+amount = 45000.5
+print(f"Amount: {amount:,.2f}")    # Amount: 45,000.50
+```
+
+- `,` → thousands separators
+- `.2f` → exactly 2 decimal places (fixed-point)
+
+Now watch what this does to the float problem from Bullet 3:
+
+```python
+print(0.1 + 0.2)              # 0.30000000000000004  😱
+print(f"{0.1 + 0.2:.2f}")     # 0.30                 😌
+```
+
+The float is still imprecise inside — but at **display time** you control what the customer sees. In production, you do money math carefully and format carefully. Two separate jobs.
+
+#### 9. Three Production Patterns You're Building Toward
+
+Everything in this bullet feeds real work coming later:
+
+| Pattern | Code | Where it matters |
+|---|---|---|
+| **Parsing log lines** | `line.split(",")` | Bullet 15, Milestone 3: Log Parsing |
+| **Masking PII** | slicing + `"***"` | Kenya Data Protection Act — Section 10 |
+| **Normalizing dirty input** | `.strip().lower()` | Bullet 17 (validation), Section 4 (APIs) |
+
+You're about to practice all three.
+
+---
+
+### 🔨 Practice Problems
+
+Create a folder `strings/` next to your other folders. Predict first, run second.
+
+**Problem 1 — The f-string rewrite.**
+Recreate your Bullet 2 customer profile (`first_name`, `last_name`, `phone_number`, `account_balance`) and print the welcome message as **one f-string** — no commas, no `+`:
+
+```text
+Welcome back Jane Doe, your balance is 75000
+```
+
+**Problem 2 — Log line parsing (preview of Milestone 3).**
+Given:
+
+```python
+log_line = "2026-01-15,C1001,45000"
+```
+
+Use `.split()` to break it into three variables: `date`, `customer_id`, and `amount`. Convert `amount` to an `int`. Then print with an f-string:
+
+```text
+On 2026-01-15, customer C1001 transacted 45000
+```
+
+**Problem 3 — Phone masking (your first PII protection).**
+Given `phone = "0745026402"`, use slicing and concatenation to print:
+
+```text
+0745***402
+```
+
+(Hint: keep the first 4 characters and the last 3, replace the middle with `"***"`.) This is exactly how Safaricom logs should look — and you just built it.
+
+**Problem 4 — Dirty input cleanup.**
+Given:
+
+```python
+raw_status = "   SUCCESS \n"
+```
+
+Produce the clean value `"success"` using chained methods, then use `.startswith()` or `==` to check if it means success. Print both the cleaned value and the check result.
+
+**Problem 5 — Slicing drills.**
+Given `s = "MPESA2026"`, predict each result, then verify:
+
+```python
+s[0]
+s[-1]
+s[0:5]
+s[5:]
+len(s)
+"2026" in s
+```
+
+**Problem 6 — Bug hunt: two crashes.**
+This code has two errors. Predict **both** crash types before running, then fix them:
+
+```python
+customer_name = "jane"
+customer_name[0] = "J"          # Crash 1: what error?
+print(customer_name[15])        # Crash 2: what error?
+```
+
+Fix crash 1 by building a new string that capitalizes the name (any correct approach). Fix crash 2 so it safely prints the last character instead.
+
+**Problem 7 — Money formatting.**
+Given `amount = 45000.5`, print exactly:
+
+```text
+KES 45,000.50
+```
+
+using one f-string with format specifiers. Then prove to yourself that `f"{0.1 + 0.2:.2f}"` gives `"0.30"`.
+
+---
+
+### ✅ Exit Check for Bullet Point 4
+
+You can move to Bullet Point 5 (Numbers) only when you can honestly say:
+
+```text
+I can index and slice strings,
+I know the essential methods (strip, lower, split, join, replace, startswith, find),
+I can build clean messages with f-strings including format specifiers,
+and I understand that strings are immutable.
+```
+
+---
+
+### 📤 Your Turn
+
+Prove it with one of these:
+
+1. **Paste your solutions to all 7 problems** (code + output) for a full senior-style review — or at minimum Problems 2, 3, 6, and 7.
+2. Or, if strings already feel comfortable, answer these three:
+   - Why does `name[0] = "J"` fail, and what do you do instead?
+   - What's the difference between `.split(",")` and `.split()`?
+   - What does `f"{45000:,.2f}"` produce, and which part does what?
+
+When you pass, we move to **Bullet Point 5: Numbers** — where we go deeper on int vs float arithmetic, division operators (`/` vs `//` vs `%`), rounding, and exactly how to handle money safely in a fintech system. 🚀
+
+
+# #####################################################################
+
+
+
+# ✅ Bullet Point 4 — Review
+
+Clean sweep, Antony. All seven problems correct, predictions verified, and a couple of genuinely sharp choices. Reviewing problem by problem.
+
+---
+
+## Problem-by-Problem Review
+
+### Problem 1 — The f-string Rewrite ✅ PASS
+
+```python
+print(f"Welcome back {first_name} {last_name}, your balance is {account_balance} and your phone number is {phone_number}")
+```
+
+That gymnastic comma-and-plus line from Bullet 2 is now one readable line. No `+`, no comma juggling, spaces exactly where you want them. This is how you'll write messages for the rest of your career.
+
+### Problem 2 — Log Line Parsing ✅ PASS
+
+```python
+log_line_splitted = log_line.split(",")
+date = log_line_splitted[0]
+customer_id = log_line_splitted[1]
+amount = log_line_splitted[2]
+amount_int = int(amount)
+```
+
+Correct sequence: **split → index → convert → use**. And you printed the split result first to *see* the list — that's a debugging instinct worth keeping forever. Notice what you just glimpsed: `['2026-01-15', 'C1001', '45000']` is a **list** — Bullet 10 will make those official. You've already used one in the wild.
+
+**Senior shortcut to file away** — Python lets you unpack the pieces in one line:
+
+```python
+date, customer_id, amount = log_line.split(",")
+```
+
+Same result, less noise. You'll see this constantly in real parsing code (and it's a tuple in disguise — Bullet 13).
+
+### Problem 3 — Phone Masking ✅ PASS
+
+```python
+phone_first_part = phone[0:4]      # "0745"
+phone_last_part = phone[7:]        # "402"
+print(phone_first_part + "***" + phone_last_part)   # 0745***402 ✅
+```
+
+Your first PII-protection code. Slicing applied correctly, output exact.
+
+One refinement for the road: `phone[7:]` works because you know the phone is 10 characters. A more defensive version counts from the **end**:
+
+```python
+phone_last_part = phone[-3:]   # "last three characters" — true for ANY length
+```
+
+Same result here, but it keeps working even if the format changes. Defensive slicing = senior habit.
+
+And remember why this exists: phone numbers are PII under the **Kenya Data Protection Act**. Logs at Safaricom that print full numbers are a compliance problem. You just built the fix.
+
+### Problem 4 — Dirty Input Cleanup ✅ PASS
+
+```python
+status = raw_status.strip().lower()   # "success"
+```
+
+Chained methods, read left to right: strip the junk, then lowercase. Then you checked it **two different ways** — `startswith("success")` and `== "success"` — both `True`. That's thorough.
+
+Know the difference between those two checks, because choosing wrong is a real bug:
+
+| Check | Meaning | `"success_partial"` would be… |
+|---|---|---|
+| `status == "success"` | exact match only | `False` ✅ |
+| `status.startswith("success")` | prefix match | `True` ⚠️ |
+
+For transaction statuses you almost always want `==` (exact). For things like filtering log levels (`"ERROR: ..."`) you want `startswith`. **Normalize once, compare exactly.**
+
+### Problem 5 — Slicing Drills ✅ PASS
+
+| Expression | Prediction | Actual | Verdict |
+|---|---|---|---|
+| `s[0]` | `M` | `M` | ✅ |
+| `s[-1]` | `6` | `6` | ✅ |
+| `s[0:5]` | `MPESA` | `MPESA` | ✅ |
+| `s[5:]` | `2026` | `2026` | ✅ |
+| `len(s)` | `9` | `9` | ✅ |
+| `"2026" in s` | `True` | `True` | ✅ |
+
+6/6 — and more importantly, **predicted before running**. Start included, stop excluded. You own that rule now.
+
+### Problem 6 — Bug Hunt ✅ PASS (sharpest predictions yet)
+
+Your predictions, verbatim:
+
+> *"Crash 1: string is immutable — `'str' object does not support item assignment`. Crash 2: string index out of range."*
+
+Those are the **exact error messages** Python produces — `TypeError` and `IndexError` respectively. Predicting the precise message before running is not memorization; it's proof you have the mental model. Both fixes are correct:
+
+```python
+customer_name = "J" + customer_name[1:]   # build a NEW string (immutability respected)
+print(customer_name[-1])                  # safe last-character access
+```
+
+Output: `Jane` / `e`. Clean.
+
+### Problem 7 — Money Formatting ✅ PASS
+
+```text
+KES 45,000.50
+0.30
+```
+
+Exactly as required. And you ran the proof. Let's close the loop with Bullet 3:
+
+```text
+Inside Python:  0.1 + 0.2  →  0.30000000000000004  (still imprecise!)
+At display:     f"...:.2f"  →  "0.30"              (controlled)
+```
+
+Formatting **does not fix** the float — it controls what the customer sees. In production money systems you do both: careful math (integer cents / `Decimal`) AND careful display. Two separate jobs, now you know both exist.
+
+---
+
+## 🎯 Exit Check Verdict
+
+```text
+✅ PASS
+```
+
+You can now honestly say:
+
+> *"I can index and slice strings, I know the essential methods (strip, lower, split, startswith, replace, join, find), I can build clean messages with f-strings including format specifiers, and I understand that strings are immutable."*
+
+**Bullet Point 4: Mastered.** Progress: **4 of 29** in Section 1.
+
+One honesty note for your log: you practiced strip/lower/split/startswith deeply, but `.join()` and `.replace()` only by reading. That's fine to pass — they're the same shape of tool — but the first time you need them (Milestone 3's log parsing will), write them out by hand once.
+
+Append this review to your `done-bullet-points.md` whenever you're ready.
+
+---
+
+Holding here. When you say go, we move to **Bullet Point 5: Numbers** — where we go deep on `/` vs `//` vs `%`, why `round()` surprises people, what happens when you divide by zero, and the concrete patterns fintech teams use to handle money without floats betraying them. 🚀
+
+
+
+# ###############################################################
+
+# Section 1 — Software Engineering Foundations
+
+## Bullet Point 5: Numbers
+
+Bullet Point 4: ✅ Mastered. Progress: **4 of 29** complete — this is #5.
+
+You've been using numbers since Bullet 1. Now we go deep — because in fintech and telecom systems, numbers are where money lives, and money is where bugs become incidents. By the end of this bullet you'll know the three division operators, the rounding traps that fail interviews *and* production systems, and the exact patterns real teams use to handle M-PESA-style money safely.
+
+---
+
+### 📖 Explanation
+
+#### 1. The Two Number Types — When to Use Which
+
+| Type | Use for | Examples |
+|---|---|---|
+| `int` | Counting, IDs-as-numbers, **money in cents** | `45000`, `3`, `0` |
+| `float` | Measurements, rates, ratios | `0.015` (fee rate), `99.7` (latency ms) |
+
+The rule from Bullet 3 still stands: **money gets special treatment.** Floats are for science and rates; when actual shillings move, you'll see two safe patterns at the end of this bullet.
+
+#### 2. The Arithmetic Operators
+
+```python
+a = 17
+b = 5
+
+a + b    # 22   addition
+a - b    # 12   subtraction
+a * b    # 85   multiplication
+a / b    # 3.4  true division
+a // b   # 3    floor division
+a % b    # 2    modulo (remainder)
+a ** 2   # 289  power
+```
+
+Three of these deserve real attention: `/`, `//`, and `%`. Engineers mix up the first two constantly.
+
+#### 3. `/` Always Returns a Float — Even When It "Shouldn't"
+
+```python
+print(17 / 5)    # 3.4
+print(10 / 2)    # 5.0   ← not 5!
+```
+
+True division **always** produces a float. If you need a whole number result, you must say so explicitly — that's what `//` and `int()` are for. This surprises people in exactly one place: when they compare results.
+
+```python
+10 / 2 == 5      # True  (Python is generous here: 5.0 == 5)
+type(10 / 2)     # <class 'float'>  ← still a float though
+```
+
+#### 4. `//` Floor Division — And the Negative Number Trap
+
+`//` divides and rounds **down to the nearest whole number**:
+
+```python
+17 // 5     # 3
+10 // 2     # 5
+```
+
+Two subtleties:
+
+**Subtlety 1 — "down" means toward negative infinity, not toward zero:**
+
+```python
+-17 // 5    # -4   😱 not -3!
+```
+
+`-17 / 5` is `-3.4`. Rounding *down* from `-3.4` lands on `-4`. Python's `//` is mathematically consistent, but it shocks everyone the first time. If you ever process **refunds or reversals** (negative amounts) with `//`, this matters.
+
+**Subtlety 2 — the result type follows the inputs:**
+
+```python
+17 // 5      # 3     (int // int → int)
+17.0 // 5    # 3.0   (float involved → float)
+```
+
+#### 5. `%` Modulo — The Remainder Operator
+
+```python
+17 % 5    # 2   ← what's left after 17 // 5
+```
+
+Modulo looks useless until you see its three production jobs:
+
+| Job | Example |
+|---|---|
+| Even/odd checks | `amount % 2 == 0` |
+| Splitting into batches | `1007 % 250` → items left for the last batch |
+| Cycling/wrapping | hour clocks, page numbers, retry slots |
+
+Batch processing is a real daily task: M-PESA-style systems rarely process 10 million transactions in one shot — they chunk them. `//` tells you how many full batches; `%` tells you what's left over. There's even a built-in that returns both at once:
+
+```python
+divmod(1007, 250)    # (4, 7)  → 4 full batches, 7 leftover
+```
+
+That `(4, 7)` is a **tuple** — Bullet 13 will make those official. You keep glimpsing future tools in the wild. That's by design.
+
+#### 6. `round()` — And the Banker's Rounding Trap
+
+```python
+round(3.14159)      # 3
+round(3.14159, 2)   # 3.14   ← second argument = decimal places
+```
+
+Now the surprises:
+
+```python
+round(2.5)    # 2   😱
+round(3.5)    # 4
+round(4.5)    # 4   😱
+```
+
+Python uses **banker's rounding**: `.5` values round to the nearest **even** number. It's not a bug — it's a deliberate statistical choice (rounding always-up introduces an upward bias over millions of operations; banker's rounding balances out). Banks literally use this. But your intuition says `round(2.5)` should be `3`, so this fails job interviews and breaks naive code alike.
+
+And one more float ghost from Bullet 3:
+
+```python
+round(2.675, 2)    # 2.67  😱 not 2.68!
+```
+
+Why? Because `2.675` is actually stored as `2.67499999999999982...` internally. It was never exactly 2.675. **You cannot round your way out of float imprecision — you choose better types instead.** That's coming in section 9 below.
+
+#### 7. Three Ways to Make a Whole Number — Know the Difference
+
+| Method | `7.9` | `-7.9` | Behavior |
+|---|---|---|---|
+| `int(x)` | `7` | `-7` | Chops toward **zero** |
+| `round(x)` | `8` | `-8` | Nearest whole (banker's on ties) |
+| `math.floor(x)` | `7` | `-8` | Toward **negative infinity** |
+
+```python
+import math
+int(-7.9)          # -7
+math.floor(-7.9)   # -8
+```
+
+Three different answers for the same input. If you're computing fees on negative amounts (reversals), picking the wrong one is a real money bug. Memorize: **int chops, round rounds, floor goes down.**
+
+#### 8. The Only Arithmetic Crash: `ZeroDivisionError`
+
+```python
+print(45000 / 0)    # 💥 ZeroDivisionError: division by zero
+```
+
+Addition, subtraction, multiplication — never crash. Division is the only arithmetic danger. And here's the production version of this bug, which happens *constantly*:
+
+```python
+amounts = []                              # a customer with zero transactions
+average = sum(amounts) / len(amounts)     # 💥 0 / 0 → ZeroDivisionError
+```
+
+You didn't write `/ 0` anywhere — an **empty list** produced it. The fix pattern is called a **guard**, and you'll use it for the rest of your career:
+
+```python
+if len(amounts) > 0:
+    average = sum(amounts) / len(amounts)
+else:
+    average = 0    # or None — "no data" is not the same as zero!
+```
+
+⚠️ Think about that choice: is the average of *no transactions* really `0`? Or is it "unknown"? Returning `0` can lie to downstream systems. Often `None` is more honest. This exact question shows up in every ML feature pipeline (Section 7: "missing values at scale").
+
+#### 9. Handling Money Safely — The Two Real Patterns
+
+You now know enough to understand how professionals actually do it.
+
+**Pattern A — Integer cents (most common in fintech):**
+
+Store everything in the smallest unit. Never let a float touch a shilling.
+
+```python
+amount_cents = 4500050        # KES 45,000.50 stored as cents — pure int math
+fee_cents = amount_cents * 15 // 1000    # 1.5% fee, still all integers
+print(fee_cents)              # 675001 → KES 6,750.01
+print(f"KES {amount_cents / 100:,.2f}")  # format to shillings ONLY at display time
+```
+
+Ints are **exact**. No `0.30000000000000004`, ever.
+
+**Pattern B — `Decimal` (when you must have decimal math):**
+
+```python
+from decimal import Decimal
+
+total = Decimal("0.1") + Decimal("0.2")
+print(total)                    # 0.3  exactly
+print(total == Decimal("0.3"))  # True
+```
+
+Two rules: **always construct Decimal from strings** (`Decimal("0.1")`, never `Decimal(0.1)` — that imports the float bug), and never mix Decimal with float.
+
+You don't need to master these yet — just **recognize them** and know *why* they exist. You'll use them for real in Section 4 (production ML APIs).
+
+#### 10. Python Ints Never Overflow
+
+In many languages, big numbers wrap around and corrupt silently. Not Python:
+
+```python
+daily_total = 10_000_000 * 45_000    # 450 billion — no problem
+print(daily_total)                    # 450000000000
+```
+
+Python ints grow as big as your memory allows. For M-PESA-scale sums this is a genuine relief — one less failure mode to defend against. Also note the `10_000_000` syntax: underscores inside number literals are ignored by Python and exist purely so humans can read big numbers. Use them.
+
+#### 11. Quick Built-ins Worth Knowing
+
+```python
+abs(-45000)          # 45000  — magnitude (distance from zero)
+min(45000, 12000)    # 12000
+max(45000, 12000)    # 45000
+sum([100, 200, 300]) # 600
+```
+
+`sum()` will do heavy lifting in Milestone 1 (Transaction Summaries), five bullets from now.
+
+---
+
+### 🔨 Practice Problems
+
+Create a folder `numbers/` next to your others. Predict first, run second — that habit is compounding.
+
+**Problem 1 — Operator predictions.**
+Given `a = 17` and `b = 5`, predict all five results, then verify with code:
+
+```python
+a / b
+a // b
+a % b
+a ** 2
+10 / 2        # ← predict the TYPE of this result too
+```
+
+**Problem 2 — The negative floor trap.**
+Predict, then verify:
+
+```python
+-17 // 5
+-17 % 5
+```
+
+Explain in one comment why the second answer is **positive** even though the input is negative. (Hint: think about what must be true so that `(-17 // 5) * 5 + (-17 % 5) == -17`.)
+
+**Problem 3 — Transaction batching (real work).**
+A nightly job must process `1007` transactions in batches of `250`. Using `//` and `%`, compute and print:
+
+```text
+Full batches: 4
+Leftover transactions: 7
+```
+
+Then rewrite your solution using `divmod()` in one line.
+
+**Problem 4 — The rounding surprise.**
+Predict, then verify:
+
+```python
+round(2.5)
+round(3.5)
+round(4.5)
+round(2.675, 2)
+```
+
+Write one comment naming the rule that explains the first three, and one comment explaining why the fourth is a *float* problem, not a rounding problem.
+
+**Problem 5 — The empty-list crash (production classic).**
+This code works for most customers — then one customer with no transactions hits it at 3am:
+
+```python
+amounts = []
+average = sum(amounts) / len(amounts)
+print(average)
+```
+
+Predict the exact error, run to confirm, then fix it with a guard so it prints a safe value for an empty list. **Bonus decision:** choose between `0` and `None` as your safe value, and write one sentence defending your choice.
+
+**Problem 6 — Decimal proof.**
+Recreate the float problem and then defeat it:
+
+```python
+# float version
+print(0.1 + 0.2 == 0.3)
+
+# Decimal version — build both Decimals from STRINGS
+# print whether Decimal("0.1") + Decimal("0.2") == Decimal("0.3")
+```
+
+**Problem 7 — Fee calculation across bullets.**
+Combine Bullet 4 (strings/f-strings) with today:
+
+```python
+amount = 45000
+fee_rate = 0.015   # 1.5%
+```
+
+Compute the fee, then print it as `Fee: KES 675.00` using an f-string format specifier. Then answer in a comment: *if you needed to charge this fee in real money, which pattern from section 9 above would you use, and why is `fee = amount * fee_rate` risky?*
+
+---
+
+### ✅ Exit Check for Bullet Point 5
+
+You can move to Bullet Point 6 (Booleans) only when you can honestly say:
+
+```text
+I know the difference between /, //, and %,
+I know round() uses banker's rounding,
+I can guard against ZeroDivisionError on empty data,
+and I understand why floats betray money — and the two patterns that fix it.
+```
+
+---
+
+### 📤 Your Turn
+
+Prove it with one of these:
+
+1. **Paste your solutions** to all 7 problems (code + output + comments) — or at minimum Problems 2, 4, 5, and 7 — and I'll review like a senior engineer.
+2. Or, if numbers already feel solid, answer these three:
+   - Why does `10 / 2` produce `5.0` instead of `5`?
+   - What does `round(2.5)` return, what's the rule behind it, and why would a fintech team actually *want* that behavior?
+   - Your code computes `sum(amounts) / len(amounts)` and crashes on an empty list. What error, and what are your two honest options for the safe value?
+
+When you pass, we move to **Bullet Point 6: Booleans** — where you'll meet `True`/`False`, comparison operators, and the exact expressions that will soon power every `if` statement in your risk scorer. 🚀
+
+
+# ###################################################################
+
+
+# ✅ Bullet Point 5 — Review
+
+Antony, this is easily your strongest submission yet. You didn't just get the code right; your *explanations* show that you are building a genuine engineer's mental model. I'm reviewing this like a senior engineer looking at a junior who is clearly ready for production work.
+
+---
+
+## Problem-by-Problem Review
+
+### Problem 1 — Operator Predictions ✅ PASS
+| Expression | Prediction | Actual | Verdict |
+|---|---|---|---|
+| `a / b` | `3.4` | `3.4` | ✅ |
+| `a // b` | `3` | `3` | ✅ |
+| `a % b` | `2` | `2` | ✅ |
+| `a ** 2` | `289` | `289` | ✅ |
+| `10 / 2` | `5.0` (float) | `5.0` (`<class 'float'>`) | ✅ |
+
+5/5. You correctly predicted that true division *always* yields a float, even when the math is clean.
+
+### Problem 2 — The Negative Floor Trap ✅ PASS (Brilliant Analogy)
+Your predictions (`-4` and `3`) are correct. But your explanation is what I want to highlight:
+
+> *"Imagine I don't have any money. I take a loan of -17 ksh... Then I take another loan of -20 ksh. Pay the -17 ksh loan I owed, how much money am I left with it will be 3 ksh."*
+
+This is a fantastic, intuitive way to explain modulo math. Mathematically, Python guarantees that `(a // b) * b + (a % b) == a`.
+`(-4 * 5) + 3 = -20 + 3 = -17`.
+Your loan analogy perfectly captures why the remainder *must* be positive `3` to balance the equation when the floor drops to `-20`. Keep this mental model; it will save you when debugging weird offset calculations later.
+
+### Problem 3 — Transaction Batching ✅ PASS
+```python
+full_batches = transactions // batches
+left_over_transactions = transactions % batches
+```
+Correct logic. And you successfully used `divmod()`!
+
+**Senior Tip for the road:** You indexed the tuple returned by `divmod` using `[0]` and `[1]`. Python allows you to unpack tuples directly into variables in one clean line:
+```python
+full_batches, left_over_transactions = divmod(transactions, batches)
+```
+You'll see this "tuple unpacking" pattern constantly in Python (we cover tuples officially in Bullet 13, but you're already using them in the wild).
+
+### Problem 4 — The Rounding Surprise ✅ PASS (Textbook Explanation)
+Your predictions (2, 4, 4, 2.67) are 100% correct.
+Your explanation for `2.675`:
+> *"...the rounding algorithm is working perfectly but it is operating on an inexact, slightly smaller binary approximation... python sees something smaller like 2.674999999..."*
+
+This is the exact, technically accurate explanation a senior engineer would give in a post-mortem or an interview. You understand the boundary between the *math rule* (banker's rounding) and the *hardware reality* (IEEE 754 binary floats). Clean pass.
+
+### Problem 5 — The Empty-List Crash ✅ PASS (Best Answer in the Set)
+You predicted `ZeroDivisionError` and fixed it with a guard:
+```python
+average = sum(amounts) / len(amounts) if amounts else None
+```
+But your reasoning for choosing `None` over `0` is the real prize here:
+> *"I choose None because it means empty. I did not choose 0 because 0 is data."*
+
+**Write that sentence on a sticky note.** "Zero is data; None is the absence of data." This is one of the most important concepts in Data Engineering and Machine Learning (Section 3 and Section 7). If a customer's average transaction is `0`, it means they transacted for zero shillings. If it is `None`, it means we have no data on them. Treating `None` as `0` will silently corrupt your ML models later. Outstanding instinct.
+
+### Problem 6 — Decimal Proof ✅ PASS
+```python
+print(0.1 + 0.2 == 0.3)                                  # False
+print(Decimal("0.1") + Decimal("0.2") == Decimal("0.3")) # True
+```
+You remembered to build the Decimals from **strings**. If you had used `Decimal(0.1)`, you would have imported the float bug right back in. Perfect execution.
+
+### Problem 7 — Fee Calculation ✅ PASS
+```python
+fee = amount * fee_rate
+print(f"Fee: KES {fee:.2f}")   # Fee: KES 675.00
+```
+Output is correct. And your architectural decision:
+> *"I would select Pattern A — Integer cents... Never let a float touch a shilling."*
+
+"Never let a float touch a shilling" is a great mantra for fintech engineering. You correctly identified that doing the math in floats is risky, and formatting at the end only hides the danger, it doesn't fix it.
+
+---
+
+## 🎯 Exit Check Verdict
+
+```text
+✅ PASS
+```
+
+You can now honestly say:
+> *"I know the difference between /, //, and %, I know round() uses banker's rounding, I can guard against ZeroDivisionError on empty data, and I understand why floats betray money — and the two patterns that fix it."*
+
+**Bullet Point 5: Mastered.** Progress: **5 of 29** in Section 1.
+
+Update your `done-bullet-points.md` log. You are moving through the foundations with serious engineering discipline.
+
+---
+
+Holding here. When you say go, we move to **Bullet Point 6: Booleans** — where you'll meet `True`/`False`, comparison operators, logical operators (`and`, `or`, `not`), and the exact expressions that will soon power every `if` statement in your risk scorer. 🚀
+
+
+# ###################################################################
+
+
+

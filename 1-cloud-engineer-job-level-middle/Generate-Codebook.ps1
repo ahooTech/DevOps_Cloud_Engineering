@@ -2,7 +2,6 @@
 .\Generate-Codebook.ps1 -ProjectPath "C:\Projects\Staff-Canteen-Management-System"
 #>
 
-
 param(
     [string]$ProjectPath = (Get-Location).Path,
     [switch]$GeneratePdf

@@ -1,6 +1,6 @@
 ﻿# Staff Canteen Management System
 
-Generated: 08/07/2026 22:32:25
+Generated: 08/10/2026 23:02:25
 
 ---
 
@@ -11,10 +11,9 @@ Generated: 08/07/2026 22:32:25
 - .terraform\providers\registry.terraform.io\hashicorp\local\2.9.0\windows_amd64\LICENSE.txt
 - .terraform\providers\registry.terraform.io\hashicorp\random\3.9.0\windows_amd64\LICENSE.txt
 - .terraform\providers\registry.terraform.io\hashicorp\tls\4.3.0\windows_amd64\LICENSE.txt
-- code base.docx
-- jubilee-cloud-foundation-key.pem
 - main.tf
 - outputs.tf
+- run.md
 - terraform.tfstate
 - terraform.tfstate.backup
 - terraform.tfvars
@@ -1659,205 +1658,24 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
 
 <div style='page-break-after: always;'></div>
 
-# File: code base.docx
-
-```docx
-PK     ! ߤ�lZ      [Content_Types].xml �(�                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ���n�0E�����Ub袪*�>�-R�{V��Ǽ��QU�
-l"%3��3Vƃ�ښl	�w%�=���^i7+���-d&�0�A�6�l4��L60#�Ò�S
-O����X� �*��V$z�3��3������%p)O�^����5}nH"d�s�Xg�L�`���|�ԟ�|�P�rۃs�?�PW��tt4Q+��"�wa���|T\y���,N���U�%���-D/��ܚ��X�ݞ�(���<E��)�� ;�N�L?�F�˼��܉��<Fk�	�h�y����ڜ���q�i��?�ޯl��i� 1��]�H�g��m�@����m�  �� PK     ! ���   N   _rels/.rels �(�                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ���j�0@���ѽQ���N/c���[IL��j���<��]�aG��ӓ�zs�Fu�]��U��	��^�[��x ����1x�p����f��#I)ʃ�Y���������*D��i")��c$���qU���~3��1��jH[{�=E����~
-f?��3-���޲]�Tꓸ2�j)�,l0/%��b�
-���z���ŉ�,	�	�/�|f\Z���?6�!Y�_�o�]A�  �� PK     ! �d�Q�   1   word/_rels/document.xml.rels �(�                                                                                                                                                                                                                                                                 ���j�0E�����}-;}PB�lJ!��� E?�,	��`HI��`��r��sπ6����w��{���r茯{�*x���AkWk�*�`[^^l��jNK���D�8R�1���d:4e>�K/����4�Vm^u�r��w2NP�0ŮVw�5�j��o���7o:>S!?p����8JX[d�0KD��EVK���c2�P,���ũ�a���]���.���ﰘs�Yҡ�+�����(!O>z�  �� PK     ! ��Z�<  *�    word/document.xml��rǙ��?U�f�Tjs� /6SYɡ(�VU�$%[[�k�1�F�[zf@�[�ϒgɓ� � .Cbz��*�-d����������$��RQ�>{r����4��(>{�w�}��+J��"�R��ɵ,�|�������zfA�ȴ��G��ӫ<x�dT��ӽ�"�D�$
-TVde?Ȓ���"
-��U�½�������UȢ���L�cQ<�}\�q�O���_\�{�H�R~�������w�?(���,���͋L%�����{�P�U�ӟ��2DqT^��?����ٓJ�Og����_�t����q�j��;���3qL�㞒����E��=M��4����߷�q�������f
-�r*���Ώ?eO��?�`����+�����O��(����ښ/6��h�8��ǅ��#�f�W\'���U>l&�TV�?-j�i���O�U�j�Ϛi˗\4�aގD��r<}=L3%�����=->o"�>%O�k����g�]=�4�<{���������'7�饼U\ֿ�r�����+��o��[�S>?{�>��,/��8�L�Q*��}��X�e��>c��R^��,r��z�R��T���*%gr�U�"�|y/��^)��	x_+y����������&���Y��\��=3�dnO���w�o	 ?W�?�Q���X�Ϟ����Ag��EUf��^D��݃W��ӟ��E�uH�����?��sqTk��wG7�򦪕J���(�_���U�)Kˢ��"��:ӂ����^=���i�gO�E�,����&KDZ���Tk�����r�&˸Y��o�g?��7��p��ůg�O������Yk�����d�T���u�6T"y[jc<[�R]�ܢ������%��*m܄�e���5��'Ͻ�ޘ!՝U��_��V��"�ql/���G)��q��p�T�n눁�>{ur���S�'��x����O���TF �I�d�fR/|��Vb(q�a����W��%�Ն�"a�� �������`EV�@�}x��>�E�[;b��+6�햭$�Qd*�̂[�{�k�������kio��Y:r1d���ߺt�Q7�;F����֙�u�敹�)��]�$�A����"���T�v��5��'��l��n
-�L2&��L.��\�7�cp�w�r��:Z��Vy#�ws�1����`�F�i�H/'խ1p�$�I7�׻�7�ଦ ���XK{C��
-��ts���"�
-@����ּ2�]�8D�CFB7�
-)r��IukG\39|r��vao⥐:�"c�Ͱ�dr������18�%r��u�h*���R��7��� ǂ�|�PȭH���׋��W�'C��߆��)'�4uX��ֵ��rH�w��{�h��(�X�����z
-�y��ۺ����y8=?~)���I �̤��A�:|�U@�� �����ٿ}�XUǪ�tw6q�8��6�t�,Md:w�9��8��{Ñ�Hw�FW*ϊ�F�*m�4j�
-{2j��W*�Z�i&�x�s<7�/E)��w+��(�u7t���Q��r�4�fc�|�噬O&H���/]i��\3�<�@����n�Z�ʡr�S9�m�72����J���WqA�pMD �a���OON����F_5�|����V�N�z�!z�\(�*��-����Z�Cm���d�`֚��h�/�"�� �����5Ko�u�6����t��d��qZZ�F�����������-�=`?.p(-�o��W�� �E��ɄW��d�8֝�p%��,��M�>����ߐ���"�jC�Y�dE�+l8I�Hu!�ut|r��x;闪��s�a8l&��ﳫT*��-������|7�=L��C��`lL66���=���1��=�O�:�@'����~�E���-Q����`� ��\����bc��١�.�D�����z�;���%]����<��1n�t�C 0���mϓ%J�Dhl,��P���G��D�:y��W���%T��PyL��ф�*�w�����G�d�0Y�R��q��4�.��Ĵ�*�@`@;A�:�5�i��	:��9�HL���*E��J�������H;���c;��y`}#1���X��7��� �Ջ�mA��m���"��wO���h�ڊ@�Çc�Ը�l$S)�c���Bf�J�R����/��Z���xs�4d,T�%ZC�\D+[�T�ߊ$����՗���s�1�t���{h�!6F �����`,���{}j�~���1��u�©-q̡vDϿ�`�����c�sp{K�}nK�w	w[	w�x'E�*B*�7aT�:zX��[�86�U��������b�22�߾y�98�8:{u�e�k�����㜣�<��@N�������v�O�8�[�a*a��F���C�LV9Z0�䩮����n��(����OҔ�U�F���,o��f�VR7�D��(o�,;�}��D�Ij����!�~c���朔~1�|\�*�*!V%V��b$��X9[�8�=����n�'�v�SB�͚[�T||�������/�$J��t�.�����|3V+�z��M�F��T2<C�B������Lխ�u�0TY��'t*�wz�PUT�qc��6�D��Z�@� qq�#�_�C}6�"42_�	�04v��w����@h1 "���EFeFD���δ�(D�J�unh��xO����l�n�z����A  O���h����ޥ�����|�m�R[�q�p쪨�EV�`� �G���&�m(96Y~�����v��i�N�9�6o^�Hox��e@h޺�1���"Ȫ�\g���Ԅ�;O��(�v�����&�ˁ��o�:��?p��J^��'7��|� �a��r�`W����ݗ7oO�V@�	a�#uU�(����wmп����V�����1V��C�r;��� �,.�|{|כ��q��ڿs���	�M�m����Ӱ���a�Ⱥu-�a��E��k�	�z.4,ҰX��f���$��qz�����;�bq��"�7-����㓳���-�7�	�n��&��ۅ��շ�|j}� �������Ϸ�X'➶�����nL�jGiR�鋴�ˉ[���> }��M�`�͟&�.�j�l�U�k�,��g���:�O ��Ɯ������b_m���:�_?�DR��v��*U�Nˏ*U�ܞ�f�:**���P��7��� F_,��_��f��o���]<_3����ܒ�ds�?��(F<����E�ݺ2�!t�.s���JO�����`�b�Y$�*�y�@܀��C��]g�{�p�$9�E�d�ˣI�I��(o�b�c}�h����3�$�.oӧ��5��[ߧ�8����\�|��*�p��I)3L-���l����z��vZJJ���(o9���Lw�2�</-]��>eC7??�L?��3[W�aUITQ��l~�mB4pՍ����}�fh�K�p��h}C  `���OON����W��h�.�����:���L��)��4�J��b(_().'_;q��.������*���,���/�
-�k�308�]i"���&8VDlmh!%� 
-�?����u�E״c,T_{]~�%��8'q�@���W��A,�0-����Lu������E��.���RU�9;��!r�DeEYOgY��"�@�;2�B�i!y[����tj�N�-l���&f6uZ~�lbf�툲��yM��]XT�h�+���X��7��� �Ջ�3�ꈶzo�A*��=z��AI�uKmE ��k�Kw�k�f��k�ͮ5�n���f3'�+"ͫA�mƻ"8kC��o�Fa������w.�=�f�V��`���݃d���@��)�ь�B���,�d���]8�b,�X�8*��_���S?"�}(Jѯ��9�Y�)vW�CS�g˾�w��<^׹�
-O�-]�/s��m�m�mk�&"�gW��Y�ǢJ��Le�L6��#i��d��E�tj�NΌ�:�ii�'����ۥ�3*�c�C߈H�& �
-��]�
-�Yk�
-WpX8��i���(%wpp�����B�����$�d�'Y���h���������y��\�� �\��Ν=������IH.��ᶵ�����f�%���1�+i����p�tj�N��G���l�r�۱ʡo���� �!-��m�^�Zv�;�~О���FQ@p���mY(�+.=/�.=��f.=7���<;���[�%\�wE���9�>�e����4#r�yi�7�	�ȶ��ЧG��:���.�陿�&7E~3ϓn�)M�;�gR�u����>�Z_?Ƞ��+����:�D�sQ�����p&���&{p�H\^\�[T�htƣr;V9��h}C  `��h�D[�V��U)�w�p��4=ʇ�J�uKmE �ხ���@W�Yk�+�YW���:�����v��x�wWD:��IK<.ZZHK<-���#�č�D���nY�[�d�pp^���ɽ�)��Q��~���>��  � ��p�˳����a-�Tz��z!��^��� A@'��,Gl�4��~Yu��=w��nE\�ʵ�r�y�	 �!�t�!c֚�!�`7d|QY�2�ҵv��2�����2���[�i!�+E5��2h]Y��i��_����Lw�?E6�+�~�%) ����m�`��7�v[��m9o2ދ�L(���Ί4W�X��47>Ai�6\K�B1� �<�@0 \��z�:���N]����܏�/��8�ۅEՊ��8Tn�*����@ � �n���@��Yk�[��qtp���v�9��E�Ն�9���Z|An�lZ	  3!N���[pC��0����-}C  `���OON����W��h�.��{+�JE�������I����h�ڊ@�0h3�ߦ|#�P*���|����|�˓)�v��5�{Ь����|��v���Z8�]�@�HQ��r�F�ֆ:�4	���^�I���p~��]F.�������v��ͼ���D�c���.���>�Z_?Ƞ�7P���J�u"��^1�-N1Nq�&%�E��|�[..�a���ON�8��޾�����ڻPY�0�Ҩ(�(�wy}��t8ͤ�.�Ə��`�b���@0$8���#Z��f0t�"x2O�$HI8���������Ij�$p��-�C�g��3�>J*�|n��wx�!1$6��e��K	�bP܆^�b�2z�e�?m�]p�Į���w[ݿ�ƫ!��.,��输D��q\�,p:9��g��c,T?����۫&���
-{�C}�+�U���v|�U���đ��^<��刚^<z�n���U?��@�^V���JC�T��"
-Hy� �~<���m�Ā b���nǃĐ��� ���n���	P�Sl���kȂ�,�݈�����{�v����
-��S}���t�C 0��s��ew�_�!U<MZ���!1�O"��7���G�� �sB��7�Q�	 �/{/	��w�yٛ��I8����7.1VZ�|��W��{�W�MX�z�����>�9�z[����s��`Nٱ\9\���w�w��Oi�Z��D�7ID�kp�\�w����a�w���@0$����#��L�̥�	�'&n����r�����x�Xw	��e���]}L�Ā�3W�����8����]��5r���8��8`��r���C�ucM�'.+�I1Y;�7f��r�㶮2�&e0)t�N��n&�&ǎ� ��^��7Q�	 J�tJj֚J��CI}�9�֮0��c�1���u���2�'���! r�9	V���i��6���R��\�%���(-�R��uv��	�~Y�����9���ݭ�E&0�`3P[��ɀŹيL/��]�5����A`7I�|�-Z����u0�`�|l��m�*lf��{����j]tV�����;*'�2v����<�Q�ݰǓ!,�������2�<��	<d+A6��Y��+9�g�l���tF� �u|zrrt� �j��@[w��ޫ�C�uZ�"����탕h�ڊ@�������Z3w���.�f.�Z[�Uf�vWD:�TqK���-ܢ8��)�h3��GzOk�����(E�vo��E"~�R_S����~C�@v���&�����=�%�ҮiM��֚�a=�o�S����CmC�vֱ6ټ~^�(�}i �G$��$���|{��|�X�kp�u���ȂH�ҟ:~��"���m�=�[�bએ�O�^o����#l���r\���~*2����Ϙ�Y �~Q��mT��{�� ���D��n-���j�!Z� ���V�תd�Y�2$t��
-���2��A,CƑ�i0m���R�N�i8��?�Hj@�u^��ޖ\g鏲܏�$»�fU������wH�_F��r��9���� ΂K?��ȂY�Q�U��&�j��U���}֧���7d�@3h6�E�+h�͍^��`�X�{J�Lu��r�� �au��\F����9��,������$JE�����Z8Pʔ�Q�S9�q�Vy v�˥�l$w/R~F:�6�$iis��;�����E��ks���O�va��3fJ@)@5}�R�u�b�P��J\�m�-0��C&��r�T9B[B[�	 +�(޲_�����[��e�����lw|�Wr��*�����Ѧo��u-�"%�X�!�h36�,n:��~p�_��z��"�f��)R}����1X �K]�ߦ|#�P*���|����|e�%h���z�1���]c��[kV +�7ٲS[T��g�S�W��ϼɻ����R=x�0����_ȠRQy�UV�o<V�pϼ�'8�۳��h��0�`Z�LE���2���Q�G�/�P�`[�kS\u�&".�`�s�`��zG(|O�\���+N�"����F��a�G `p��N�u�x�6�W�ߺUs+���޷�{_�<��S��F"���	c�/��Pb(�1�����,��R'��2�T�jT��/�0Ϣ��T[����F��Tb2�L�ic0]f�wr]H��i%�QE
-Pj@m�������;K��~%�u7��M��e��C���7-W9���w��rKg���qd��Ǉw�(ˀ*�Hh5��*a�z�>��|��2|�4��"�4[��&	���2X���+,�@]�\9O���ݠ2� 3��de,��e1��I���)ϙc@(?.z(���r�㘭�@��K1\�H�^���
-8t2%l�I$�����fs�)qr��P9�U}#E �������v ���_�mݥ�z�O��AV��w.��*S�w��Qp�.���m��P W�%ĕ,�J���^R�֎��&��I��@wN����F"��������w��e�c�yxH��w_�E���tR��6��Z�B�;/&f/se��s�
-���OCi�����y��b��)�t�Y��a5�aE DfF�?0�QR%���X��r��x��g�G�~�����m8�F��qv%U 
-Y���D�՜���ϰ6?�Y��7lN�d �7xID�h���D� ��s�g�g��a�al.��A�c�g�A�A�q�]��ޏ�/��wN�h(�ث�\5h͠��h�ԭ��泯�f,Sf!��G�޴qH�l�ͭ�9?wӉ!;��ڰ��'����]���F� �Ř+��m�ߦ|#�P*�k�����r�U7�PY��
-QJ����[j+1L
-\�L#0k�L
-l>)pX�tk�s9�]��(-���E|ֆ�Q��ۭLE�K����F�ߝ.�; ?.l(3�o�$W�� �E�k��Ir���\T�Cm��"υ�E�Պ��"ϵ�M��,�+���,Ϊ�Ս��c�p���?��!�i��!r���\'�΅'�yk/�ur��"RQ�Q���T�X�X�h!�NR��dK�B������D����@ ��Eq�muD[?O�γ8
-��Ӳ�(�z(#�:�V</�\&�#%ƅw����/�����v��#ǝ�ލ�>���O��e�|��~�+G}ãN��u-t��Vs�{a����\��Ԃ��T���2_���6�U�y��)ƭA�o����{/M6੶�O�u���wοi�EO]?$ZE�V����6�9��A�7I�S;rN\�&~�¢jE���h}C �@�z (�.8=F�U}�{3��v�?���G�J*��b���Nފ�A�&=�,m�+��6�}K� h�����6� ��q^'���-#-�@���I��h}C �@�Z ��.8-�E�U}�{3���Qz%E�gi����|�cN�x�ZH���?@0���0����?��p����@��j-�l\ox}��7R�M�k h� z٩�N����@h�h4@P](p ������f"u�"�t(��*�sQW�
-9�AL�t�p����B� h�����]��q�h���6�;g�6� Vk�e�@�_�g��ӹ-�'Z!�`���Z�h�0Z����Vj�N+�QsU���L���*��L��p����@�ݺ��@��&�7��� ����@��ɮ%��?���[D��Oi`���G�B��>:}F���]@��@!t���{�*j��sܛ��پ&@p�� 
-ߡ�oS��i(���P�PR\N��ވ�P�7���FoDw	Fo�=�7��z#�}z#�X�%�m�!q���#�!�yTW�	��� �Ջ:>=99:� _5�|����VO��^�3�wҢyh�D[��Vb>�D]�t���fZӚw�VZ�km�h����E-�xWgmh!}8��F�7�;��qM7�,q�����^:<'}�@0��w���8'a�i-��.W�Rn���A��j%�>�pd P�Z����Z3%��)A�&�$2HU����p�IqةIQ���"�ZC�IQ�"q�L7�I��@ ��5�vgq�i�trx�����<G�]v����6lS��n~ah~~�	Gq�x_i��q�P�߫V&�����%�4��& ��f�.�Oc֚�y�~�8F���@3p#�z��w_�4�L��E�Ղ�LC3y�e�A3���}\K3��/�-�E�m6_�m6���f�GC����x���tX�9�߽��c�M2��P*Cec�\�I���U�d���{x:w��G�'g/��ӄR�jt��0�q�C'����@ ��E��ꄶ.���N����
-���z6�M����/S=<��x{�YV���X�T����a��Ң�[j+1\9Z�\92k�\9jv�h0��o��yߗ�F��/EZ��T�o��g�������dUZr�d,T?PR��k�����H�?L�mQ��Ƥ��/b�JՆ���DD��]�K�̿��NmI�]�^��~[��Io�{nU5j:uQ�O��[������Y͊YI�v��7�M��̶��Q#����5i���|�����&���3,CX���������mr��DX'��M5�7���#���&"�Y4�1��-��kly�dz/��k��y���:zAѢ@��o�a�1͘�֭R%Q鋤n �:����b�K��Q|=��'*��� w��[�{�nv\A����}���Aq������"��,��_z����c��4�@Z�>���E�2��uv�-�=Qe���,Ʌ��,��\*Qf+�q{Լ�~�o^��{�����O8�pN��O��ެl�w ԧg��v�g�ww��)��4�J��b(_().'_�ޖwJ��v��x�3!<Q�-|7�v���7��Q|Ʊ^���;��ޜ������p��4�6��E5(��'��|�z�
-ɐ6:��h��q������Foyxg#�e蕣��j�IǤ�E�t�v��*�@`��2`s �U�ɷ1�K�W�����P���x��
-{2j����!�b9�q/��0��/�uO�&��N�������H��S��2���}�EV��$�^\=}4���T�>�ʼ*�~ya�Ò��ı��T�W:��0o�<.����y�G+k�<(e۩��O�u-t��%�un>��Z�xWݨ\����]x�HzAU�Y������)\��msY��A��[Z�y���:v�'"J�����|R2Z���vA2�d�{�ܼ�Q�� �%i]�u��.�8��v���}�r(�;������͠�m4��쮑ٝ�?��]е�CJz�h}C �w��]һ�wU4�$��P�8��w��I"��~�߽Q.�w��/l�͆�yL�w��`dxa�nO)^�����mdx���蟨~�d���k�^�8^<q�m�dx�A��s�}��Ͻٰ웄��>{��P$|A5�n�c�+��6���u�;J�R����>km�0�� �qu������@ȋ����ŝϋ�i�$"1��	'1�+N��m����=�r%1��^*IZPj#w��8i����X0�?���7Z�y�vA^���{y�+9�o���,n����'�bݮ��Q���gC@�v�ߌ�V��8��׆�zLj���ک�/b��y)���y�V��LC�dx.���r�U$��DB�][G�Ĺ{��}J�_�k_�oeD@�ܶ3N�7�tL���{e�\�#��&	�L��&9��:��GO�g���$ϡ5�n��c��$��S�8D���c�T^���Z[��|��h=���/�q����Yy�s�-K����Ż��_�5&�I�v �9:>9{y��x�*��V�GC�8��k��!�����/��n��M��A���	e������k!E_���e}ѷ.��p]��4�AySf���ה}�Hj��T{���޿c�0c�������7r.7%r-y��)��f�o�;K�ݳ��7љ��&��u�|�6iV��|��=��ܞf���8�}���[�\�؝�:�gy�\���:,��.G����~3ۄ����a����G�e�G��T(X�aA��Ȱ�2��%H���Q�7�/� f?�y�F���M�Ｇ�l ��,[��E2��O����Z"H"]"]K�L�K�K��`�d2����@� ���0��� �H�:���(�2v��f@��'���k!�Q����$�ק���o.�OF�����O=M<%.2�xSo��{:�է��:��޲ϩ%ՊׅE��-;�c�,��?��	x��PM*�:��O��T���=��=���6/Jy.��?��q6�R�9�ru��~x-��'��a�q����:�ƻ<�����K|t�����%7��M|�4f�q�S�c�Q9<C���B�oZFc��N�ޛx�������0�qi��Ϳ�Z�oc��/�������gy����Y�d:�+U�C6��r,�^�a,�_��&Q���8*�{�R��T���*%gr�Ui(�����}�y����ˋ�P���G�{�S<��W�X��䦿Ҩ��*z�O�;���h.!���Q�^�p��=���c20���2G*K�b6�3�c!�����U�h�D��^arO������ｃc��`(�z�~�r,�A*KL��&�@���o1���X��i�b�r%6c�NیCl6�`3V�����^-��=kQ��(P�S�@61�������h;|彑y����c(���y�Y�<%E�M�Q���>�@-w���>�$�%S@P�*�b�+F49�ɵ坏\/t��������o������o������8�������4����A&b}�����K�_�k?eĻF�_�d�`L;�����M�̢ğ5rՍ�Y�W�d��T��^�#�'3�|���l�`h2�3vjWv
-�PC\��j���MJ�oe�#<|�p�sSf^m5�,����b�~s��o=Y��^��,�JO������KO|z��˳8
-����#�*�"C��EQ���	�L�4z%M�^1^1q�+��YV��0��I�@�]11�;����X�����/j��	<�8��?�(���ɏ�$�R�����C&��4�b��sD,U��DD1��Ed���K�ݶ�}���U7��b�eEvQ^	��?k��,����Q�k�\��.�R�`�Ǭ*�,��,��@��d	�������2�����{\������U�ɷy�/��w�h�X�HbY��C74�������e��������٫�m�U�@����-zZ�!�����߸��mk����1�#�E���v�q>�k����L�w5�J�)�J�{^iz�M[�B�)�Z�M�u�p�u���d�Ű��9O�8^�c�}���?U� ��<�����o�jb�����h5QK��J�I@/���r�Q�aH|>�?^=fܫ
-z����հ�TZ"^�Ԑ�mRSJ��D)	�b�fJI.��>T�(�w���)C�]r�ʒ���@�,�	�m�72����J���WQsZ�Ø�4�9�t�,MdJ�	D�ASw2Q��ϯ>۠I퉸&�䶙L��
-&X�M��0�\a
-���9���7B1�]@P2b��B�[>�p�~�j�m`�E�Z!.8����j�� ��L���o�A����i�Hz??#9�!s�d�bHŐ�!,��&x�T]���'���]��ʡ���@��*�T
-���a^�(�j�ʒ"5Dl1�8�j�F)��5ĩi�����	���m3�j"�D�����/SMt��x���;�� �=T��7B5�]@PM���P�WU4����D�8���I���PN�QN����z"�҆@�z"�Dꉰ��0SOt��xH= �=���7B=�]@PO���P����(EH�D	�D�7�D�p#m;T�A��!�z7fث����VHOxE"�x�BI�+#�<G�H���?D
-t���M}��"�EX�Mp��/�\_,�I���;��7Bq�]@P\���P��k?�����j����dC�v:(*ރ(�s!��U�f���sO��^|�E�7��x��D�_{�H�X>�N~�?����?:���
-��m3��"�E�����`1�mdU�(�7�` ���rRA�����+%鿯ڝJiI�QV�l]2�V�d\W��P};*fΊ�-/�&������v����H�2���P�a��{?�Sjyap񪟼IF����׃����p%��*JoP_J�Y�iy2�����[������kO;>*�K�Cߌ�7b ���t��aOV������SU����E�;U�fx�B��l���Z�.�܃(�/����Wf^�*Y�s(S��G����o��폞��^m�����N*%��!��7�n��\q�
-� �bH�wv��)��4�J��b(_�0�r�U0z���๎�kB�ڷ��z�ġ�h��!j����#5ǅ���(?FE��6�:�"�M+���b|�]k!9���e}����ػ������ꗮ>Uk���^_x�,��\u�4$�4+�i�ЬP���� ;`o�$�I�L:Xl�g�7W�8������Sg2Z�u�vA��:�B��q�-�_i�kme&��7e&\q"�u,/e&�L���!/��*F�O��M���^���Ӫ��(���4�*�r/��@��Q�$U 9$o��ԕ���E7H�������u68��ٻ�ݶm(�*
-���K�t�hڮ��vA��?����k�3E
-eWo�gٓ���o7N�F���h�Ȗ�{x��=�h2��ð��76c��6�Ҁ��f���G4Hy��tR-ET���llQ/��A��H�*f�5�)�Q+Y21d�.2斶�(҅2,��+��k\f�㒍��Wޔ<I�l�Ʊ��V���a<�x��&ׯ�a<�x7�m�a����^����qi����1,�����ֹ�7B��R����xEutq#W���{>1���W�s�FzJ��*"���nPw��S�"LE01��~S�"x�q�l+�Tl6����LE��K��Ռ�ˎe�pR$�"�Edc�q�E*/��[쮷�q���<3���P����C�3�nz��S�p��\��q�ĵ��$1h�J��h�! 0�%�0���bh��rۀK�̀.$N^���l9��H�U��5?��0=d>3Ƕ����,��ĔN�E��s�u
-�i�Nڰ;n+J���o�:���\��.�?C+@+@+�>���}��}�7x
-<Ua���/|Z�6M|�����|&SF�>�^F|��b^����T�y;��.���b�����$�Dı���������M�B
-S����劲~NQ���C��P1w��>���4�,��(���|+74*�J�f���Wϟ��܍����te�N�C�z!�C�G���W" �d���GZ0r\�_��*;��1p���"ic����U�%�X\���i�F���s ����CLoӕc��`�N����,׶��f���)�'�" ����|�r�����%�#줺i�vK"{��B�qd^@�B�v@��������$�Z�JO�����Ï"7C"V��n�|���Khg���Z]B H�s����_���;��K�x�S%�,�g����g
-I�^�����ә���� ���C��X�j�Ǌ���B)e�gi&���[�j���Χ[7��-�xȀ�@X��_J�����M)�e�q֒���"bW,#���#c�V`+���;����n��~U�<���$��*l��3�&C�n��}߇�en7["����ցE^憒�FO�[�p������0���1������D������-:e-�Bo��)�8"fn-�h���{�m���!fۣ Se�<>R�`�Q��Jн9;�e�`�x�4c��
-ف�YH�B�\�u�"3��d�6p�z��y��
-��rtyڎ� ���e��_)�Mk�S��z��;����bS��/����c$m���[ioR_��4�V\a��/,b�QdtV2l���q��#���3�Rv���2� �
-�wds�e��c	��.�SDp�^�4$%�]�v5
-�_�2�ܸ��Ů�v&��iV��HxwH��j�Wџ�"oB@# �����V�P�*f���e[-Q�[�5����{4�ܺN�qsJ�
-2��_\�R���@jHj�E[�ۈ��.�A��am[X���5���Mo"Ӯ*2��P�I³���R/T�≽�����d��O��7=����s���i<.˼с{3+�=z��0�?�<{�?�]����������L����e�����kI�s�����9��k���Qa�$b.�^��u�.�yN8��o���I;�M�?�m/��-EBʼ�  �� PK     ! �@�$  �     word/theme/theme1.xml�YM�7����;�3�X�㱝��MBv���<#�(֌�$�	���z)��C��PJ4����Ц?���c�l�K���5������H�z�,��	���k׮8���D(�����a�m[��,�d�k�!�����U���BK�glt���^��B��2����.�4�F�
-�)���YM�l+�p{{<F!���K{�p>��_ƙl1=���f��Ѥ&�؜�Z' wm1NDN���-]�Qvu�jui��ے�P�-�Ѥ��h<Z���6���|7h���ҟ�03͹��^���{l	����~���K�xߓ�@y�����*�%P^�1i�W�+P^ln�[��w[^�����񚍠��2&�����a����P�����3�m���!�CP�e�O�� �FY(N���0��ԝ�����U%�A�:o
-�F��c���)�ڟ
-�v	��ի�'/ϟ�z������co�� Y\�{��W=������>�ڌge����x�����k��y�����~�Ǐ�p��Q~�RȬ[�ԺKR1A� pD���8�l�g1�6�'��``�����Tȅ	x}�P#|��G��$Հ�����9ݔc��0�b��tV����4v����l*�=2��Ѽ�E�A3�-�G&� �����02��d� 2����մ2��R�����ȷ���V�`��><ёbo lr	���`�AjdR\F ��H�i��q��bb"Ș��6�kto
-�1���SI9�����2�O&Aҩ�3ʒ2�6KXw7� ��u��mM�}�t_���	2/�3��-���x�r^]��e����{�Oޅ����Ysw �f�e�ܧȸ��%|n]�B#���v̲;Pl���_���m?�^�W��.��u]�I�����#>��)egbz�P4��2Z>*LQ\��b
-T٢��xr�����F���u̬)a�lP�F߲��C孵Z�t* _����h'�[���c�ҽ���q�  m߅Di0�D�@�U4^@B�l',:m�~+��Ȋ��?lxn�H�7�a$����y��S�v�0��些Lk$J�M'QZ�	��z�s�Y�T�'C�I��~��"��8�k֩�sO�	��k�ŭPө�Ǥng];�@�e�R���%9Lu��O���(k�������-9��\���"���I��1���UU��N����
-�	�GItj���"P^�&!Ɨь--�U��j��_�V[�i'JY�s�*/�桘��J�/&3�e�.}�^l$;J��� ���Y?��!_b��}�U.��Z�)�n�)q��Dm5�FM26P[���vx!(�\��Έ]��VŽR�6^O��C����:Ü)��L<#�˹��B]θ5��k?r<��^Pq�ޠ�6\����F���Fm�՜~��X�'i�����<_�}Q�o`��}%$i��{pU�70���70�yԬ;�N�Y�4�a���ڕN��U�͠����>��v�F�6�J���H��N������������y�]�W���  �� PK     ! �����  
-     word/settings.xml�V�n�8}_`�A��*��u
-_�m��-*�(�������.��wH���,
-w�>��3sf87���'F�=V�>���4�0�EC�v٬��8��Q��4>b�����7�Bcc@MG@�u��i�3F���w�!}%$� �B1dશ��c'�Z0��%�8��8�4bw��"a�VB��X�B�-���	����R���8��)� �����l ���{��3�Yz�sB5���g�5�
-�h����+�g�W��?�Q�y���y���_�5�1��S��@��%)�R)�����`uq��B��B8������[��B��PH�j(5�H��@�E[d0�ZbJ���#�=[�t{�8����f���	J{��9��)T�J�j`[n��A��Y��((��pst:��L�G��b�֢�6�N��o��,?w��#;D�olKs�x���+���}�F7m?����z���%^ad:H�/r�*��D��RB��z�9#m�8 �kkh�����F���;8o#�4:>a�j����&��Z�d������YaW�'N�Q"�[,�A��.Ӂը���W��#eW0Iz@3D�
-&) n�X�-��ug�Fj{���?�0����/%:٣�d� A%��%�恰 �]U+k��x�q�\�N�9
-����p��'_J�0T���x���{��fӘ���d��n|sݥ�=6tذ����e��'�0������$��$˃,?��A6��L������V�
-J�7�N�+Q��C/��
-�%z�_�:��	�6n���2�4=�5>[s�M�Qt慮Ŭ�|�� ���0v-�M,v��ڱ<��ȯ��)�0�v�*`8,���a���g)�e��[a6��P�ϸ�#��Ӽ7�;�/��d��f��d4��d����.����'��l���4����  �� PK     ! f�DB�  E     word/fontTable.xmlܓ]k�0���B��e�M�Sh��`�bt?@��XTFG���c�IiX��]�#�Gz$=��F�����i:b�H+\��6����7w�@���Y�ӣ�����Y�� 8���V!ԋ$QI�a�ji�X:ox�W�M�/��F8S�6J�pL2�f����P\Y*!�9�3҆8>�R#�Y�T'Z�Z�|Q{'$ ���g��gL:� %�W�n�_QD��Ŗѯ��0@v�������F(1b�}k���$��U����c�fa���k��*jn�k{�s�2�fS|�����'Mڎ��d�:�..�Q�xJ�Q ]�VAT�|Ͻj�֕@m�����ӄ��i��]����e���>�ڹ�5��9am""'��GDιΙt.L<+#������W�dl�&��53d�G� #��&�w��bd���iWT<���?��ҿ�TY�/��ފh��Ꜽ�H�.b>TDwH����գ�:��G�o��   �� PK     ! Z]5�k  -    word/webSettings.xml��n^�q���=��h�#N�$HQ�(�&� Y�m��(�L���nJN��h�Y��hؤ?����8���9��|��?ܼ���{����<�������������7?�'��?<{���˻�7_<�����/~����w�����7翼��\���篞�䛇�7�?}z����W��z�����ï�޾z�p����O_={�����w��<{������÷OM��|��ۿ�*w_}u����w��������?}{��\����7�oڻ��j��޾x��������y^�|�W�n_��2u�W������}�����|xG��:߮��ի��@���_]��o~�%��%�����O>{��������g_�<W:?�g�]}�x�'??�����?|����/�x⭺;��\�y���_?����<ry��z�������W�ϯ�������˿�{��/�������{���_�x{}���y}������������ͳ�7�~~���������_����ُ��/?zG?�{�~�'�1����?�u;~��������p�ǛB�`�R����W���.���1�RS�� x,�,�������MŦ��IK^]T�y!y��/m����^z�HL~��;o�M~mF<��M�]7c�����Į:�K�h�b2��$&_�Jk�&��i5$�%�Sr�X����GlK��	�"v���]�s��?HL~Ǧ7�iJ8��
-��G	&�5���<|ĬoѯA�W9ATI*>��������l��S�����G7֕yy8xK5/c�^���XЇ ���wu���߿I��-�Z�x�>�7߿'�j�i>�-wmვ�'�L@h�x
-=$0x���(�cɷ���!x0x;�]}}�ɻ�{�й�׫L*�De$&/U�:Bc�&���[u2Ï&oֶ۬�G��B�j�%?-�â4��۔[���\���y4�kX�K	5&ߛ~���lВ�=�F��KT=*��&�~\K���.��<���5�+� -y7�T�ޣ�_cMF�	b0����|�M>�T��66��5p�oF�2I���2^��u��L؀ɛۺ��ր����c�)J4x��2[��@�7Y[�rz�`�ڌ���Ǯ��4w-��&x0�Y�u>��7�#x�bRL>�v�C�
-^��o:�]|���uM��O޴"�~�D�L�M~¯�Cɣ%�3�Ws�c�w�\�a�p��f�+5��K�����[��0Q�䁾|��4Sex��R�����_�0֍������Gc�|L�F�|E��p�����Nm*��5��Γ<��L��ҡ��<�fs�Z�^nA�`�"~�<����jН�o��>�x0x+�*��M���Ô�JZ�ӫ����Į�y���T[f���M���DQ$�%���?6����<m�nv��8xi�k�9Ƀɛ�x8k����s�r "|xDxs|���	��^����c��F�=~?�<x�>�9���L&;?~��(��w��qgF�D��&�K�10@��������M�Nd \ˀ&�}�~���_�A2J�VM^%��8�$&_�{��3�&/�/WZ4�=�9+^���`��&?Q�<_��eSݗ�t��MmT������ ����䭢-�IM���5n�
-0y����	�|xN�C�X�3v�/m��IJls,��L���5`��]b�f����uj������:5����|tS{W�8H�����|Z���{��A[��;o�yA�/ks:�`�Ww�7Ǎ��koO��0��ki[	}��]������פƔ;p��U ���(��#%�+"��Mr��W��O���G�Ϟ�aE,^���$�&�WC�8�F��7%lfy�����,ԛ�L������٠���U�v��N~4���X4��+�JN�+>s��#8y�(V��K�Z:+b��/�gJҳA���D-�����L��<�����<\�^ײH�ǒO�kbB������L��kw�Lspͻ�Y��F�p�*-��B4����<`ђ���cphl��c\Fw9�M~�-'�\��&�&�L�%�#U4�`��d�)e�1\�R�V��c4�մq�hW��WB�%Nh�붴�`�%�������[㄰J�`��r5�<X���kL����[�?~U�B��!`��9�4�f�
-'rDo�L�����p3	�|�nDsZ|���+\�-U�r���q��A����*y����;ØF�����ܐ<�̟�5͔�����q�y��?�y=e�
-&�v�� 
-.�p;��(
-M~�����d��i��46h�[���{��[��2='_���'�1�>�D�/ͩa]޳�Q�Pf����-B�O?qԲ��x�k�)�_���
-4x]=�s�FM���*i�T�|M�n&=y0����G���C<|�Yr��'8]ۯ}�8����ȋ�ӗG�l̙b�7���6$XÊ&?�{��b�-��	K&������n4��gR����p�vUm�53p򓗹q�Q`�y�I�Mz6h�_i�Ta�N^l{S�ͣɛ�T��|N�3ǘ�Gs׬k��(0y��k�+G���j�V<��166ʔ������M��Zw��r�&oz�w<�5"nmYĊ�u�����Mjڢ��+����{��O>ʺ�9� M����&)��]u����}�Mf���`�א�����z�����˦Z&�_����'36x�e��'�"y,��q��28x�vc��ؚ�mo�G���FQh�==�l;�ۚ�>.%��>���X�!y4��
-uer~��v��
-��������K�h�&v�a<�ՙ�z�&y4y=��R�U�h�.��2�@��]�r>A��/Uα�K�s-V�fM�-��������qmhm���Td��T�Rf����{ɔ�0i&��)�+C�����G��ݸ�Wc�
-&�qMQh����U�D�`#/��J[�'�5,��֦*瘜`� �y����fu���x�uS�ɧ��ex��o+OX4�=�Ѣ���}W��a4v�:.�0u '�.]�F�`�'�-�^Z��/;o̖������<�ʧgj]y0y���O�>G,gK���_��
->���/oebL�7��J�~㘛<v����ڒ~��{9�ߢ���Vy)���و݄�+����k��T��O>b�'�|�
-&��%*���K�"�(JL~t<&��>U+͆�|`�+�lD�/���<����䣹~��=��L��O�tZ0U����y9=4y�N��co8�X9��,��+=d�IJ0w˸��&���w�Y�ؠ��5[~�Y�'o�r<z�ǒ{l�W����+�|;C����ΞH�%�|t�q�il��{ޏS!x��Ou�S��
-'�VyȳxM�M{e�7^�iq� e���ʚi���*4{_?���و�R8y��u����L�ʘ�G�w��cq�/C���Rn*t��szԌ�pɷ�Nsh��FY&�(4�Jq�,Zy0�����V�䭴ͥ)y4��8�FX@'_����_�����.��ͣ��v���Y�'����8
-M����������g�,��	�ڛ�O���W��`�>Z��)Bh�ǟ,�`1���LdD����	]u�FL~�z,8|��5z<J�(��=w+eC�ɯ]�#�׀����)E���Wӕ�U�؀ɧ�Er�=^�eue3 ���F�J1E��|g���'M�+Tj�QZ�������?�F'c�ڀɛj���p��Y��f)ᒿ��_�R0y�cjd����䏩�L�� Mޣe{؞��_eeZ� M~֮ ��9h�=�V�RJ��W���yJ8�T�f{P�x�ǳ����{��ؓ�	��^OE^�tMX@'�1=�B����Xz�@0��ci*9�.���u&�ђ/�l)�h��^[H����J5a��^t�5�h��\��P�Gē�I�>�ϑ�������o/�\!y4��h>�1}$&?�6��е��4�T����Wݎ����_�M��e�h�&�����M�X�=5���m4�ǭ
-E�ok�܅�����^��ъ?�k�8�_��K���[����W3'�F�/�F��_���[X��&ojbi�V{4��J��t	4�)I�`�6�j��qC�|ǮG39���q�K96M~���F#��~Ϳu�'����-�h��:��̬O ��]����VioJ�DO���t|y�x� ��]"%��
-�w����+����ɣ�_�B:\�1Z�=s-��s(4��T�nJ-�Jݫ��Mh���_[չ�M�Ů�
-��Ah�k{��<����U6X:�|E�l,]J0y;QԖ'%���e�1�Z��r�0|��և�20x���[w��Lޮ���=��%�.�G	'_���T�&?�U�.���2��-L��ɛ�Q�:�y�槪e8JM�t׮�-���%Aɣɇֶ)��G��*�W���eR�x4�=嵗�94�k�w��ʣ��	_�G��	�Sz�%���>�&�}��9[����x�m<��׉_7�)C��<j���
-&?r����%?��E�O^��Y�e�M>#��C�y4���I����m�׷��AK�W=���Z�"m�šYx���­�p�f�^��<\�Ǖ׍�	&���<g�����D0O�&�e2"��W4y�����g����ؒ$&oY;���K~\m�����姥�-�h�Y��N��%/)]�2 ���������۫ݥUq������w/����>�)�3y޻��{�����M��
-�-������z(���=���1�kD��1�	�QQ�����M�������5���;<����ܳ:�fض&,�q/�%#5�N�L>ĤB����WC��c���u̜�+�ʔ�r��J��\��+�|U��㕏�ђ_��)����ϴ�ӥD��k͝zQ�`�]�-�y0x;.ez5�����qk�[�̕�%�a���<\�ݻ��#�'�VY,EF�/-K7vҢ���(#����5c$f���y|f�7@+>ZR���G���m��(4���S<_��Cz*��<Z�&}�$���2LR�ɻhvsK \�k:�~��`�^գ��AK��5�ƴ<���V���su�İ<_�����G�h�j��;� �����a	^���ݛ��W������_��{w���={���ݿ��?������7������	   �� PK     ! q4�|�  �   docProps/app.xml �(�                                                                                                                                                                                                                                                                 �S�n�0��?�7r�4�EŐb�a[�mϚL;�dI�Ԡ�׏�OY{�O�O��I���^G�AY�!�YI
-0�6�t�P��H��i��6��������[>*J��!�ݚ� Ћ0�c�'������ڶUn�|��DZ���K�@s�&A2*���E+���X��qVCﴈ���?5��j��U�Bz
-�Nt�|��ؓ�M������Ax!#��ϗ���f��VRDl-���������I��<��� ���'^2���2�M��џ���b�LN!�K�a����K�;i�;���c\AF닠~�x+R�R�6�(�&�1m�]���*jԞ��i9VK>\&��񥻡B�o�n������a���ɝ�k�����[L'��\moӆ���%���I���	9l˧U�/Av���B�S��2���u�����s�냴V���z��a������o   �� PK     ! �T�+p  �   docProps/core.xml �(�                                                                                                                                                                                                                                                                 ��_o�0�ߗ�;��c.��l3$K4Y2��y�ګvBi�*��W@pd>��ޞs\NOy��AQ�	
-y Y��\O��2���3�JN�B���ir}3�Bó.h+�x�$M��m�UƆm �f�҉�B�ԺV���lK׀CBF8K9�W@_uDtBr�!�Ng5�3� ��� �g������˙{Tp�ڊ��`Dg,�rPk��?���K����UVPsYa3Hb|.]ev_��ls�5�f�-t2���?�i��gU�[8����M�:g�`�ʺ;l���Ψ�w�+��x��_�rk؋�=$A����n�pυ5����q�LQ�p䓱On�a�ۈ��j������?�OlM8����   �� PK     ! ��*  Sp     word/styles.xml��]sۺ��;����U{���g�9�ۉkO���i�!�P��ʏ��/ R�%(.���-Q� ċ������ϩ�~�*;M��"��*������ջ��(Y�0�2~6z����O��oO�E�"yi@V����hQ����<e�{��>8Wy�J�2�,���b�.Y)fB��e���w<j0y���E�?��JyV��qΥ&��X�e��=��=�<Y�*�E�O:�5/e"[c&� ��8W������45�(>ٳ��r8����8�Q�/)Ei|z󐩜ͤ&�S�t�"}�j&*��笒ea^�wy�ye�\��,��SV�B��ZhT*4��<+�H�(��Z.�?�G�t޾��M����_L����W�\�l�'Y��z�g�~Lݚ8o�4�l��w�s8nN������+[����%�ur�g�R_�}\��^�fU��B,���ƎA����{�6�>��_U�ȓi���lY��7w�P�6���-S�9婸I�3��B$��g?
-�l����v��XU����db{�,�/�1_+�3�|3�|���m�V�I�D[��33�D��[}b�D�ٶ3�W�n?�*��
-:|���ު��*��
-��VY��� �%��6",Pwq<nDs<fCs<^Bs<VAs<N@s<���c4��M�Rž^�t�Oo���#¸���0�� ��{����ø���0���;��{��s�Vt�m���]6W��Tɣ�?��L�l�E�3��IN� S�l�D<�3�zw�&��K��Ej��C���|h�y��K�%G,I4����=-ҧs>�9�bNٱ�&��*���%{ c�,!n��dPXwh�?/�IA�NY���US�l|�*��me �E%%'b}��b�5<7��ᩁ��,fxb�hF�D���Q�54�v��'U�54�vkhD��І�۽(���UǤ��ݥTf[|p=��!cz0|�i�L�;����-�ٕnǺ�-�B%/�=Ŝ�&Q��m��g-�jx�nѨ̵��k�#2ؚ7�b�z�lh�4�̴������^��2Y���nc���1���2�c	z�7��5rR�|�Z�؆5�V�G%��5H�ZJ?���/K���q0�JI��xBG������k�}+I/�I�V�+m!�O����-[>�;�DF�ۗw)2�[A\��~���Ҥ��ah��,UJ�lv�����NS�s�g/Dg{N�=da��`��I*!"�e���jy��/3��v������,]֋o�q�I�?�!��˅��2�=	��6,�ٿy<|���"���?���?ڥ����_&l�/��zz0���d�p�OvGu�����^B�Q��G}�Ó�����畤k���W@�&T�J���-��-��|	���l�Y�?r���aaTJX�F����
-0�6�66�^�F�p`T��t�'��������Q�3��gF��>G|>׋`�)�AR�9I7�d%O�*g����`�����jnnPY}7��QK��v���'��UͰ(�E�#ʤT�hom3����{�v��'9W�N��/�Lx�9'�Η��c��o��k��xX��t���w1�{;#W	�V�����x�<K[�-OD��*
-�8>�l{�V�����Jb+�g$,�xw�f��y�3���g���Vd�>����#�t��u���|']�h�ZlWGZG�u���^�e��<����N?�������q��������W~D����_���AӖ��{��v�k���R������u��SV�s�����(�o��Í�{��#z@~D��������c��{��#У�p��ǍV0>d�����j�*����#�F��Q���QAx�Q!mT�@"�F�0�Qa<Ψ0>Ĩ�bTHA"�F��Q!mT�@5pm�2*���
-h�Bڨv�8��0gTbTH	1*���
-h�Bڨ�6*D��
-(��� �B
-ڨ�6*D��Z?jnT�3*�1*��R�F��Q!mT�@"�F��QAx�Q!mT�@"�F���
-�C�
-)!F��Q!mT�@"�F��Q!eTdTHA"�F�����\���f?��zz���骩�w�Qnu�������Y����l��"fR(�E���r�-��\v?���~�R�,��f
-�}#���aW�w#A�w����H��<�}�H0v�֗��R�t���'x�	���p��]c�[�kdvaw��N�Qd���G=��x}) tuG�p�'tuK��j8���+���W=?���~JO//��V؏
-��+u�Q��Ԑ$5��KQ�RCT��p`�J	X��g?!Hj�	������0��T���RCV��.5DKQaR��VjH�J	X�!!Hj�	������0�A����RCVjH�`¥��`�!�Kj���%5Ja'�sq������lɉ̖B`��Zi�˖\������	}e�Pzz1xa�(��~T�Ըl�M�p��	X�qْWj\��)5.[��-���eKmR㲥6��g?!Hj\��)5.[��-���eKmR㲥6�q�R��'d/&\j\��)5.[�K�˖ڤ�eKmR㲥6�qْWj\��)5.[��-���eKmR㲥6�q�R�Ըl�+5.[��-uJ�ɖ�O[?�d�����˗%7���<0���A�\��I�?�d�MM��'���m���u�6/tYq��I���oA]?�c��u���J��4���M�n.�֟ۺ��Y��4yG��$�mT���Ǧ��L�?ڥ���xj~���i��j�>~ɥ�e�����Q��e}t�g�u|V��7>��0ޮL����0O{���\��vI㆖涷Sm�M�V���  �� PK-      ! ߤ�lZ                      [Content_Types].xmlPK-      ! ���   N               �  _rels/.relsPK-      ! �d�Q�   1               �  word/_rels/document.xml.relsPK-      ! ��Z�<  *�              �  word/document.xmlPK-      ! �@�$  �               �E  word/theme/theme1.xmlPK-      ! �����  
-               >L  word/settings.xmlPK-      ! f�DB�  E               1P  word/fontTable.xmlPK-      ! Z]5�k  -              IR  word/webSettings.xmlPK-      ! q4�|�  �               �f  docProps/app.xmlPK-      ! �T�+p  �               �i  docProps/core.xmlPK-      ! ��*  Sp               �l  word/styles.xmlPK      �  �w    
-```
-
-
-<div style='page-break-after: always;'></div>
-
-# File: jubilee-cloud-foundation-key.pem
-
-```pem
------BEGIN RSA PRIVATE KEY-----
-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
------END RSA PRIVATE KEY-----
-
-```
-
-
-<div style='page-break-after: always;'></div>
-
 # File: main.tf
 
 ```tf
 terraform {
   required_version = ">= 1.5.0"
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-
     random = {
       source  = "hashicorp/random"
       version = "~> 3.6"
     }
-
     tls = {
       source  = "hashicorp/tls"
       version = "~> 4.0"
     }
-
     local = {
       source  = "hashicorp/local"
       version = "~> 2.5"
@@ -1867,7 +1685,6 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-
   default_tags {
     tags = {
       Project            = var.project
@@ -1878,10 +1695,6 @@ provider "aws" {
     }
   }
 }
-
-###############################################################
-# Data sources
-###############################################################
 
 data "aws_availability_zones" "available" {
   state = "available"
@@ -1907,120 +1720,84 @@ data "aws_ami" "amazon_linux_2023" {
   }
 }
 
-###############################################################
-# Local values
-###############################################################
-
 locals {
   create_new_key = var.create_key_pair && var.existing_key_name == ""
-
   ssh_key_name = var.existing_key_name != "" ? var.existing_key_name : (
     local.create_new_key ? aws_key_pair.ssh[0].key_name : null
   )
-
   web_user_data = file("${path.module}/web_user_data.sh")
-
   iam_users = var.create_iam_users ? {
-    "admin.lab" = [
-      aws_iam_group.admins.name
-    ]
-
-    "engineer.lab" = [
-      aws_iam_group.engineers.name
-    ]
-
-    "auditor.lab" = [
-      aws_iam_group.auditors.name
-    ]
+    "admin.lab"    = [aws_iam_group.admins.name]
+    "engineer.lab" = [aws_iam_group.engineers.name]
+    "auditor.lab"  = [aws_iam_group.auditors.name]
   } : {}
 }
 
-###############################################################
-# SSH key pair
-###############################################################
-
+# --- SSH Key Pair ---
 resource "tls_private_key" "ssh" {
-  count = local.create_new_key ? 1 : 0
-
+  count     = local.create_new_key ? 1 : 0
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
 resource "aws_key_pair" "ssh" {
-  count = local.create_new_key ? 1 : 0
-
+  count      = local.create_new_key ? 1 : 0
   key_name   = "${var.project}-key"
   public_key = tls_private_key.ssh[0].public_key_openssh
-
-  tags = {
-    Name = "${var.project}-key"
-  }
+  tags       = { Name = "${var.project}-key" }
 }
 
 resource "local_file" "ssh_private_key" {
-  count = local.create_new_key ? 1 : 0
-
+  count           = local.create_new_key ? 1 : 0
   filename        = "${path.module}/${var.project}-key.pem"
   content         = tls_private_key.ssh[0].private_key_pem
   file_permission = "0600"
 }
 
-###############################################################
-# VPC
-###############################################################
-
+# --- VPC & Multi-AZ Networking ---
 resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr
-
+  cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
-
-  tags = {
-    Name = "${var.project}-vpc"
-  }
+  tags                 = { Name = "${var.project}-vpc" }
 }
 
-###############################################################
-# Subnets
-###############################################################
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+  tags   = { Name = "${var.project}-igw" }
+}
 
-resource "aws_subnet" "public" {
+resource "aws_subnet" "public_a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidr
   availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = true
-
-  tags = {
-    Name = "public-subnet-a"
-  }
+  tags                    = { Name = "public-subnet-a" }
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "public_b" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_b_cidr
+  availability_zone       = data.aws_availability_zones.available.names[1]
+  map_public_ip_on_launch = true
+  tags                    = { Name = "public-subnet-b" }
+}
+
+resource "aws_subnet" "private_a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.private_subnet_cidr
   availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = false
-
-  tags = {
-    Name = "private-subnet-a"
-  }
+  tags                    = { Name = "private-subnet-a" }
 }
 
-###############################################################
-# Internet Gateway
-###############################################################
-
-resource "aws_internet_gateway" "main" {
-  vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "${var.project}-igw"
-  }
+resource "aws_subnet" "private_b" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.private_subnet_b_cidr
+  availability_zone       = data.aws_availability_zones.available.names[1]
+  map_public_ip_on_launch = false
+  tags                    = { Name = "private-subnet-b" }
 }
-
-###############################################################
-# Route Tables
-###############################################################
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
@@ -2030,33 +1807,35 @@ resource "aws_route_table" "public" {
     gateway_id = aws_internet_gateway.main.id
   }
 
-  tags = {
-    Name = "public-rt"
-  }
+  tags = { Name = "public-rt" }
 }
 
-resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.public.id
+resource "aws_route_table_association" "public_a" {
+  subnet_id      = aws_subnet.public_a.id
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "public_b" {
+  subnet_id      = aws_subnet.public_b.id
   route_table_id = aws_route_table.public.id
 }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "private-rt"
-  }
+  tags   = { Name = "private-rt" }
 }
 
-resource "aws_route_table_association" "private" {
-  subnet_id      = aws_subnet.private.id
+resource "aws_route_table_association" "private_a" {
+  subnet_id      = aws_subnet.private_a.id
   route_table_id = aws_route_table.private.id
 }
 
-###############################################################
-# Security Groups
-###############################################################
+resource "aws_route_table_association" "private_b" {
+  subnet_id      = aws_subnet.private_b.id
+  route_table_id = aws_route_table.private.id
+}
 
+# --- Security Groups ---
 resource "aws_security_group" "bastion" {
   name        = "${var.project}-bastion-sg"
   description = "Allow SSH only from administrator IP"
@@ -2071,54 +1850,77 @@ resource "aws_security_group" "bastion" {
   }
 
   egress {
-    description = "Allow all outbound traffic"
+    description = "Allow all outbound"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "bastion-sg"
+  tags = { Name = "bastion-sg" }
+}
+
+resource "aws_security_group" "alb" {
+  name        = "${var.project}-alb-sg"
+  description = "Allow HTTP from internet"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "HTTP from internet"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
+
+  egress {
+    description = "Allow all outbound"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = { Name = "alb-sg" }
 }
 
 resource "aws_security_group" "web" {
   name        = "${var.project}-web-sg"
-  description = "Allow HTTP only from bastion security group"
+  description = "Allow HTTP from ALB and SSH from Bastion"
   vpc_id      = aws_vpc.main.id
 
+  ingress {
+    description     = "HTTP from ALB"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb.id]
+  }
+
+  ingress {
+    description     = "SSH from Bastion"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [aws_security_group.bastion.id]
+  }
+
   egress {
-    description = "Allow outbound traffic within VPC only"
+    description = "Allow outbound within VPC"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = [var.vpc_cidr]
   }
 
-  tags = {
-    Name = "web-sg"
-  }
+  tags = { Name = "web-sg" }
 }
 
-resource "aws_security_group_rule" "web_http_from_bastion" {
-  type                     = "ingress"
-  description              = "HTTP from bastion only"
-  from_port                = 80
-  to_port                  = 80
-  protocol                 = "tcp"
-  source_security_group_id = aws_security_group.bastion.id
-  security_group_id        = aws_security_group.web.id
-}
-
-###############################################################
-# EC2 Instances
-###############################################################
-
+# --- Bastion Host ---
 resource "aws_instance" "bastion" {
   ami                         = data.aws_ami.amazon_linux_2023.id
   instance_type               = var.instance_type
-  subnet_id                   = aws_subnet.public.id
+  subnet_id                   = aws_subnet.public_a.id
   vpc_security_group_ids      = [aws_security_group.bastion.id]
   associate_public_ip_address = true
   key_name                    = local.ssh_key_name
@@ -2136,25 +1938,58 @@ resource "aws_instance" "bastion" {
     delete_on_termination = true
   }
 
-  tags = {
-    Name = "bastion"
-  }
+  tags = { Name = "bastion" }
 
-  depends_on = [
-    aws_internet_gateway.main
-  ]
+  depends_on = [aws_internet_gateway.main]
 }
 
-resource "aws_instance" "web_private" {
-  ami                         = data.aws_ami.amazon_linux_2023.id
-  instance_type               = var.instance_type
-  subnet_id                   = aws_subnet.private.id
-  vpc_security_group_ids      = [aws_security_group.web.id]
-  associate_public_ip_address = false
-  key_name                    = local.ssh_key_name
+# --- LEVEL 2: ALB, Launch Template & ASG ---
+resource "aws_lb" "main" {
+  name               = "${var.project}-alb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.alb.id]
+  subnets            = [aws_subnet.public_a.id, aws_subnet.public_b.id]
+  tags               = { Name = "${var.project}-alb" }
+}
 
-  user_data                   = local.web_user_data
-  user_data_replace_on_change = true
+resource "aws_lb_target_group" "web" {
+  name     = "${var.project}-tg" # Shortened to avoid AWS 32-character limit
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.main.id
+
+  health_check {
+    path                = "/"
+    protocol            = "HTTP"
+    matcher             = "200"
+    interval            = 15
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
+
+  tags = { Name = "${var.project}-web-tg" }
+}
+
+resource "aws_lb_listener" "web" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.web.arn
+  }
+}
+
+resource "aws_launch_template" "web" {
+  name_prefix            = "${var.project}-web-"
+  image_id               = data.aws_ami.amazon_linux_2023.id
+  instance_type          = var.instance_type
+  key_name               = local.ssh_key_name
+  vpc_security_group_ids = [aws_security_group.web.id]
+  user_data              = base64encode(local.web_user_data)
 
   metadata_options {
     http_endpoint               = "enabled"
@@ -2162,25 +1997,67 @@ resource "aws_instance" "web_private" {
     http_put_response_hop_limit = 1
   }
 
-  root_block_device {
-    volume_type           = "gp3"
-    volume_size           = 8
-    encrypted             = true
-    delete_on_termination = true
+  block_device_mappings {
+    device_name = "/dev/xvda"
+
+    ebs {
+      volume_size           = 8
+      volume_type           = "gp3"
+      encrypted             = true
+      delete_on_termination = true
+    }
   }
 
-  tags = {
-    Name = "web-private"
+  tag_specifications {
+    resource_type = "instance"
+    tags          = { Name = "${var.project}-web-asg-instance" }
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
-###############################################################
-# IAM Account Password Policy
-###############################################################
+resource "aws_autoscaling_group" "web" {
+  name                      = "${var.project}-web-asg"
+  min_size                  = 1
+  max_size                  = 3    # Maximum vm's creted by the ASG
+  desired_capacity          = 1
+  vpc_zone_identifier       = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+  target_group_arns         = [aws_lb_target_group.web.arn]
+  health_check_type         = "ELB"
+  health_check_grace_period = 120
 
+  launch_template {
+    id      = aws_launch_template.web.id
+    version = "$Latest"
+  }
+
+  tag {
+    key                 = "Name"
+    value               = "${var.project}-web-asg-instance"
+    propagate_at_launch = true
+  }
+}
+
+resource "aws_autoscaling_policy" "web_cpu_policy" {
+  name                   = "${var.project}-web-cpu-policy"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.web.name
+
+  estimated_instance_warmup = 300
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 60.0
+  }
+}
+
+# --- IAM & Budgets (Unchanged from Level 1) ---
 resource "aws_iam_account_password_policy" "strict" {
-  count = var.manage_password_policy ? 1 : 0
-
+  count                          = var.manage_password_policy ? 1 : 0
   minimum_password_length        = 14
   require_lowercase_characters   = true
   require_numbers                = true
@@ -2190,10 +2067,6 @@ resource "aws_iam_account_password_policy" "strict" {
   password_reuse_prevention      = 24
   max_password_age               = 90
 }
-
-###############################################################
-# IAM Groups
-###############################################################
 
 resource "aws_iam_group" "admins" {
   name = "Admins"
@@ -2206,10 +2079,6 @@ resource "aws_iam_group" "engineers" {
 resource "aws_iam_group" "auditors" {
   name = "Auditors"
 }
-
-###############################################################
-# IAM Group Policy Attachments
-###############################################################
 
 resource "aws_iam_group_policy_attachment" "admins_administrator_access" {
   group      = aws_iam_group.admins.name
@@ -2241,38 +2110,26 @@ resource "aws_iam_group_policy_attachment" "auditors_change_own_password" {
   policy_arn = "arn:aws:iam::aws:policy/IAMUserChangePassword"
 }
 
-###############################################################
-# IAM Users
-###############################################################
-
 resource "aws_iam_user" "this" {
   for_each = local.iam_users
-
-  name = each.key
+  name     = each.key
 }
 
 resource "aws_iam_user_group_membership" "this" {
   for_each = local.iam_users
-
-  user   = aws_iam_user.this[each.key].name
-  groups = each.value
+  user     = aws_iam_user.this[each.key].name
+  groups   = each.value
 }
 
 resource "aws_iam_user_login_profile" "this" {
-  for_each = local.iam_users
-
+  for_each                = local.iam_users
   user                    = aws_iam_user.this[each.key].name
   password_length         = 16
   password_reset_required = true
 }
 
-###############################################################
-# AWS Budget - FinOps / Cost Governance
-###############################################################
-
 resource "aws_budgets_budget" "learning" {
-  count = var.create_budget && var.billing_alert_emails != "" ? 1 : 0
-
+  count        = var.create_budget && var.billing_alert_emails != "" ? 1 : 0
   name         = "${var.project}-learning-budget"
   budget_type  = "COST"
   limit_amount = var.monthly_budget_limit
@@ -2284,9 +2141,8 @@ resource "aws_budgets_budget" "learning" {
     notification_type          = "ACTUAL"
     threshold                  = 80
     threshold_type             = "PERCENTAGE"
-    subscriber_email_addresses = var.billing_alert_emails # Changed this line
+    subscriber_email_addresses = var.billing_alert_emails
   }
-
 }
 ```
 
@@ -2301,51 +2157,43 @@ output "vpc_id" {
   value       = aws_vpc.main.id
 }
 
-output "public_subnet_id" {
-  description = "ID of the public subnet"
-  value       = aws_subnet.public.id
-}
-
-output "private_subnet_id" {
-  description = "ID of the private subnet"
-  value       = aws_subnet.private.id
-}
-
-output "bastion_public_ip" {
-  description = "Public IP address of the bastion server"
-  value       = aws_instance.bastion.public_ip
-}
-
 output "bastion_public_dns" {
   description = "Public DNS name of the bastion server"
   value       = aws_instance.bastion.public_dns
 }
 
-output "web_private_ip" {
-  description = "Private IP address of the private web server"
-  value       = aws_instance.web_private.private_ip
-}
-
-output "ssh_private_key_file" {
-  description = "Path to the generated private SSH key file"
-  value       = local.create_new_key ? local_file.ssh_private_key[0].filename : null
-}
-
 output "ssh_command" {
   description = "SSH command to connect to the bastion server"
-  value = local.create_new_key ? (
-    "ssh -i ${local_file.ssh_private_key[0].filename} ec2-user@${aws_instance.bastion.public_dns}"
-  ) : "ssh ec2-user@${aws_instance.bastion.public_dns}"
+  value       = local.create_new_key ? "ssh -i ${local_file.ssh_private_key[0].filename} ec2-user@${aws_instance.bastion.public_dns}" : "ssh ec2-user@${aws_instance.bastion.public_dns}"
+}
+
+output "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = aws_lb.main.dns_name
+}
+
+output "curl_command" {
+  description = "Command to test the load balancer"
+  value       = "curl http://${aws_lb.main.dns_name}"
 }
 
 output "iam_user_passwords" {
   description = "Generated IAM console passwords. Use: terraform output -json iam_user_passwords"
-  value = {
-    for username, profile in aws_iam_user_login_profile.this :
-    username => profile.password
-  }
-  sensitive = true
+  value       = { for username, profile in aws_iam_user_login_profile.this : username => profile.password }
+  sensitive   = true
 }
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: run.md
+
+```md
+# Fix SSH Key Permissions on Windows
+
+icacls .\jubilee-cloud-foundation-key.pem /inheritance:r
+icacls .\jubilee-cloud-foundation-key.pem /grant:r "${env:USERNAME}:(R)"
 ```
 
 
@@ -2357,8 +2205,8 @@ output "iam_user_passwords" {
 {
   "version": 4,
   "terraform_version": "1.15.2",
-  "serial": 291,
-  "lineage": "597c692e-87ce-263f-33dd-9510c473fed4",
+  "serial": 640,
+  "lineage": "c262993e-deb9-fb61-5918-5aa8e1363739",
   "outputs": {},
   "resources": [],
   "check_results": [
@@ -2382,22 +2230,26 @@ output "iam_user_passwords" {
 {
   "version": 4,
   "terraform_version": "1.15.2",
-  "serial": 253,
-  "lineage": "597c692e-87ce-263f-33dd-9510c473fed4",
+  "serial": 593,
+  "lineage": "c262993e-deb9-fb61-5918-5aa8e1363739",
   "outputs": {
-    "bastion_public_dns": {
-      "value": "ec2-44-200-39-66.compute-1.amazonaws.com",
+    "alb_dns_name": {
+      "value": "jubilee-cloud-foundation-alb-1972826552.us-east-1.elb.amazonaws.com",
       "type": "string"
     },
-    "bastion_public_ip": {
-      "value": "44.200.39.66",
+    "bastion_public_dns": {
+      "value": "ec2-35-175-109-41.compute-1.amazonaws.com",
+      "type": "string"
+    },
+    "curl_command": {
+      "value": "curl http://jubilee-cloud-foundation-alb-1972826552.us-east-1.elb.amazonaws.com",
       "type": "string"
     },
     "iam_user_passwords": {
       "value": {
-        "admin.lab": "pQII_7M)$W%33o!7",
-        "auditor.lab": "E3|^PAaR#9F6'Qi@",
-        "engineer.lab": "StOk49SFh|xj*+9F"
+        "admin.lab": "x_'AyO'8K5^O**|b",
+        "auditor.lab": "{=JqT$a%OYI*BuF0",
+        "engineer.lab": "XFPN7++NK]DZa55i"
       },
       "type": [
         "object",
@@ -2409,28 +2261,12 @@ output "iam_user_passwords" {
       ],
       "sensitive": true
     },
-    "private_subnet_id": {
-      "value": "subnet-0caf1424c1471b46d",
-      "type": "string"
-    },
-    "public_subnet_id": {
-      "value": "subnet-079333380cfc48a99",
-      "type": "string"
-    },
     "ssh_command": {
-      "value": "ssh -i ./jubilee-cloud-foundation-key.pem ec2-user@ec2-44-200-39-66.compute-1.amazonaws.com",
-      "type": "string"
-    },
-    "ssh_private_key_file": {
-      "value": "./jubilee-cloud-foundation-key.pem",
+      "value": "ssh -i ./jubilee-cloud-foundation-key.pem ec2-user@ec2-35-175-109-41.compute-1.amazonaws.com",
       "type": "string"
     },
     "vpc_id": {
-      "value": "vpc-058f393bddfe87490",
-      "type": "string"
-    },
-    "web_private_ip": {
-      "value": "10.0.2.26",
+      "value": "vpc-08f20136e1c09b684",
       "type": "string"
     }
   },
@@ -2575,6 +2411,174 @@ output "iam_user_passwords" {
     },
     {
       "mode": "managed",
+      "type": "aws_autoscaling_group",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:autoscaling:us-east-1:932453198323:autoScalingGroup:0757efe0-f1f3-461a-a533-c705214e2f3d:autoScalingGroupName/jubilee-cloud-foundation-web-asg",
+            "availability_zone_distribution": [
+              {
+                "capacity_distribution_strategy": "balanced-best-effort"
+              }
+            ],
+            "availability_zones": [
+              "us-east-1a",
+              "us-east-1b"
+            ],
+            "capacity_rebalance": false,
+            "capacity_reservation_specification": [
+              {
+                "capacity_reservation_preference": "default",
+                "capacity_reservation_target": []
+              }
+            ],
+            "context": "",
+            "default_cooldown": 300,
+            "default_instance_warmup": 0,
+            "desired_capacity": 1,
+            "desired_capacity_type": "",
+            "enabled_metrics": null,
+            "force_delete": false,
+            "force_delete_warm_pool": false,
+            "health_check_grace_period": 120,
+            "health_check_type": "ELB",
+            "id": "jubilee-cloud-foundation-web-asg",
+            "ignore_failed_scaling_activities": false,
+            "initial_lifecycle_hook": [],
+            "instance_maintenance_policy": [],
+            "instance_refresh": [],
+            "launch_configuration": "",
+            "launch_template": [
+              {
+                "id": "lt-068ef929c50f1defa",
+                "name": "jubilee-cloud-foundation-web-2026081018532114100000000c",
+                "version": "$Latest"
+              }
+            ],
+            "load_balancers": [],
+            "max_instance_lifetime": 0,
+            "max_size": 3,
+            "metrics_granularity": "1Minute",
+            "min_elb_capacity": null,
+            "min_size": 1,
+            "mixed_instances_policy": [],
+            "name": "jubilee-cloud-foundation-web-asg",
+            "name_prefix": "",
+            "placement_group": "",
+            "predicted_capacity": 0,
+            "protect_from_scale_in": false,
+            "service_linked_role_arn": "arn:aws:iam::932453198323:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
+            "suspended_processes": null,
+            "tag": [
+              {
+                "key": "Name",
+                "propagate_at_launch": true,
+                "value": "jubilee-cloud-foundation-web-asg-instance"
+              }
+            ],
+            "target_group_arns": [
+              "arn:aws:elasticloadbalancing:us-east-1:932453198323:targetgroup/jubilee-cloud-foundation-tg/0fb37fa9da999ec7"
+            ],
+            "termination_policies": null,
+            "timeouts": null,
+            "traffic_source": [
+              {
+                "identifier": "arn:aws:elasticloadbalancing:us-east-1:932453198323:targetgroup/jubilee-cloud-foundation-tg/0fb37fa9da999ec7",
+                "type": "elbv2"
+              }
+            ],
+            "vpc_zone_identifier": [
+              "subnet-07052247064b4c636",
+              "subnet-0afa00c9e26f3fec4"
+            ],
+            "wait_for_capacity_timeout": "10m",
+            "wait_for_elb_capacity": null,
+            "warm_pool": [],
+            "warm_pool_size": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjo2MDAwMDAwMDAwMDAsInVwZGF0ZSI6NjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "aws_key_pair.ssh",
+            "aws_launch_template.web",
+            "aws_lb_target_group.web",
+            "aws_security_group.alb",
+            "aws_security_group.bastion",
+            "aws_security_group.web",
+            "aws_subnet.private_a",
+            "aws_subnet.private_b",
+            "aws_vpc.main",
+            "data.aws_ami.amazon_linux_2023",
+            "data.aws_availability_zones.available",
+            "tls_private_key.ssh"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_autoscaling_policy",
+      "name": "web_cpu_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "adjustment_type": "",
+            "arn": "arn:aws:autoscaling:us-east-1:932453198323:scalingPolicy:dc64bdc5-c103-496e-bb9a-80018c9767fb:autoScalingGroupName/jubilee-cloud-foundation-web-asg:policyName/jubilee-cloud-foundation-web-cpu-policy",
+            "autoscaling_group_name": "jubilee-cloud-foundation-web-asg",
+            "cooldown": 0,
+            "enabled": true,
+            "estimated_instance_warmup": 300,
+            "id": "jubilee-cloud-foundation-web-cpu-policy",
+            "metric_aggregation_type": "",
+            "min_adjustment_magnitude": 0,
+            "name": "jubilee-cloud-foundation-web-cpu-policy",
+            "policy_type": "TargetTrackingScaling",
+            "predictive_scaling_configuration": [],
+            "scaling_adjustment": 0,
+            "step_adjustment": [],
+            "target_tracking_configuration": [
+              {
+                "customized_metric_specification": [],
+                "disable_scale_in": false,
+                "predefined_metric_specification": [
+                  {
+                    "predefined_metric_type": "ASGAverageCPUUtilization",
+                    "resource_label": ""
+                  }
+                ],
+                "target_value": 60
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_autoscaling_group.web",
+            "aws_key_pair.ssh",
+            "aws_launch_template.web",
+            "aws_lb_target_group.web",
+            "aws_security_group.alb",
+            "aws_security_group.bastion",
+            "aws_security_group.web",
+            "aws_subnet.private_a",
+            "aws_subnet.private_b",
+            "aws_vpc.main",
+            "data.aws_ami.amazon_linux_2023",
+            "data.aws_availability_zones.available",
+            "tls_private_key.ssh"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
       "type": "aws_budgets_budget",
       "name": "learning",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
@@ -2654,7 +2658,7 @@ output "iam_user_passwords" {
             "id": "Admins",
             "name": "Admins",
             "path": "/",
-            "unique_id": "AGPA5SGUKVHZ4X4SF4F3S"
+            "unique_id": "AGPA5SGUKVHZVLKO6CY73"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -2675,7 +2679,7 @@ output "iam_user_passwords" {
             "id": "Auditors",
             "name": "Auditors",
             "path": "/",
-            "unique_id": "AGPA5SGUKVHZSCTKD3QYA"
+            "unique_id": "AGPA5SGUKVHZYAVRAT3O5"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -2696,7 +2700,7 @@ output "iam_user_passwords" {
             "id": "CloudEngineers",
             "name": "CloudEngineers",
             "path": "/",
-            "unique_id": "AGPA5SGUKVHZ7YKUFAQ3X"
+            "unique_id": "AGPA5SGUKVHZSH7VASXFZ"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -2714,7 +2718,7 @@ output "iam_user_passwords" {
           "schema_version": 0,
           "attributes": {
             "group": "Admins",
-            "id": "Admins-20260806113212492700000006",
+            "id": "Admins-20260810185254959600000001",
             "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
           },
           "sensitive_attributes": [],
@@ -2736,7 +2740,7 @@ output "iam_user_passwords" {
           "schema_version": 0,
           "attributes": {
             "group": "Auditors",
-            "id": "Auditors-20260806113212125600000002",
+            "id": "Auditors-20260810185255212600000003",
             "policy_arn": "arn:aws:iam::aws:policy/IAMUserChangePassword"
           },
           "sensitive_attributes": [],
@@ -2758,7 +2762,7 @@ output "iam_user_passwords" {
           "schema_version": 0,
           "attributes": {
             "group": "Auditors",
-            "id": "Auditors-20260806113212213100000003",
+            "id": "Auditors-20260810185255182500000002",
             "policy_arn": "arn:aws:iam::aws:policy/ReadOnlyAccess"
           },
           "sensitive_attributes": [],
@@ -2780,7 +2784,7 @@ output "iam_user_passwords" {
           "schema_version": 0,
           "attributes": {
             "group": "CloudEngineers",
-            "id": "CloudEngineers-20260806113212384400000004",
+            "id": "CloudEngineers-20260810185255306700000005",
             "policy_arn": "arn:aws:iam::aws:policy/IAMUserChangePassword"
           },
           "sensitive_attributes": [],
@@ -2802,7 +2806,7 @@ output "iam_user_passwords" {
           "schema_version": 0,
           "attributes": {
             "group": "CloudEngineers",
-            "id": "CloudEngineers-20260806113212117400000001",
+            "id": "CloudEngineers-20260810185255504600000006",
             "policy_arn": "arn:aws:iam::aws:policy/IAMReadOnlyAccess"
           },
           "sensitive_attributes": [],
@@ -2824,7 +2828,7 @@ output "iam_user_passwords" {
           "schema_version": 0,
           "attributes": {
             "group": "CloudEngineers",
-            "id": "CloudEngineers-20260806113212393000000005",
+            "id": "CloudEngineers-20260810185255295000000004",
             "policy_arn": "arn:aws:iam::aws:policy/PowerUserAccess"
           },
           "sensitive_attributes": [],
@@ -2860,7 +2864,7 @@ output "iam_user_passwords" {
               "Project": "jubilee-cloud-foundation",
               "Purpose": "cloud-engineer-training"
             },
-            "unique_id": "AIDA5SGUKVHZZZITYVA5R"
+            "unique_id": "AIDA5SGUKVHZSCX7T4QVQ"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -2889,7 +2893,7 @@ output "iam_user_passwords" {
               "Project": "jubilee-cloud-foundation",
               "Purpose": "cloud-engineer-training"
             },
-            "unique_id": "AIDA5SGUKVHZZKLCY44CB"
+            "unique_id": "AIDA5SGUKVHZ7FPXJB2G3"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -2918,7 +2922,7 @@ output "iam_user_passwords" {
               "Project": "jubilee-cloud-foundation",
               "Purpose": "cloud-engineer-training"
             },
-            "unique_id": "AIDA5SGUKVHZQBVQ63V3E"
+            "unique_id": "AIDA5SGUKVHZSOUBC2NAN"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -2944,7 +2948,7 @@ output "iam_user_passwords" {
             "groups": [
               "Admins"
             ],
-            "id": "terraform-20260806113213462700000007",
+            "id": "terraform-20260810185256348300000007",
             "user": "admin.lab"
           },
           "sensitive_attributes": [],
@@ -2964,7 +2968,7 @@ output "iam_user_passwords" {
             "groups": [
               "Auditors"
             ],
-            "id": "terraform-20260806113213476000000009",
+            "id": "terraform-20260810185256363000000008",
             "user": "auditor.lab"
           },
           "sensitive_attributes": [],
@@ -2984,7 +2988,7 @@ output "iam_user_passwords" {
             "groups": [
               "CloudEngineers"
             ],
-            "id": "terraform-20260806113213466700000008",
+            "id": "terraform-20260810185256369100000009",
             "user": "engineer.lab"
           },
           "sensitive_attributes": [],
@@ -3012,7 +3016,7 @@ output "iam_user_passwords" {
             "encrypted_password": null,
             "id": "admin.lab",
             "key_fingerprint": null,
-            "password": "pQII_7M)$W%33o!7",
+            "password": "x_'AyO'8K5^O**|b",
             "password_length": 16,
             "password_reset_required": true,
             "pgp_key": null,
@@ -3042,7 +3046,7 @@ output "iam_user_passwords" {
             "encrypted_password": null,
             "id": "auditor.lab",
             "key_fingerprint": null,
-            "password": "E3|^PAaR#9F6'Qi@",
+            "password": "{=JqT$a%OYI*BuF0",
             "password_length": 16,
             "password_reset_required": true,
             "pgp_key": null,
@@ -3072,7 +3076,7 @@ output "iam_user_passwords" {
             "encrypted_password": null,
             "id": "engineer.lab",
             "key_fingerprint": null,
-            "password": "StOk49SFh|xj*+9F",
+            "password": "XFPN7++NK]DZa55i",
             "password_length": 16,
             "password_reset_required": true,
             "pgp_key": null,
@@ -3107,7 +3111,7 @@ output "iam_user_passwords" {
           "schema_version": 1,
           "attributes": {
             "ami": "ami-07a5b367e8dc8bd92",
-            "arn": "arn:aws:ec2:us-east-1:932453198323:instance/i-06ed8fbde77584dea",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:instance/i-0e9170dee8617327c",
             "associate_public_ip_address": true,
             "availability_zone": "us-east-1a",
             "capacity_reservation_specification": [
@@ -3146,7 +3150,7 @@ output "iam_user_passwords" {
             "host_id": "",
             "host_resource_group_arn": null,
             "iam_instance_profile": "",
-            "id": "i-06ed8fbde77584dea",
+            "id": "i-0e9170dee8617327c",
             "instance_initiated_shutdown_behavior": "stop",
             "instance_lifecycle": "",
             "instance_market_options": [],
@@ -3176,8 +3180,8 @@ output "iam_user_passwords" {
             "password_data": "",
             "placement_group": "",
             "placement_partition_number": 0,
-            "primary_network_interface_id": "eni-05c05991506ca0436",
-            "private_dns": "ip-10-0-1-233.ec2.internal",
+            "primary_network_interface_id": "eni-02ba4c9798e7acdc7",
+            "private_dns": "ip-10-0-1-4.ec2.internal",
             "private_dns_name_options": [
               {
                 "enable_resource_name_dns_a_record": false,
@@ -3185,9 +3189,9 @@ output "iam_user_passwords" {
                 "hostname_type": "ip-name"
               }
             ],
-            "private_ip": "10.0.1.233",
-            "public_dns": "ec2-44-200-39-66.compute-1.amazonaws.com",
-            "public_ip": "44.200.39.66",
+            "private_ip": "10.0.1.4",
+            "public_dns": "ec2-35-175-109-41.compute-1.amazonaws.com",
+            "public_ip": "35.175.109.41",
             "root_block_device": [
               {
                 "delete_on_termination": true,
@@ -3204,7 +3208,7 @@ output "iam_user_passwords" {
                   "Purpose": "cloud-engineer-training"
                 },
                 "throughput": 125,
-                "volume_id": "vol-01c00c4bb4cb89dea",
+                "volume_id": "vol-0a87143c96197e322",
                 "volume_size": 8,
                 "volume_type": "gp3"
               }
@@ -3213,7 +3217,7 @@ output "iam_user_passwords" {
             "security_groups": [],
             "source_dest_check": true,
             "spot_instance_request_id": "",
-            "subnet_id": "subnet-079333380cfc48a99",
+            "subnet_id": "subnet-049b22ba8977d11a1",
             "tags": {
               "Name": "bastion"
             },
@@ -3232,7 +3236,7 @@ output "iam_user_passwords" {
             "user_data_replace_on_change": false,
             "volume_tags": null,
             "vpc_security_group_ids": [
-              "sg-0fba5c33c61dbc732"
+              "sg-0862e4861bec659ba"
             ]
           },
           "sensitive_attributes": [],
@@ -3242,160 +3246,7 @@ output "iam_user_passwords" {
             "aws_internet_gateway.main",
             "aws_key_pair.ssh",
             "aws_security_group.bastion",
-            "aws_subnet.public",
-            "aws_vpc.main",
-            "data.aws_ami.amazon_linux_2023",
-            "data.aws_availability_zones.available",
-            "tls_private_key.ssh"
-          ]
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_instance",
-      "name": "web_private",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 1,
-          "attributes": {
-            "ami": "ami-07a5b367e8dc8bd92",
-            "arn": "arn:aws:ec2:us-east-1:932453198323:instance/i-0dac6fe7df66dd7cd",
-            "associate_public_ip_address": false,
-            "availability_zone": "us-east-1a",
-            "capacity_reservation_specification": [
-              {
-                "capacity_reservation_preference": "open",
-                "capacity_reservation_target": []
-              }
-            ],
-            "cpu_core_count": 1,
-            "cpu_options": [
-              {
-                "amd_sev_snp": "",
-                "core_count": 1,
-                "threads_per_core": 1
-              }
-            ],
-            "cpu_threads_per_core": 1,
-            "credit_specification": [
-              {
-                "cpu_credits": "standard"
-              }
-            ],
-            "disable_api_stop": false,
-            "disable_api_termination": false,
-            "ebs_block_device": [],
-            "ebs_optimized": false,
-            "enable_primary_ipv6": null,
-            "enclave_options": [
-              {
-                "enabled": false
-              }
-            ],
-            "ephemeral_block_device": [],
-            "get_password_data": false,
-            "hibernation": false,
-            "host_id": "",
-            "host_resource_group_arn": null,
-            "iam_instance_profile": "",
-            "id": "i-0dac6fe7df66dd7cd",
-            "instance_initiated_shutdown_behavior": "stop",
-            "instance_lifecycle": "",
-            "instance_market_options": [],
-            "instance_state": "running",
-            "instance_type": "t2.micro",
-            "ipv6_address_count": 0,
-            "ipv6_addresses": [],
-            "key_name": "jubilee-cloud-foundation-key",
-            "launch_template": [],
-            "maintenance_options": [
-              {
-                "auto_recovery": "default"
-              }
-            ],
-            "metadata_options": [
-              {
-                "http_endpoint": "enabled",
-                "http_protocol_ipv6": "disabled",
-                "http_put_response_hop_limit": 1,
-                "http_tokens": "required",
-                "instance_metadata_tags": "disabled"
-              }
-            ],
-            "monitoring": false,
-            "network_interface": [],
-            "outpost_arn": "",
-            "password_data": "",
-            "placement_group": "",
-            "placement_partition_number": 0,
-            "primary_network_interface_id": "eni-0579dc416a8ee2eda",
-            "private_dns": "ip-10-0-2-26.ec2.internal",
-            "private_dns_name_options": [
-              {
-                "enable_resource_name_dns_a_record": false,
-                "enable_resource_name_dns_aaaa_record": false,
-                "hostname_type": "ip-name"
-              }
-            ],
-            "private_ip": "10.0.2.26",
-            "public_dns": "",
-            "public_ip": "",
-            "root_block_device": [
-              {
-                "delete_on_termination": true,
-                "device_name": "/dev/xvda",
-                "encrypted": true,
-                "iops": 3000,
-                "kms_key_id": "arn:aws:kms:us-east-1:932453198323:key/b6b4335b-a207-4975-8e7c-ceef0c5352ce",
-                "tags": null,
-                "tags_all": {
-                  "CostCenter": "learning",
-                  "DataClassification": "internal",
-                  "Environment": "dev",
-                  "Project": "jubilee-cloud-foundation",
-                  "Purpose": "cloud-engineer-training"
-                },
-                "throughput": 125,
-                "volume_id": "vol-0bbff98758cbc336a",
-                "volume_size": 8,
-                "volume_type": "gp3"
-              }
-            ],
-            "secondary_private_ips": [],
-            "security_groups": [],
-            "source_dest_check": true,
-            "spot_instance_request_id": "",
-            "subnet_id": "subnet-0caf1424c1471b46d",
-            "tags": {
-              "Name": "web-private"
-            },
-            "tags_all": {
-              "CostCenter": "learning",
-              "DataClassification": "internal",
-              "Environment": "dev",
-              "Name": "web-private",
-              "Project": "jubilee-cloud-foundation",
-              "Purpose": "cloud-engineer-training"
-            },
-            "tenancy": "default",
-            "timeouts": null,
-            "user_data": "5e0424d2c5b0ce5f0e981066b312d0af6f767d86",
-            "user_data_base64": null,
-            "user_data_replace_on_change": true,
-            "volume_tags": null,
-            "vpc_security_group_ids": [
-              "sg-0fce279c206e2e56e"
-            ]
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwicmVhZCI6OTAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
-          "dependencies": [
-            "aws_key_pair.ssh",
-            "aws_security_group.web",
-            "aws_subnet.private",
+            "aws_subnet.public_a",
             "aws_vpc.main",
             "data.aws_ami.amazon_linux_2023",
             "data.aws_availability_zones.available",
@@ -3413,8 +3264,8 @@ output "iam_user_passwords" {
         {
           "schema_version": 0,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:internet-gateway/igw-05a8ccd5a0d8641cf",
-            "id": "igw-05a8ccd5a0d8641cf",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:internet-gateway/igw-0a28b8fa3b69da5d7",
+            "id": "igw-0a28b8fa3b69da5d7",
             "owner_id": "932453198323",
             "tags": {
               "Name": "jubilee-cloud-foundation-igw"
@@ -3428,7 +3279,7 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -3450,13 +3301,13 @@ output "iam_user_passwords" {
           "schema_version": 1,
           "attributes": {
             "arn": "arn:aws:ec2:us-east-1:932453198323:key-pair/jubilee-cloud-foundation-key",
-            "fingerprint": "0c:86:04:fc:b9:6e:69:db:6f:7d:ca:91:5f:b6:c7:18",
+            "fingerprint": "4c:b3:6e:fc:2e:35:c8:07:00:c6:5a:14:a3:98:57:71",
             "id": "jubilee-cloud-foundation-key",
             "key_name": "jubilee-cloud-foundation-key",
             "key_name_prefix": "",
-            "key_pair_id": "key-05eb24469936ca21d",
+            "key_pair_id": "key-07b05edd1dfb72878",
             "key_type": "rsa",
-            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDif3eSVOcUEALG/wd6mPpY/qa3m9a2Fs9Iby9+iAMCWdK7HdxhfTROYDspbzlYwy2DjadTlJDPflKW2HdWTZbY5ZHIJSxzqJSJVMrSOqVQmmGLWJwOP0aA3uB2HCcqUatE2SdeRSQ9B9nDoZ8GWgDv7sCWJS0R10pSt/Cmk0BIPm0cs6oJ5hIThnMtSGGBs7PfiAQShhsSNZVGA6/mtpAWwRIK6HyMuqK5naoKB+1qLW2fii4ADsecQk7Kzn2XLnqTNq1ZiciF7kEq6jGeQba1F8HcbcX9pLcxgK/knytESgelaHjbQgh2trtioHxDPf+chQav5O23mvQ1KybNq/GKndnGS11XpAbWjU1sXlskKVyMpxKqQTu6hbvsSJQZqlSH4OWVt3trm5Tyf9AqUeEJQQfYR26jx7cUtyUHazbytkqwvMjm3MBQ9NYMFX+3LSUXCCwp3ZuDKHEzT+sqf9YjKRT79TF7sOxZPXkbxRrcWaPKaysS4rF+iM57UZ883Bp502n1T9Lnw5GTDyhQG7PASwLHpyMI0bpFczJQ4CiyErEnERig05viUVyq00Yy6JjpNhs65CwPm9tq/zg5fLiq2CQUaOvCsEtNMOCb2t43Ed4yPap1xG4fo1GCpXk/7tWB0XzwK8C5xpp5ctVOMmSBbjG10Z0EfKLRyeyiydNKBw==",
+            "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgi1VeYBx5OsJPV7Hdvts3aOSfiEnp6/UEVnM2P6YzZoQBvkKw4+NUiSdWTBNl3RMjvu+GOLMyygUm0MuWjiz8pNOeFmtg+GVV1UKSuWhUOwps0z+tiBnrVfz/LiRhaVwALGDWpOlOT36HKpdYm3QV/3vOadB6UOrErEd4jNwJWDO6KH6dalmasnLWhM47VuAXDDMoK5TVX7NqpMyT2euIcow04p+e2poT4psa0rz+RDf5l8gO5vJigc892cf+67eQJDXYvZLJtb9tTyWVKZ0+dZWwMD/wFsYa7kGTps3lnQn2PL1bjmqJXmqTPn3XNXYchbGvpKFOk+iy1A3O3KSdkr8iW6BJeYXU8Nv5+S1wH7sGx2lbgYbBH9F+LQhCRdX5KGlyeywUcWZSiSAV/xELWtWoTC/yfTR42Z+9bEcwCLTgfLbhfvGP04IU+LRR7ANsCHLhxew1pL6LZ17IaoUjLOjRDWFeu39/SIMuxcalRiVZmW93hon0JUp7Uq3rJ0SjQmfX6Jn2LLy7HYHoifaH6Xhyab6uwh9Gy10PsoQQNFGtii+FejOjxVw3dAlsC0urBPclqaCVgI5L48ue6McyScyBS/UDaiTTam36WLlFQJ4PIbGgXeSJjKONHxYQ1Pf91547aWf6gEVH8bIY+vXg6WoYXfEBX5eJFSH5uyxUDw==",
             "tags": {
               "Name": "jubilee-cloud-foundation-key"
             },
@@ -3474,6 +3325,392 @@ output "iam_user_passwords" {
           "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
           "dependencies": [
             "tls_private_key.ssh"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_launch_template",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:932453198323:launch-template/lt-068ef929c50f1defa",
+            "block_device_mappings": [
+              {
+                "device_name": "/dev/xvda",
+                "ebs": [
+                  {
+                    "delete_on_termination": "true",
+                    "encrypted": "true",
+                    "iops": 0,
+                    "kms_key_id": "",
+                    "snapshot_id": "",
+                    "throughput": 0,
+                    "volume_initialization_rate": 0,
+                    "volume_size": 8,
+                    "volume_type": "gp3"
+                  }
+                ],
+                "no_device": "",
+                "virtual_name": ""
+              }
+            ],
+            "capacity_reservation_specification": [],
+            "cpu_options": [],
+            "credit_specification": [],
+            "default_version": 1,
+            "description": "",
+            "disable_api_stop": false,
+            "disable_api_termination": false,
+            "ebs_optimized": "",
+            "elastic_gpu_specifications": [],
+            "elastic_inference_accelerator": [],
+            "enclave_options": [],
+            "hibernation_options": [],
+            "iam_instance_profile": [],
+            "id": "lt-068ef929c50f1defa",
+            "image_id": "ami-07a5b367e8dc8bd92",
+            "instance_initiated_shutdown_behavior": "",
+            "instance_market_options": [],
+            "instance_requirements": [],
+            "instance_type": "t2.micro",
+            "kernel_id": "",
+            "key_name": "jubilee-cloud-foundation-key",
+            "latest_version": 1,
+            "license_specification": [],
+            "maintenance_options": [],
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_protocol_ipv6": "",
+                "http_put_response_hop_limit": 1,
+                "http_tokens": "required",
+                "instance_metadata_tags": ""
+              }
+            ],
+            "monitoring": [],
+            "name": "jubilee-cloud-foundation-web-2026081018532114100000000c",
+            "name_prefix": "jubilee-cloud-foundation-web-",
+            "network_interfaces": [],
+            "placement": [],
+            "private_dns_name_options": [],
+            "ram_disk_id": "",
+            "security_group_names": null,
+            "tag_specifications": [
+              {
+                "resource_type": "instance",
+                "tags": {
+                  "Name": "jubilee-cloud-foundation-web-asg-instance"
+                }
+              }
+            ],
+            "tags": null,
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "update_default_version": null,
+            "user_data": "IyEvYmluL2Jhc2gKIyBDcmVhdGUgd2ViIGZvbGRlcgpta2RpciAtcCAvdmFyL3d3dy93ZWIKCiMgQ3JlYXRlIHNpbXBsZSB3ZWIgcGFnZSAoTm90aWNlICdIVE1MJyBpcyB1bnF1b3RlZCBzbyAkKGhvc3RuYW1lKSBleHBhbmRzISkKY2F0ID4gL3Zhci93d3cvd2ViL2luZGV4Lmh0bWwgPDxIVE1MCjxodG1sPgogIDxib2R5PgogICAgPGgxPkp1YmlsZWUgQ2xvdWQgRm91bmRhdGlvbjwvaDE+CiAgICA8cD5UaGlzIHdlYiBzZXJ2ZXIgaXMgcnVubmluZyBpbiBhIHByaXZhdGUgc3VibmV0LjwvcD4KICAgIDxwPjxzdHJvbmc+U2VydmVkIGJ5OiAkKGhvc3RuYW1lKTwvc3Ryb25nPjwvcD4KICA8L2JvZHk+CjwvaHRtbD4KSFRNTAoKIyBDcmVhdGUgc3lzdGVtZCBzZXJ2aWNlCmNhdCA+IC9ldGMvc3lzdGVtZC9zeXN0ZW0vc2ltcGxlLXdlYi5zZXJ2aWNlIDw8J1VOSVQnCltVbml0XQpEZXNjcmlwdGlvbj1TaW1wbGUgUHl0aG9uIFdlYiBTZXJ2ZXIKQWZ0ZXI9bmV0d29yay50YXJnZXQKCltTZXJ2aWNlXQpFeGVjU3RhcnQ9L3Vzci9iaW4vcHl0aG9uMyAtbSBodHRwLnNlcnZlciA4MCAtLWRpcmVjdG9yeSAvdmFyL3d3dy93ZWIKUmVzdGFydD1hbHdheXMKVXNlcj1yb290CgpbSW5zdGFsbF0KV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXQKVU5JVAoKIyBFbmFibGUgYW5kIHN0YXJ0IHNlcnZpY2UKc3lzdGVtY3RsIGRhZW1vbi1yZWxvYWQKc3lzdGVtY3RsIGVuYWJsZSAtLW5vdyBzaW1wbGUtd2ViLnNlcnZpY2U=",
+            "vpc_security_group_ids": [
+              "sg-0ffc0561dc1c50ec2"
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_key_pair.ssh",
+            "aws_security_group.alb",
+            "aws_security_group.bastion",
+            "aws_security_group.web",
+            "aws_vpc.main",
+            "data.aws_ami.amazon_linux_2023",
+            "tls_private_key.ssh"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lb",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_logs": [
+              {
+                "bucket": "",
+                "enabled": false,
+                "prefix": ""
+              }
+            ],
+            "arn": "arn:aws:elasticloadbalancing:us-east-1:932453198323:loadbalancer/app/jubilee-cloud-foundation-alb/aa669770644281a9",
+            "arn_suffix": "app/jubilee-cloud-foundation-alb/aa669770644281a9",
+            "client_keep_alive": 3600,
+            "connection_logs": [
+              {
+                "bucket": "",
+                "enabled": false,
+                "prefix": ""
+              }
+            ],
+            "customer_owned_ipv4_pool": "",
+            "desync_mitigation_mode": "defensive",
+            "dns_name": "jubilee-cloud-foundation-alb-1972826552.us-east-1.elb.amazonaws.com",
+            "dns_record_client_routing_policy": null,
+            "drop_invalid_header_fields": false,
+            "enable_cross_zone_load_balancing": true,
+            "enable_deletion_protection": false,
+            "enable_http2": true,
+            "enable_tls_version_and_cipher_suite_headers": false,
+            "enable_waf_fail_open": false,
+            "enable_xff_client_port": false,
+            "enable_zonal_shift": false,
+            "enforce_security_group_inbound_rules_on_private_link_traffic": "",
+            "id": "arn:aws:elasticloadbalancing:us-east-1:932453198323:loadbalancer/app/jubilee-cloud-foundation-alb/aa669770644281a9",
+            "idle_timeout": 60,
+            "internal": false,
+            "ip_address_type": "ipv4",
+            "ipam_pools": [],
+            "load_balancer_type": "application",
+            "minimum_load_balancer_capacity": [],
+            "name": "jubilee-cloud-foundation-alb",
+            "name_prefix": "",
+            "preserve_host_header": false,
+            "security_groups": [
+              "sg-0cf8142dce37abceb"
+            ],
+            "subnet_mapping": [
+              {
+                "allocation_id": "",
+                "ipv6_address": "",
+                "outpost_id": "",
+                "private_ipv4_address": "",
+                "subnet_id": "subnet-049b22ba8977d11a1"
+              },
+              {
+                "allocation_id": "",
+                "ipv6_address": "",
+                "outpost_id": "",
+                "private_ipv4_address": "",
+                "subnet_id": "subnet-05cba28450e6eecfb"
+              }
+            ],
+            "subnets": [
+              "subnet-049b22ba8977d11a1",
+              "subnet-05cba28450e6eecfb"
+            ],
+            "tags": {
+              "Name": "jubilee-cloud-foundation-alb"
+            },
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Name": "jubilee-cloud-foundation-alb",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08f20136e1c09b684",
+            "xff_header_processing_mode": "append",
+            "zone_id": "Z35SXDOTRQ7X7K"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_security_group.alb",
+            "aws_subnet.public_a",
+            "aws_subnet.public_b",
+            "aws_vpc.main",
+            "data.aws_availability_zones.available"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lb_listener",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "alpn_policy": null,
+            "arn": "arn:aws:elasticloadbalancing:us-east-1:932453198323:listener/app/jubilee-cloud-foundation-alb/aa669770644281a9/c2efca5d9f4a5a5d",
+            "certificate_arn": null,
+            "default_action": [
+              {
+                "authenticate_cognito": [],
+                "authenticate_oidc": [],
+                "fixed_response": [],
+                "forward": [],
+                "order": 1,
+                "redirect": [],
+                "target_group_arn": "arn:aws:elasticloadbalancing:us-east-1:932453198323:targetgroup/jubilee-cloud-foundation-tg/0fb37fa9da999ec7",
+                "type": "forward"
+              }
+            ],
+            "id": "arn:aws:elasticloadbalancing:us-east-1:932453198323:listener/app/jubilee-cloud-foundation-alb/aa669770644281a9/c2efca5d9f4a5a5d",
+            "load_balancer_arn": "arn:aws:elasticloadbalancing:us-east-1:932453198323:loadbalancer/app/jubilee-cloud-foundation-alb/aa669770644281a9",
+            "mutual_authentication": [],
+            "port": 80,
+            "protocol": "HTTP",
+            "routing_http_request_x_amzn_mtls_clientcert_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_issuer_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_leaf_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_subject_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_validity_header_name": null,
+            "routing_http_request_x_amzn_tls_cipher_suite_header_name": null,
+            "routing_http_request_x_amzn_tls_version_header_name": null,
+            "routing_http_response_access_control_allow_credentials_header_value": "",
+            "routing_http_response_access_control_allow_headers_header_value": "",
+            "routing_http_response_access_control_allow_methods_header_value": "",
+            "routing_http_response_access_control_allow_origin_header_value": "",
+            "routing_http_response_access_control_expose_headers_header_value": "",
+            "routing_http_response_access_control_max_age_header_value": "",
+            "routing_http_response_content_security_policy_header_value": "",
+            "routing_http_response_server_enabled": true,
+            "routing_http_response_strict_transport_security_header_value": "",
+            "routing_http_response_x_content_type_options_header_value": "",
+            "routing_http_response_x_frame_options_header_value": "",
+            "ssl_policy": "",
+            "tags": null,
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "tcp_idle_timeout_seconds": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsInVwZGF0ZSI6MzAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "aws_lb.main",
+            "aws_lb_target_group.web",
+            "aws_security_group.alb",
+            "aws_subnet.public_a",
+            "aws_subnet.public_b",
+            "aws_vpc.main",
+            "data.aws_availability_zones.available"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lb_target_group",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:elasticloadbalancing:us-east-1:932453198323:targetgroup/jubilee-cloud-foundation-tg/0fb37fa9da999ec7",
+            "arn_suffix": "targetgroup/jubilee-cloud-foundation-tg/0fb37fa9da999ec7",
+            "connection_termination": null,
+            "deregistration_delay": "300",
+            "health_check": [
+              {
+                "enabled": true,
+                "healthy_threshold": 2,
+                "interval": 15,
+                "matcher": "200",
+                "path": "/",
+                "port": "traffic-port",
+                "protocol": "HTTP",
+                "timeout": 5,
+                "unhealthy_threshold": 2
+              }
+            ],
+            "id": "arn:aws:elasticloadbalancing:us-east-1:932453198323:targetgroup/jubilee-cloud-foundation-tg/0fb37fa9da999ec7",
+            "ip_address_type": "ipv4",
+            "lambda_multi_value_headers_enabled": false,
+            "load_balancer_arns": [],
+            "load_balancing_algorithm_type": "round_robin",
+            "load_balancing_anomaly_mitigation": "off",
+            "load_balancing_cross_zone_enabled": "use_load_balancer_configuration",
+            "name": "jubilee-cloud-foundation-tg",
+            "name_prefix": "",
+            "port": 80,
+            "preserve_client_ip": null,
+            "protocol": "HTTP",
+            "protocol_version": "HTTP1",
+            "proxy_protocol_v2": false,
+            "slow_start": 0,
+            "stickiness": [
+              {
+                "cookie_duration": 86400,
+                "cookie_name": "",
+                "enabled": false,
+                "type": "lb_cookie"
+              }
+            ],
+            "tags": {
+              "Name": "jubilee-cloud-foundation-web-tg"
+            },
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Name": "jubilee-cloud-foundation-web-tg",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "target_failover": [
+              {
+                "on_deregistration": null,
+                "on_unhealthy": null
+              }
+            ],
+            "target_group_health": [
+              {
+                "dns_failover": [
+                  {
+                    "minimum_healthy_targets_count": "1",
+                    "minimum_healthy_targets_percentage": "off"
+                  }
+                ],
+                "unhealthy_state_routing": [
+                  {
+                    "minimum_healthy_targets_count": 1,
+                    "minimum_healthy_targets_percentage": "off"
+                  }
+                ]
+              }
+            ],
+            "target_health_state": [
+              {
+                "enable_unhealthy_connection_termination": null,
+                "unhealthy_draining_interval": null
+              }
+            ],
+            "target_type": "instance",
+            "vpc_id": "vpc-08f20136e1c09b684"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_vpc.main"
           ]
         }
       ]
@@ -3487,8 +3724,8 @@ output "iam_user_passwords" {
         {
           "schema_version": 0,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:route-table/rtb-00fa251b5dffd0d22",
-            "id": "rtb-00fa251b5dffd0d22",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:route-table/rtb-0b7549e3f6d730c18",
+            "id": "rtb-0b7549e3f6d730c18",
             "owner_id": "932453198323",
             "propagating_vgws": [],
             "route": [],
@@ -3504,7 +3741,7 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -3524,8 +3761,8 @@ output "iam_user_passwords" {
         {
           "schema_version": 0,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:route-table/rtb-0c1a904b0e8bc5dca",
-            "id": "rtb-0c1a904b0e8bc5dca",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:route-table/rtb-0289caeae233ced69",
+            "id": "rtb-0289caeae233ced69",
             "owner_id": "932453198323",
             "propagating_vgws": [],
             "route": [
@@ -3535,7 +3772,7 @@ output "iam_user_passwords" {
                 "core_network_arn": "",
                 "destination_prefix_list_id": "",
                 "egress_only_gateway_id": "",
-                "gateway_id": "igw-05a8ccd5a0d8641cf",
+                "gateway_id": "igw-0a28b8fa3b69da5d7",
                 "ipv6_cidr_block": "",
                 "local_gateway_id": "",
                 "nat_gateway_id": "",
@@ -3557,7 +3794,7 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -3572,16 +3809,16 @@ output "iam_user_passwords" {
     {
       "mode": "managed",
       "type": "aws_route_table_association",
-      "name": "private",
+      "name": "private_a",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [
         {
           "schema_version": 0,
           "attributes": {
             "gateway_id": "",
-            "id": "rtbassoc-0560c00c6f24c3c5a",
-            "route_table_id": "rtb-00fa251b5dffd0d22",
-            "subnet_id": "subnet-0caf1424c1471b46d",
+            "id": "rtbassoc-0622ab5c5aa6abdc3",
+            "route_table_id": "rtb-0b7549e3f6d730c18",
+            "subnet_id": "subnet-0afa00c9e26f3fec4",
             "timeouts": null
           },
           "sensitive_attributes": [],
@@ -3589,7 +3826,7 @@ output "iam_user_passwords" {
           "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
           "dependencies": [
             "aws_route_table.private",
-            "aws_subnet.private",
+            "aws_subnet.private_a",
             "aws_vpc.main",
             "data.aws_availability_zones.available"
           ]
@@ -3599,16 +3836,43 @@ output "iam_user_passwords" {
     {
       "mode": "managed",
       "type": "aws_route_table_association",
-      "name": "public",
+      "name": "private_b",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [
         {
           "schema_version": 0,
           "attributes": {
             "gateway_id": "",
-            "id": "rtbassoc-0b90a433edf001e68",
-            "route_table_id": "rtb-0c1a904b0e8bc5dca",
-            "subnet_id": "subnet-079333380cfc48a99",
+            "id": "rtbassoc-0a9d31104462c27f9",
+            "route_table_id": "rtb-0b7549e3f6d730c18",
+            "subnet_id": "subnet-07052247064b4c636",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_route_table.private",
+            "aws_subnet.private_b",
+            "aws_vpc.main",
+            "data.aws_availability_zones.available"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "public_a",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-020958f31b476f158",
+            "route_table_id": "rtb-0289caeae233ced69",
+            "subnet_id": "subnet-049b22ba8977d11a1",
             "timeouts": null
           },
           "sensitive_attributes": [],
@@ -3617,10 +3881,108 @@ output "iam_user_passwords" {
           "dependencies": [
             "aws_internet_gateway.main",
             "aws_route_table.public",
-            "aws_subnet.public",
+            "aws_subnet.public_a",
             "aws_vpc.main",
             "data.aws_availability_zones.available"
           ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "public_b",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-084676deb05eb03d9",
+            "route_table_id": "rtb-0289caeae233ced69",
+            "subnet_id": "subnet-05cba28450e6eecfb",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_internet_gateway.main",
+            "aws_route_table.public",
+            "aws_subnet.public_b",
+            "aws_vpc.main",
+            "data.aws_availability_zones.available"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "alb",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:932453198323:security-group/sg-0cf8142dce37abceb",
+            "description": "Allow HTTP from internet",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "Allow all outbound",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0cf8142dce37abceb",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "HTTP from internet",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 80
+              }
+            ],
+            "name": "jubilee-cloud-foundation-alb-sg",
+            "name_prefix": "",
+            "owner_id": "932453198323",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "alb-sg"
+            },
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Name": "alb-sg",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08f20136e1c09b684"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "aws_vpc.main"
+          ],
+          "create_before_destroy": true
         }
       ]
     },
@@ -3633,14 +3995,14 @@ output "iam_user_passwords" {
         {
           "schema_version": 1,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:security-group/sg-0fba5c33c61dbc732",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:security-group/sg-0862e4861bec659ba",
             "description": "Allow SSH only from administrator IP",
             "egress": [
               {
                 "cidr_blocks": [
                   "0.0.0.0/0"
                 ],
-                "description": "Allow all outbound traffic",
+                "description": "Allow all outbound",
                 "from_port": 0,
                 "ipv6_cidr_blocks": [],
                 "prefix_list_ids": [],
@@ -3650,11 +4012,11 @@ output "iam_user_passwords" {
                 "to_port": 0
               }
             ],
-            "id": "sg-0fba5c33c61dbc732",
+            "id": "sg-0862e4861bec659ba",
             "ingress": [
               {
                 "cidr_blocks": [
-                  "41.139.243.97/32"
+                  "41.212.120.18/32"
                 ],
                 "description": "SSH from admin IP only",
                 "from_port": 22,
@@ -3682,14 +4044,15 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
           "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
           "dependencies": [
             "aws_vpc.main"
-          ]
+          ],
+          "create_before_destroy": true
         }
       ]
     },
@@ -3702,14 +4065,14 @@ output "iam_user_passwords" {
         {
           "schema_version": 1,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:security-group/sg-0fce279c206e2e56e",
-            "description": "Allow HTTP only from bastion security group",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:security-group/sg-0ffc0561dc1c50ec2",
+            "description": "Allow HTTP from ALB and SSH from Bastion",
             "egress": [
               {
                 "cidr_blocks": [
                   "10.0.0.0/16"
                 ],
-                "description": "Allow outbound traffic within VPC only",
+                "description": "Allow outbound within VPC",
                 "from_port": 0,
                 "ipv6_cidr_blocks": [],
                 "prefix_list_ids": [],
@@ -3719,8 +4082,35 @@ output "iam_user_passwords" {
                 "to_port": 0
               }
             ],
-            "id": "sg-0fce279c206e2e56e",
-            "ingress": [],
+            "id": "sg-0ffc0561dc1c50ec2",
+            "ingress": [
+              {
+                "cidr_blocks": [],
+                "description": "HTTP from ALB",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-0cf8142dce37abceb"
+                ],
+                "self": false,
+                "to_port": 80
+              },
+              {
+                "cidr_blocks": [],
+                "description": "SSH from Bastion",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-0862e4861bec659ba"
+                ],
+                "self": false,
+                "to_port": 22
+              }
+            ],
             "name": "jubilee-cloud-foundation-web-sg",
             "name_prefix": "",
             "owner_id": "932453198323",
@@ -3737,62 +4127,30 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
           "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
           "dependencies": [
-            "aws_vpc.main"
-          ]
-        }
-      ]
-    },
-    {
-      "mode": "managed",
-      "type": "aws_security_group_rule",
-      "name": "web_http_from_bastion",
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [
-        {
-          "schema_version": 2,
-          "attributes": {
-            "cidr_blocks": null,
-            "description": "HTTP from bastion only",
-            "from_port": 80,
-            "id": "sgrule-865768576",
-            "ipv6_cidr_blocks": null,
-            "prefix_list_ids": null,
-            "protocol": "tcp",
-            "security_group_id": "sg-0fce279c206e2e56e",
-            "security_group_rule_id": "sgr-03826d5f0de6bb822",
-            "self": false,
-            "source_security_group_id": "sg-0fba5c33c61dbc732",
-            "timeouts": null,
-            "to_port": 80,
-            "type": "ingress"
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjIifQ==",
-          "dependencies": [
+            "aws_security_group.alb",
             "aws_security_group.bastion",
-            "aws_security_group.web",
             "aws_vpc.main"
-          ]
+          ],
+          "create_before_destroy": true
         }
       ]
     },
     {
       "mode": "managed",
       "type": "aws_subnet",
-      "name": "private",
+      "name": "private_a",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [
         {
           "schema_version": 1,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:subnet/subnet-0caf1424c1471b46d",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:subnet/subnet-0afa00c9e26f3fec4",
             "assign_ipv6_address_on_creation": false,
             "availability_zone": "us-east-1a",
             "availability_zone_id": "use1-az1",
@@ -3802,7 +4160,7 @@ output "iam_user_passwords" {
             "enable_lni_at_device_index": 0,
             "enable_resource_name_dns_a_record_on_launch": false,
             "enable_resource_name_dns_aaaa_record_on_launch": false,
-            "id": "subnet-0caf1424c1471b46d",
+            "id": "subnet-0afa00c9e26f3fec4",
             "ipv6_cidr_block": "",
             "ipv6_cidr_block_association_id": "",
             "ipv6_native": false,
@@ -3823,7 +4181,7 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -3838,13 +4196,65 @@ output "iam_user_passwords" {
     {
       "mode": "managed",
       "type": "aws_subnet",
-      "name": "public",
+      "name": "private_b",
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [
         {
           "schema_version": 1,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:subnet/subnet-079333380cfc48a99",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:subnet/subnet-07052247064b4c636",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1b",
+            "availability_zone_id": "use1-az2",
+            "cidr_block": "10.0.4.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-07052247064b4c636",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "932453198323",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "private-subnet-b"
+            },
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Name": "private-subnet-b",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08f20136e1c09b684"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_vpc.main",
+            "data.aws_availability_zones.available"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "public_a",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:932453198323:subnet/subnet-049b22ba8977d11a1",
             "assign_ipv6_address_on_creation": false,
             "availability_zone": "us-east-1a",
             "availability_zone_id": "use1-az1",
@@ -3854,7 +4264,7 @@ output "iam_user_passwords" {
             "enable_lni_at_device_index": 0,
             "enable_resource_name_dns_a_record_on_launch": false,
             "enable_resource_name_dns_aaaa_record_on_launch": false,
-            "id": "subnet-079333380cfc48a99",
+            "id": "subnet-049b22ba8977d11a1",
             "ipv6_cidr_block": "",
             "ipv6_cidr_block_association_id": "",
             "ipv6_native": false,
@@ -3875,7 +4285,59 @@ output "iam_user_passwords" {
               "Purpose": "cloud-engineer-training"
             },
             "timeouts": null,
-            "vpc_id": "vpc-058f393bddfe87490"
+            "vpc_id": "vpc-08f20136e1c09b684"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_vpc.main",
+            "data.aws_availability_zones.available"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "public_b",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:932453198323:subnet/subnet-05cba28450e6eecfb",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1b",
+            "availability_zone_id": "use1-az2",
+            "cidr_block": "10.0.3.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-05cba28450e6eecfb",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": true,
+            "outpost_arn": "",
+            "owner_id": "932453198323",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "public-subnet-b"
+            },
+            "tags_all": {
+              "CostCenter": "learning",
+              "DataClassification": "internal",
+              "Environment": "dev",
+              "Name": "public-subnet-b",
+              "Project": "jubilee-cloud-foundation",
+              "Purpose": "cloud-engineer-training"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08f20136e1c09b684"
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
@@ -3896,17 +4358,17 @@ output "iam_user_passwords" {
         {
           "schema_version": 1,
           "attributes": {
-            "arn": "arn:aws:ec2:us-east-1:932453198323:vpc/vpc-058f393bddfe87490",
+            "arn": "arn:aws:ec2:us-east-1:932453198323:vpc/vpc-08f20136e1c09b684",
             "assign_generated_ipv6_cidr_block": false,
             "cidr_block": "10.0.0.0/16",
-            "default_network_acl_id": "acl-0b1b56507d8e3b282",
-            "default_route_table_id": "rtb-0b56af1653fc992a9",
-            "default_security_group_id": "sg-025ad4d01f5642214",
+            "default_network_acl_id": "acl-0c9975da48cc84ceb",
+            "default_route_table_id": "rtb-099292aceace5c871",
+            "default_security_group_id": "sg-0eb21582d28c90fd8",
             "dhcp_options_id": "dopt-06602ef479c9aead2",
             "enable_dns_hostnames": true,
             "enable_dns_support": true,
             "enable_network_address_usage_metrics": false,
-            "id": "vpc-058f393bddfe87490",
+            "id": "vpc-08f20136e1c09b684",
             "instance_tenancy": "default",
             "ipv4_ipam_pool_id": null,
             "ipv4_netmask_length": null,
@@ -3915,7 +4377,7 @@ output "iam_user_passwords" {
             "ipv6_cidr_block_network_border_group": "",
             "ipv6_ipam_pool_id": "",
             "ipv6_netmask_length": 0,
-            "main_route_table_id": "rtb-0b56af1653fc992a9",
+            "main_route_table_id": "rtb-099292aceace5c871",
             "owner_id": "932453198323",
             "tags": {
               "Name": "jubilee-cloud-foundation-vpc"
@@ -3931,7 +4393,8 @@ output "iam_user_passwords" {
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
-          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "create_before_destroy": true
         }
       ]
     },
@@ -3945,18 +4408,18 @@ output "iam_user_passwords" {
           "index_key": 0,
           "schema_version": 0,
           "attributes": {
-            "content": "-----BEGIN RSA PRIVATE KEY-----\nMIIJKgIBAAKCAgEA4n93klTnFBACxv8Hepj6WP6mt5vWthbPSG8vfogDAlnSux3c\nYX00TmA7KW85WMMtg42nU5SQz35Slth3Vk2W2OWRyCUsc6iUiVTK0jqlUJphi1ic\nDj9GgN7gdhwnKlGrRNknXkUkPQfZw6GfBloA7+7AliUtEddKUrfwppNASD5tHLOq\nCeYSE4ZzLUhhgbOz34gEEoYbEjWVRgOv5raQFsESCuh8jLqiuZ2qCgftai1tn4ou\nAA7HnEJOys59ly56kzatWYnIhe5BKuoxnkG2tRfB3G3F/aS3MYCv5J8rREoHpWh4\n20IIdra7YqB8Qz3/nIUGr+Ttt5r0NSsmzavxip3ZxktdV6QG1o1NbF5bJClcjKcS\nqkE7uoW77EiUGapUh+Dllbd7a5uU8n/QKlHhCUEH2Eduo8e3FLclB2s28rZKsLzI\n5tzAUPTWDBV/ty0lFwgsKd2bgyhxM0/rKn/WIykU+/Uxe7DsWT15G8Ua3Fmjymsr\nEuKxfojOe1GfPNwaedNp9U/S58ORkw8oUBuzwEsCx6cjCNG6RXMyUOAoshKxJxEY\noNOb4lFcqtNGMuiY6TYbOuQsD5vbav84OXy4qtgkFGjrwrBLTTDgm9reNxHeMj2q\ndcRuH6NRgqV5P+7VgdF88CvAucaaeXLVTjJkgW4xtdGdBHyi0cnsosnTSgcCAwEA\nAQKCAgAkFLovjWbiQ0qt+KJwXT5EPwy/4wtpJmkO2Odv+KrCDR0Mwc0BmrhiY+II\nz7cK9MyjUEV/gwMuiqkNbp5UGTgWhTub7pAOPKSs290TcFQ1auJvGEaD3oCUtux6\n5DE5BJmL9ivXUJxdPIrsJyr2EBBmKFp1kKaFWQ517udfIcXzvD4VfGlx+jyW76wZ\nYpZl2wKkcT501PgrBm4pIR08W4jIlykQo8hzgqe5eexEfM7NQz9bUt/REomp0sZK\neGp5UuYj3WnwAYr4CuRGudf9peo9HvO68aHAriSgtidO/CwgTMq7BtF53CMNBj8D\njx08ePvnKynNi2JzBTQx5BXiXam0ZnvxoOxDUr4wyBbUjyMb6cHnQ3rKNV0Wv12C\nzCYHWsqSunJuvu2UNC3MYDSuIet7lQqlNdJtELNXLJZgQL7sUqRX/YQTBnjNGsSM\nVDFHlrJalSTADFOqfCmgHAMnQw68Z+qoeqALN+H2WuagqIm6cfjl3c8BrBf2ZNNR\nZ6lUf45bNcYPGmWb/LJXbQ5QuhiLcRhIZElDYabi6Jxduyjsrfuph5V7jGw4r5xf\nZqMYdOHX2+ntn++p7Qjq+AmXca9bVR+mwkfdaKmpN0TmwgP8ALmravosIHB0wMwc\nDTaS8nf/U/27emREi9IHSHnn4761NQM0vS4+DLyzsMxoK6EHgQKCAQEA6DWrSK01\njDfjVh4p2a+fo9H8Z0Re77V5ZElnvf59WhsQIPeBUdIHHiOjlBq+ay/3+FbA+ofX\nR2xgWRMqkUdTrfUiq79BFJ+0F9ti9ztADlOxakSHjUwDcDBYrky/XUFQKdNJ+4JT\n09L37X/IUimtV22eTvHRBGqxqz0wuDBg5Cgah0vpACqJ0ysydMpL4iYnKToYhYSs\nF7UZN5vORxH6WXVwoxZnGsUHsN0FbuY6rXSvsCYOCbassRxWC8Bum4zAQ0eORjF6\nCONMnnfEoSrpRqhFzX0HFtdooxPo3/jki1M3+Z8gOKRMlCT2N37ahcguAmQPiyhw\ncHQEC6AFWoqEjwKCAQEA+bP+DevcSAdcNTuBJVcXIuwIwsvM+2x0nSAS60Z4AIhj\na9fiJQQkTL5jkT/C1pD1Bdd8Hp1caYa8N0nZJUjzJoce/VI3ePpFrUUH2XiNrito\nLeivCcuBr4VohOXwktbAAHTisRbJHbUuYq8WQ82anUyKG1HKhZF6v+dz6vjcJJpr\nwDfSoF0T7U1c4/xhAKIPYaS/sZDVsPDbCANso4TFraai7e9RBPVUvvoUWYY+p/Vr\nmexPVVOZiGVuxdhR9Zo8eFgD1RQi+gQbOmBB97hz7mHDhWw6buYJKjMVt7SIrZal\nWyzhmg6GTfUka8MeynZxJcLROgYOYju9hczirmvPCQKCAQEA1GZS+DVHJ6zvSxRo\nH3AfS8+FWkgVtpl+Ihdqx0UDD+p1RFJgfaDpVc4vkAcuagkEfqmL9x1N80zUjGWV\nqDFf/1ycjBByzRSPvMq1qYMOwowXWia4/quq8XGnjDczS2+0ja1wnJfHaZgto5Yg\ne9cXcUMZbQiPscSOIx3jdHb8CXYNXfg3dilyzC9VBbMM2h0f8Pvs9iQ27bB/Enh3\npFZzcmST1Plm8fuLX2Gr2JbK0WJMWYlVidkH+TD8G9+2zJ1gN6o6H0aeY4bVzJWs\ny+beXf0JbD6Sv3flhFVvy350PmSubKv64xSV32Q3uudTps9GFnXEKfuhbZsRIDkM\n7JaLTQKCAQEAhMk9yeNqYfdgBoLdO6EjkZOZWRWNrQpQvRnIVctEl2vwCvJjtTGN\nqC36vsv8baPqWK/ttk4STZ+zyWcBDX3Mp+llBmtJSpE0ql6yPOiJ11wH65n4MypA\njblRCpNIqp1+vv9paajnTGAECcB4A5h7pziDnOGS5BKoBxMrJoIud1yS/kXxQQwe\nQ6xHQIn+f5quuUsmEWQm7xA2Of2wMQizIpQhwovoNs3Lwj80wSLNgP3WuaTbz1FE\nrS7biGRvuT7K92g+qXoq22+BlzqG+hfhtpvQoMwcCstThlhiLS3ZHQ6mYmTsl8Mv\nkpdRRekeH6Z6pw0BvGxqC70fHN8GkKCOGQKCAQEAnc7TwvNekiJiTamZ+y7oCXSx\n/QWiuR+iqch3VGfANTbZDgQgD/m1Y5G/dXW2iQPOc+uIJRazze04S0VGZ0rCcUbT\n0X0N6Mg4xSC8SKDLTrN3WzJ8NLZNB7ur/JeOnf+nIH3aAztsHKzFscA2RHsykmUO\nQh1Hc3xJu9aZMUyEIVYcmdUUJ+GLV6a7A0EcXk9ec3lWFum4nagbmnnPtRbkIYE6\nEu2HEIwS/1vc6N9CqtDWobOdxMNiF6AkaomS3e5V4GKiA3T0TQuicPUeyvxnVxR7\nYG9+seaGZyf8cPP2ei/tatCbWHBmWlr9R3WIc3j7Xk6lv50p97o4PiPU4b6yoA==\n-----END RSA PRIVATE KEY-----\n",
+            "content": "-----BEGIN RSA PRIVATE KEY-----\n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\n-----END RSA PRIVATE KEY-----\n",
             "content_base64": null,
-            "content_base64sha256": "BLfYCLumy2Sod5j2HTEyqY3FowuYwOXwDstdL5aj+I8=",
-            "content_base64sha512": "0aet9w9r8mDOhotTC6jgyGAhuPTS3b/FKQ6miW53GlDAgyBnQW0kmp2Jyi6YR+3c5CkwDrA313CsBOXKlzjIUQ==",
-            "content_md5": "effd2dd129adc171a4fc76dbbe71adb6",
-            "content_sha1": "031310b1a731a4f270ad46ff12f370704b034834",
-            "content_sha256": "04b7d808bba6cb64a87798f61d3132a98dc5a30b98c0e5f00ecb5d2f96a3f88f",
-            "content_sha512": "d1a7adf70f6bf260ce868b530ba8e0c86021b8f4d2ddbfc5290ea6896e771a50c0832067416d249a9d89ca2e9847eddce429300eb037d770ac04e5ca9738c851",
+            "content_base64sha256": "bBUte3RaLB0hOZQhjQp+DbQdegIHDdS234Q8ZPcsHp4=",
+            "content_base64sha512": "OyI2xttQCKm9j3GxsaZ7lrg58Q2KDUVoKsjuJPFfOQlrvBMCMVoUfcElecU9uzDCUljINuxWPJ9xXJ6OWlPkGQ==",
+            "content_md5": "07a7bffe764a4bb5c6244722b3393c1a",
+            "content_sha1": "260ff58d3d4ac44791c89f65bff6007ae08c51ac",
+            "content_sha256": "6c152d7b745a2c1d213994218d0a7e0db41d7a02070dd4b6df843c64f72c1e9e",
+            "content_sha512": "3b2236c6db5008a9bd8f71b1b1a67b96b839f10d8a0d45682ac8ee24f15f39096bbc1302315a147dc12579c53dbb30c25258c836ec563c9f715c9e8e5a53e419",
             "directory_permission": "0777",
             "file_permission": "0600",
             "filename": "./jubilee-cloud-foundation-key.pem",
-            "id": "031310b1a731a4f270ad46ff12f370704b034834",
+            "id": "260ff58d3d4ac44791c89f65bff6007ae08c51ac",
             "sensitive_content": null,
             "source": null
           },
@@ -3993,14 +4456,14 @@ output "iam_user_passwords" {
           "attributes": {
             "algorithm": "RSA",
             "ecdsa_curve": "P224",
-            "id": "e2cd5fe6dbb7c879f25a5e5736a309ead34efa3d",
-            "private_key_openssh": "-----BEGIN OPENSSH PRIVATE KEY-----\n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\n-----END OPENSSH PRIVATE KEY-----\n",
-            "private_key_pem": "-----BEGIN RSA PRIVATE KEY-----\n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\n-----END RSA PRIVATE KEY-----\n",
-            "private_key_pem_pkcs8": "-----BEGIN PRIVATE KEY-----\n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\nWv1HdYhzePteTqW/nSn3ujg+I9ThvrKg\n-----END PRIVATE KEY-----\n",
-            "public_key_fingerprint_md5": "30:07:8d:7f:aa:cb:37:cb:fa:4f:66:15:25:1a:09:60",
-            "public_key_fingerprint_sha256": "SHA256:8J8PMJwDIA6mMPIKnraVeZxEDVL/YdDlJIh9TttjN24",
-            "public_key_openssh": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDif3eSVOcUEALG/wd6mPpY/qa3m9a2Fs9Iby9+iAMCWdK7HdxhfTROYDspbzlYwy2DjadTlJDPflKW2HdWTZbY5ZHIJSxzqJSJVMrSOqVQmmGLWJwOP0aA3uB2HCcqUatE2SdeRSQ9B9nDoZ8GWgDv7sCWJS0R10pSt/Cmk0BIPm0cs6oJ5hIThnMtSGGBs7PfiAQShhsSNZVGA6/mtpAWwRIK6HyMuqK5naoKB+1qLW2fii4ADsecQk7Kzn2XLnqTNq1ZiciF7kEq6jGeQba1F8HcbcX9pLcxgK/knytESgelaHjbQgh2trtioHxDPf+chQav5O23mvQ1KybNq/GKndnGS11XpAbWjU1sXlskKVyMpxKqQTu6hbvsSJQZqlSH4OWVt3trm5Tyf9AqUeEJQQfYR26jx7cUtyUHazbytkqwvMjm3MBQ9NYMFX+3LSUXCCwp3ZuDKHEzT+sqf9YjKRT79TF7sOxZPXkbxRrcWaPKaysS4rF+iM57UZ883Bp502n1T9Lnw5GTDyhQG7PASwLHpyMI0bpFczJQ4CiyErEnERig05viUVyq00Yy6JjpNhs65CwPm9tq/zg5fLiq2CQUaOvCsEtNMOCb2t43Ed4yPap1xG4fo1GCpXk/7tWB0XzwK8C5xpp5ctVOMmSBbjG10Z0EfKLRyeyiydNKBw==\n",
-            "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4n93klTnFBACxv8Hepj6\nWP6mt5vWthbPSG8vfogDAlnSux3cYX00TmA7KW85WMMtg42nU5SQz35Slth3Vk2W\n2OWRyCUsc6iUiVTK0jqlUJphi1icDj9GgN7gdhwnKlGrRNknXkUkPQfZw6GfBloA\n7+7AliUtEddKUrfwppNASD5tHLOqCeYSE4ZzLUhhgbOz34gEEoYbEjWVRgOv5raQ\nFsESCuh8jLqiuZ2qCgftai1tn4ouAA7HnEJOys59ly56kzatWYnIhe5BKuoxnkG2\ntRfB3G3F/aS3MYCv5J8rREoHpWh420IIdra7YqB8Qz3/nIUGr+Ttt5r0NSsmzavx\nip3ZxktdV6QG1o1NbF5bJClcjKcSqkE7uoW77EiUGapUh+Dllbd7a5uU8n/QKlHh\nCUEH2Eduo8e3FLclB2s28rZKsLzI5tzAUPTWDBV/ty0lFwgsKd2bgyhxM0/rKn/W\nIykU+/Uxe7DsWT15G8Ua3FmjymsrEuKxfojOe1GfPNwaedNp9U/S58ORkw8oUBuz\nwEsCx6cjCNG6RXMyUOAoshKxJxEYoNOb4lFcqtNGMuiY6TYbOuQsD5vbav84OXy4\nqtgkFGjrwrBLTTDgm9reNxHeMj2qdcRuH6NRgqV5P+7VgdF88CvAucaaeXLVTjJk\ngW4xtdGdBHyi0cnsosnTSgcCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+            "id": "ffa6ea70529fb50a7d7bd4f1e9a2f8dd6465979d",
+            "private_key_openssh": "-----BEGIN OPENSSH PRIVATE KEY-----\n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\n-----END OPENSSH PRIVATE KEY-----\n",
+            "private_key_pem": "-----BEGIN RSA PRIVATE KEY-----\n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\n-----END RSA PRIVATE KEY-----\n",
+            "private_key_pem_pkcs8": "-----BEGIN PRIVATE KEY-----\n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\nNeLSJwFu+7yzkpym4ArgJpwgXJP9\n-----END PRIVATE KEY-----\n",
+            "public_key_fingerprint_md5": "e4:29:96:d4:ae:25:2f:31:00:1b:8f:ae:ae:d1:79:d1",
+            "public_key_fingerprint_sha256": "SHA256:1CyX9gYaGxeRyC15K9dgVS1OHXC5CDajj3do3v2t7i4",
+            "public_key_openssh": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgi1VeYBx5OsJPV7Hdvts3aOSfiEnp6/UEVnM2P6YzZoQBvkKw4+NUiSdWTBNl3RMjvu+GOLMyygUm0MuWjiz8pNOeFmtg+GVV1UKSuWhUOwps0z+tiBnrVfz/LiRhaVwALGDWpOlOT36HKpdYm3QV/3vOadB6UOrErEd4jNwJWDO6KH6dalmasnLWhM47VuAXDDMoK5TVX7NqpMyT2euIcow04p+e2poT4psa0rz+RDf5l8gO5vJigc892cf+67eQJDXYvZLJtb9tTyWVKZ0+dZWwMD/wFsYa7kGTps3lnQn2PL1bjmqJXmqTPn3XNXYchbGvpKFOk+iy1A3O3KSdkr8iW6BJeYXU8Nv5+S1wH7sGx2lbgYbBH9F+LQhCRdX5KGlyeywUcWZSiSAV/xELWtWoTC/yfTR42Z+9bEcwCLTgfLbhfvGP04IU+LRR7ANsCHLhxew1pL6LZ17IaoUjLOjRDWFeu39/SIMuxcalRiVZmW93hon0JUp7Uq3rJ0SjQmfX6Jn2LLy7HYHoifaH6Xhyab6uwh9Gy10PsoQQNFGtii+FejOjxVw3dAlsC0urBPclqaCVgI5L48ue6McyScyBS/UDaiTTam36WLlFQJ4PIbGgXeSJjKONHxYQ1Pf91547aWf6gEVH8bIY+vXg6WoYXfEBX5eJFSH5uyxUDw==\n",
+            "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4ItVXmAceTrCT1ex3b7b\nN2jkn4hJ6ev1BFZzNj+mM2aEAb5CsOPjVIknVkwTZd0TI77vhjizMsoFJtDLlo4s\n/KTTnhZrYPhlVdVCkrloVDsKbNM/rYgZ61X8/y4kYWlcACxg1qTpTk9+hyqXWJt0\nFf97zmnQelDqxKxHeIzcCVgzuih+nWpZmrJy1oTOO1bgFwwzKCuU1V+zaqTMk9nr\niHKMNOKfntqaE+KbGtK8/kQ3+ZfIDubyYoHPPdnH/uu3kCQ12L2SybW/bU8llSmd\nPnWVsDA/8BbGGu5Bk6bN5Z0J9jy9W45qiV5qkz591zV2HIWxr6ShTpPostQNztyk\nnZK/IlugSXmF1PDb+fktcB+7BsdpW4GGwR/Rfi0IQkXV+ShpcnssFHFmUokgFf8R\nC1rVqEwv8n00eNmfvWxHMAi04Hy24X7xj9OCFPi0UewDbAhy4cXsNaS+i2deyGqF\nIyzo0Q1hXrt/f0iDLsXGpUYlWZlvd4aJ9CVKe1Kt6ydEo0Jn1+iZ9iy8ux2B6In2\nh+l4cmm+rsIfRstdD7KEEDRRrYovhXozo8VcN3QJbAtLqwT3JamglYCOS+PLnujH\nMknMgUv1A2ok02pt+li5RUCeDyGxoF3kiYyjjR8WENT3/deeO2ln+oBFR/GyGPr1\n4OlqGF3xAV+XiRUh+bssVA8CAwEAAQ==\n-----END PUBLIC KEY-----\n",
             "rsa_bits": 4096
           },
           "sensitive_attributes": [
@@ -4023,7 +4486,8 @@ output "iam_user_passwords" {
               }
             ]
           ],
-          "identity_schema_version": 0
+          "identity_schema_version": 0,
+          "create_before_destroy": true
         }
       ]
     }
@@ -4063,12 +4527,16 @@ public_subnet_cidr = "10.0.1.0/24"
 
 private_subnet_cidr = "10.0.2.0/24"
 
+public_subnet_b_cidr = "10.0.3.0/24"
+
+private_subnet_b_cidr = "10.0.4.0/24"
+
 instance_type = "t2.micro"
 
 # Replace this with your real public IP.
 # Example:
 # my_ip = "197.232.10.55/32"
-my_ip = "41.139.243.97/32"
+my_ip = "41.212.120.18/32"
 
 create_key_pair   = true
 existing_key_name = ""
@@ -4186,6 +4654,18 @@ variable "billing_alert_emails" {
   type        = list(string)
   default     = []
 }
+
+variable "public_subnet_b_cidr" {
+  description = "CIDR block for the second public subnet"
+  type        = string
+  default     = "10.0.3.0/24"
+}
+
+variable "private_subnet_b_cidr" {
+  description = "CIDR block for the second private subnet"
+  type        = string
+  default     = "10.0.4.0/24"
+}
 ```
 
 
@@ -4195,17 +4675,16 @@ variable "billing_alert_emails" {
 
 ```sh
 #!/bin/bash
-
 # Create web folder
 mkdir -p /var/www/web
 
-# Create simple web page
-cat > /var/www/web/index.html <<'HTML'
+# Create simple web page (Notice 'HTML' is unquoted so $(hostname) expands!)
+cat > /var/www/web/index.html <<HTML
 <html>
   <body>
     <h1>Jubilee Cloud Foundation</h1>
     <p>This web server is running in a private subnet.</p>
-    <p>Only approved internal traffic can reach it.</p>
+    <p><strong>Served by: $(hostname)</strong></p>
   </body>
 </html>
 HTML
