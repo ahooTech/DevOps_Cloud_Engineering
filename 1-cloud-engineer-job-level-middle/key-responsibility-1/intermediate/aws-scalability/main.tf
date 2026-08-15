@@ -358,7 +358,7 @@ resource "aws_launch_template" "web" {
 resource "aws_autoscaling_group" "web" {
   name                      = "${var.project}-web-asg"
   min_size                  = 1
-  max_size                  = 3    # Maximum vm's creted by the ASG
+  max_size                  = 3 # Maximum vm's creted by the ASG
   desired_capacity          = 1
   vpc_zone_identifier       = [aws_subnet.private_a.id, aws_subnet.private_b.id]
   target_group_arns         = [aws_lb_target_group.web.arn]
