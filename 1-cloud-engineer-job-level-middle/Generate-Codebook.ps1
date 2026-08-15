@@ -1,5 +1,5 @@
 <#
-.\Generate-Codebook.ps1 -ProjectPath "C:\Projects\Staff-Canteen-Management-System"
+.\Generate-Codebook.ps1 -ProjectPath "C:\devops\1-cloud-engineer-job-level-middle\key-responsibility-1\beginner\secure-cloud-foundation\gcp-terraform"
 #>
 
 param(
