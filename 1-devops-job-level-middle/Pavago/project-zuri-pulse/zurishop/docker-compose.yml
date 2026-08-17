@@ -1,0 +1,89 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+
+  product-api:
+    build: ./services/product-api
+    ports:
+      - "8001:8000"
+
+  cart-service:
+    build: ./services/cart-service
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - "8002:8000"
+    depends_on:
+      - redis
+
+  payment-service:
+    build: ./services/payment-service
+    ports:
+      - "8004:8000"
+
+  inventory-service:
+    build: ./services/inventory-service
+    ports:
+      - "8005:8000"
+
+  notification-service:
+    build: ./services/notification-service
+    ports:
+      - "8006:8000"
+
+  checkout-service:
+    build: ./services/checkout-service
+    environment:
+      PRODUCT_API_URL: http://product-api:8000
+      CART_SERVICE_URL: http://cart-service:8000
+      INVENTORY_SERVICE_URL: http://inventory-service:8000
+      PAYMENT_SERVICE_URL: http://payment-service:8000
+      NOTIFICATION_SERVICE_URL: http://notification-service:8000
+    ports:
+      - "8003:8000"
+    depends_on:
+      - product-api
+      - cart-service
+      - inventory-service
+      - payment-service
+      - notification-service
+
+  search-service:
+    build: ./services/search-service
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      PRODUCT_API_URL: http://product-api:8000
+    ports:
+      - "8007:8000"
+    depends_on:
+      - elasticsearch
+      - product-api
+
+  storefront-web:
+    build: ./storefront-web
+    ports:
+      - "8080:80"
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./observability/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"

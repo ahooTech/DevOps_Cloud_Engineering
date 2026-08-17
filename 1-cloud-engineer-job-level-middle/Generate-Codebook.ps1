@@ -1,5 +1,5 @@
 <#
-.\Generate-Codebook.ps1 -ProjectPath "C:\devops\1-cloud-engineer-job-level-middle\key-responsibility-1\beginner\secure-cloud-foundation\gcp-terraform"
+.\Generate-Codebook.ps1 -ProjectPath "C:\devops\1-cloud-engineer-job-level-middle"
 #>
 
 param(
@@ -40,7 +40,7 @@ $ExcludedExtensions = @(
     ".pdf",".zip",".7z",".rar",
     ".exe",".dll",".so",
     ".woff",".woff2",".ttf",".eot",
-    ".pyc",".class",".db",".sqlite3",".log"
+    ".pyc",".class",".db",".sqlite3",".log", ".mp4", ".docx"
 )
 
 # Delete old markdown if it exists

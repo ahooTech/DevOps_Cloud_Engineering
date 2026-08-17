@@ -1,19 +1,5 @@
 <#
-Generate-Codebook.ps1
-
-Creates:
-    Codebase.md
-
-Optionally:
-    Codebase.pdf (if Pandoc is installed)
-
-Usage:
-
-.\Generate-Codebook.ps1
-
-or
-
-.\Generate-Codebook.ps1 -GeneratePdf
+.\Generate-Codebook.ps1 -ProjectPath "C:\devops\1-devops-job-level-middle\Pavago\project-zuri-pulse\zurishop"
 #>
 
 
