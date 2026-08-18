@@ -1,36 +1,50 @@
 ﻿# Staff Canteen Management System
 
-Generated: 08/17/2026 20:52:22
+Generated: 08/18/2026 17:30:32
 
 ---
 
 ## Table of Contents
 
+- .env
+- .env.example
+- .gitignore
 - docker-compose.yml
+- docs\📘 ZuriShop End-to-End Interview Runbook.md
+- infra\postgres\init.sql
 - legacy-reports\Generate-ZuriShopReport.ps1
 - observability\prometheus.yml
 - requirements-dev.txt
+- scripts\smoke-test.ps1
+- services\cart-service\.dockerignore
 - services\cart-service\Dockerfile
 - services\cart-service\main.py
 - services\cart-service\requirements.txt
+- services\checkout-service\.dockerignore
 - services\checkout-service\Dockerfile
 - services\checkout-service\main.py
 - services\checkout-service\requirements.txt
+- services\inventory-service\.dockerignore
 - services\inventory-service\Dockerfile
 - services\inventory-service\main.py
 - services\inventory-service\requirements.txt
+- services\notification-service\.dockerignore
 - services\notification-service\Dockerfile
 - services\notification-service\main.py
 - services\notification-service\requirements.txt
+- services\payment-service\.dockerignore
 - services\payment-service\Dockerfile
 - services\payment-service\main.py
 - services\payment-service\requirements.txt
+- services\product-api\.dockerignore
 - services\product-api\Dockerfile
 - services\product-api\main.py
 - services\product-api\requirements.txt
+- services\search-service\.dockerignore
 - services\search-service\Dockerfile
 - services\search-service\main.py
 - services\search-service\requirements.txt
+- storefront-web\.dockerignore
 - storefront-web\Dockerfile
 - storefront-web\index.html
 - zurishop-report.csv
@@ -40,12 +54,75 @@ Generated: 08/17/2026 20:52:22
 
 <div style='page-break-after: always;'></div>
 
+# File: .env
+
+```env
+POSTGRES_USER=zurishop
+POSTGRES_PASSWORD=zurishop_dev_password
+POSTGRES_DB=zurishop
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: .env.example
+
+```example
+POSTGRES_USER=zurishop
+POSTGRES_PASSWORD=change_me_in_production
+POSTGRES_DB=zurishop
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: .gitignore
+
+```gitignore
+.env
+.venv/
+__pycache__/
+*.pyc
+*.csv
+```
+
+
+<div style='page-break-after: always;'></div>
+
 # File: docker-compose.yml
 
 ```yml
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  postgres-exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable"
+    ports:
+      - "9187:9187"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   redis:
     image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
     ports:
       - "6379:6379"
 
@@ -60,14 +137,20 @@ services:
 
   product-api:
     build: ./services/product-api
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     ports:
       - "8001:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   cart-service:
     build: ./services/cart-service
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
+      CART_TTL_SECONDS: 3600
     ports:
       - "8002:8000"
     depends_on:
@@ -80,8 +163,13 @@ services:
 
   inventory-service:
     build: ./services/inventory-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     ports:
       - "8005:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   notification-service:
     build: ./services/notification-service
@@ -96,14 +184,22 @@ services:
       INVENTORY_SERVICE_URL: http://inventory-service:8000
       PAYMENT_SERVICE_URL: http://payment-service:8000
       NOTIFICATION_SERVICE_URL: http://notification-service:8000
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     ports:
       - "8003:8000"
     depends_on:
-      - product-api
-      - cart-service
-      - inventory-service
-      - payment-service
-      - notification-service
+      postgres:
+        condition: service_healthy
+      product-api:
+        condition: service_started
+      cart-service:
+        condition: service_started
+      inventory-service:
+        condition: service_started
+      payment-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
 
   search-service:
     build: ./services/search-service
@@ -132,6 +228,417 @@ services:
     image: grafana/grafana
     ports:
       - "3000:3000"
+
+volumes:
+  postgres_data:
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: docs\📘 ZuriShop End-to-End Interview Runbook.md
+
+```md
+# 📘 ZuriShop End-to-End Interview Runbook
+
+This is your master interview script. It is structured as a series of **End-to-End Workflows**. For each workflow, you will start with a **Clean Slate**, execute the demonstration across CLI and GUI, and deliver a specific **Interview Narrative**. 
+
+By the end of this runbook, you will have proven every layer of the application, every tool in the Pavago JD, and your ability to operate a production-grade platform.
+
+---
+
+## 🧹 The Master Reset Commands
+
+Before starting any workflow, you need a way to guarantee a clean state. Use these commands depending on how deep of a reset you need.
+
+### Option A: The "Soft Reset" (Fast - Clears Data Only)
+Use this between workflows to clear transactions without waiting for heavy containers like Elasticsearch to reboot.
+```powershell
+# Flush Redis (Clears all shopping carts)
+docker compose exec redis redis-cli FLUSHALL
+
+# Truncate Postgres (Clears all orders, keeps product catalog and stock)
+docker compose exec postgres psql -U zurishop -d zurishop -c "TRUNCATE TABLE orders.orders;"
+
+# Reset Inventory to original levels
+docker compose exec postgres psql -U zurishop -d zurishop -c "UPDATE inventory.stock SET remaining = 50 WHERE product_id = 'SKU-001'; UPDATE inventory.stock SET remaining = 20 WHERE product_id = 'SKU-002'; UPDATE inventory.stock SET remaining = 100 WHERE product_id = 'SKU-003'; UPDATE inventory.stock SET remaining = 10 WHERE product_id = 'SKU-004';"
+```
+
+### Option B: The "Hard Reset" (Slow - Destroys Everything)
+Use this if you want to show the platform booting up from absolute zero (e.g., at the very beginning of the interview).
+```powershell
+docker compose down
+docker volume rm zurishop_postgres_data
+docker compose up -d --build
+Start-Sleep -Seconds 45 # Wait for ES and PG to initialize
+curl.exe -X POST http://localhost:8007/search/index # Re-seed search  Or do via GUI
+```
+
+---
+
+## 🔄 WORKFLOW 1: The "Golden Path" Transaction (Microservices Orchestration)
+**Goal:** Prove that a user action on the frontend successfully orchestrates 5 distinct microservices, writes to a relational database, and cleans up transient cache.
+
+### Step 1: Soft Reset
+```powershell
+docker compose exec redis redis-cli FLUSHALL
+docker compose exec postgres psql -U zurishop -d zurishop -c "TRUNCATE TABLE orders.orders;"
+```
+
+### Step 2: Frontend GUI (The User Experience)
+1. Open your browser to **http://localhost:8080**
+2. **Action:** Click **"Load All Products"**.
+   * *Result:* The JSON output populates with 4 items from the `product-api` (PostgreSQL).
+3. **Action:** Type `keyboard` in the search box and click **"Search"**.
+   * *Result:* The Mechanical Keyboard is returned from Elasticsearch via the `search-service`.
+
+### Step 3: Backend Orchestration (The Checkout Flow)
+*Simulate a user adding an item to their cart and checking out.*
+```powershell
+# 1. Add to Cart (Writes to Redis)
+curl.exe -X POST http://localhost:8002/cart/wf1-cart/items -H "Content-Type: application/json" -d '{\"product_id\": \"SKU-002\", \"quantity\": 1}'
+# 2. View the state of the cart in redis
+docker compose exec redis redis-cli HGETALL cart:wf1-cart
+
+# 3. Trigger Checkout (Orchestrates Inventory, Payment, Notification, DB, and Cart-Clear)
+curl.exe -X POST http://localhost:8003/checkout -H "Content-Type: application/json" -d '{\"cart_id\": \"wf1-cart\", \"email\": \"njeri@zurimart.co.ke\"}'
+```
+✅ **Expected Output:** `{"order_id":"<uuid>","status":"completed","total":6500.0,"currency":"KES"}`
+
+### Step 4: Verification (The DevOps Proof)
+```powershell
+# Prove the order is permanently saved in PostgreSQL
+docker compose exec postgres psql -U zurishop -d zurishop -c "SELECT order_id, total, status FROM orders.orders;"
+
+# Prove the inventory was atomically decremented in PostgreSQL
+docker compose exec postgres psql -U zurishop -d zurishop -c "SELECT remaining FROM inventory.stock WHERE product_id = 'SKU-002';"
+# ✅ Expected: 19
+
+# Prove the transient cart was cleaned up from Redis
+docker compose exec redis redis-cli HGETALL cart:wf1-cart
+# ✅ Expected: (empty array)
+```
+
+🎤 **Interview Narrative:** 
+> *"This demonstrates our core microservices orchestration. A single checkout API call securely reserves inventory in Postgres using atomic constraints, processes a mock payment, queues an email notification, and cleans up the transient Redis cart. I designed this so the database is the single source of truth for permanent state, while Redis handles high-speed session state."*
+
+---
+
+## 🔍 WORKFLOW 2: Decoupled Search Engine Lifecycle (Elasticsearch)
+**Goal:** Prove that the search engine is decoupled from the primary database and can be wiped and re-seeded independently without affecting the core application.
+
+### Step 1: Clean Slate (Wipe the Search Index)
+```powershell
+# Delete the Elasticsearch index entirely
+curl.exe -X DELETE "http://localhost:9200/products"
+# ✅ Expected: {"acknowledged":true}
+
+# Verify search is now broken (decoupled)
+curl.exe "http://localhost:8007/search?q=keyboard"
+# ✅ Expected: {"count":0,"hits":[]}
+```
+
+### Step 2: Re-Seed the Search Engine
+```powershell
+# Trigger the search-service to read from product-api and rebuild the ES index
+curl.exe -X POST http://localhost:8007/search/index
+# ✅ Expected: {"indexed":4}
+```
+
+### Step 3: Verification via Elasticsearch API
+```powershell
+# Check cluster health
+curl.exe "http://localhost:9200/_cluster/health?pretty"
+
+# Check index document count
+curl.exe "http://localhost:9200/products/_count?pretty"
+# ✅ Expected: "count" : 4
+
+# Execute a direct fuzzy search query against Elasticsearch
+curl.exe "http://localhost:9200/products/_search?q=mouse&pretty"
+```
+
+🎤 **Interview Narrative:** 
+> *"In modern architectures, search must be decoupled from the transactional database to prevent load spikes from taking down checkout. Here I wiped the Elasticsearch index and rebuilt it asynchronously by having the search-service pull from the product catalog API. This proves our observability and search layers are resilient and independently deployable."*
+
+---
+
+## 📊 WORKFLOW 3: Traffic Generation & Observability (Prometheus & Grafana)
+**Goal:** Generate synthetic load and prove that the observability stack (Prometheus, Grafana, Postgres Exporter) captures it in real-time.
+
+### Step 1: Generate Synthetic Traffic
+*Run this PowerShell loop to hammer the checkout service with 50 requests.*
+```powershell
+1..50 | ForEach-Object {
+    $cartId = "load-test-$_"
+    Invoke-RestMethod -Uri "http://localhost:8002/cart/$cartId/items" -Method Post -ContentType "application/json" -Body '{"product_id":"SKU-003","quantity":1}' | Out-Null
+    Invoke-RestMethod -Uri "http://localhost:8003/checkout" -Method Post -ContentType "application/json" -Body "{`"cart_id`":`"$cartId`",`"email`":`"test@zurimart.co.ke`"}" | Out-Null
+    Write-Host "Processed order $_"
+}
+```
+
+### Step 2: Prometheus GUI Verification
+1. Open browser to **http://localhost:9090**
+2. **Action:** Click **Status** → **Targets** in the top menu.
+   * *Result:* Show the interviewer that all 8 targets (7 Python services + `postgres-exporter`) are highlighted in **GREEN (UP)**.
+3. **Action:** Click **Graph** in the top menu.
+4. **Action:** Enter this PromQL query and click **Execute**, then switch to the **Graph** tab:
+   ```promql
+   sum(rate(http_requests_total[1m])) by (job)
+   ```
+   * *Result:* A multi-colored line chart showing the massive spike in requests per second across your microservices.
+
+### Step 3: Grafana GUI Verification
+1. Open browser to **http://localhost:3000** (Login: `admin` / `admin`)
+2. **Action:** Go to **Connections** → **Data Sources** → **Add data source** → **Prometheus**.
+3. **Action:** Set URL to `http://prometheus:9090` → Click **Save & test**.
+4. **Action:** Click the **Dashboards** icon (left menu) → **New** → **New Dashboard** → **Add visualization**.
+5. **Action:** Select your Prometheus data source.
+6. **Action:** Paste this query to show Database Connection health:
+   ```promql
+   pg_up
+   ```
+7. **Action:** Click **Apply**, then **Save Dashboard** (Name it: *ZuriShop Executive Overview*).
+
+🎤 **Interview Narrative:** 
+> *"I don't just deploy applications; I make them observable. By integrating the Prometheus FastAPI instrumentator and the Postgres Exporter, I've captured the Golden Signals. In Grafana, we can now visualize the exact traffic spike we just generated, and more importantly, monitor the underlying database connection pool health to prevent saturation during events like the 'Nairobi Mega Sale'."*
+
+---
+
+## 📜 WORKFLOW 4: Legacy Enterprise Integration (PowerShell Automation)
+**Goal:** Prove that modern cloud-native microservices can seamlessly integrate with legacy enterprise reporting tools (a specific requirement in the Pavago JD).
+
+### Step 1: Soft Reset
+```powershell
+docker compose exec redis redis-cli FLUSHALL
+```
+
+### Step 2: Execute the Legacy Workload
+```powershell
+# Run the PowerShell script that queries the modern APIs and generates an enterprise CSV
+pwsh legacy-reports/Generate-ZuriShopReport.ps1
+```
+
+### Step 3: Verification
+```powershell
+# Display the generated CSV in the terminal
+cat zurishop-report.csv
+```
+✅ **Expected Output:**
+```csv
+"ProductId","Name","Price","Currency","Stock"
+"SKU-001","Wireless Mouse","1500","KES","50"
+"SKU-002","Mechanical Keyboard","6500","KES","20"
+...
+```
+
+🎤 **Interview Narrative:** 
+> *"Real enterprises rarely migrate everything at once. ZuriMart's finance team still relies on PowerShell scripts for end-of-day reconciliation. I wrote this script to bridge the gap, pulling live data from our modern FastAPI microservices and formatting it into the legacy CSV format their on-prem systems expect. This proves I can operate in hybrid environments and automate cross-platform workflows."*
+
+---
+
+## 🔥 WORKFLOW 5: Chaos Engineering & Incident Response (SRE / MR-3)
+**Goal:** Simulate a production outage, prove that monitoring detects it, and demonstrate the incident response loop (Detect → Triage → Recover).
+
+### Step 1: The Sabotage (Break the Platform)
+```powershell
+# Silently kill the payment gateway
+docker compose stop payment-service
+```
+
+### Step 2: The User Impact (Attempt Checkout)
+```powershell
+curl.exe -X POST http://localhost:8002/cart/chaos-burst/items -H "Content-Type: application/json" -d '{\"product_id\": \"SKU-001\", \"quantity\": 1}'
+curl.exe -X POST http://localhost:8003/checkout -H "Content-Type: application/json" -d '{\"cart_id\": \"chaos-burst\", \"email\": \"angry@customer.com\"}'
+
+docker compose exec redis redis-cli HGETALL cart:chaos-burst
+
+docker compose exec postgres psql -U zurishop -d zurishop -c "SELECT remaining FROM inventory.stock WHERE product_id = 'SKU-001';"
+```
+❌ **Expected Output:** `{"detail":"Payment service unavailable"}` (HTTP 503)
+
+### Step 3: Triage via Logs (The DevOps Investigation)
+```powershell
+# Filter out the noise and find the exact failure point in the last 1 minute
+docker compose logs --since=1m checkout-service | Select-String "ERROR|Payment service unreachable"
+```
+✅ **Expected Output:** Shows the `checkout-service` failing to connect to the `payment-service`.
+
+### Step 4: Triage via Grafana (The Executive View)
+# Generate a failure burst, then zoom in
+
+1..60 | ForEach-Object {
+    $cartId = "chaos-burst-$_"
+    Invoke-RestMethod -Uri "http://localhost:8002/cart/$cartId/items" -Method Post -ContentType "application/json" -Body '{"product_id":"SKU-001","quantity":1}' | Out-Null
+    try {
+        Invoke-RestMethod -Uri "http://localhost:8003/checkout" -Method Post -ContentType "application/json" -Body "{`"cart_id`":`"$cartId`",`"email`":`"angry@customer.com`"}" | Out-Null
+    } catch {
+        Write-Host "[$_] 503 as expected"
+    }
+}
+
+
+2. Open **http://localhost:3000**
+3. **Action:** Add a new panel to your dashboard with this PromQL query:
+   ```promql
+
+   sum(increase(http_requests_total{status=~"4..|5.."}[1m])) by (job)
+
+   sum(rate(http_requests_total{status=~"4..|5.."}[1m])) by (job)
+   ```
+   * *Result:* (spike to ~15/min): You killed payment-service and fired the 60-request failure burst → checkout-service burns error budget.
+
+### Step 5: The Recovery
+```powershell
+# Restore the service
+docker compose start payment-service
+
+# Verify the platform is green again
+
+curl.exe -X POST http://localhost:8003/checkout -H "Content-Type: application/json" -d '{\"cart_id\": \"chaos-burst\", \"email\": \"angry@customer.com\"}'
+
+```
+✅ **Expected Output:** `{"order_id":"...","status":"completed"...}` if there is still stock or `{"detail":"Could not reserve stock for SKU-001"}` if there is no stock 
+
+# If could not reserve stock update by quantity in redis then try again 
+docker compose exec redis redis-cli HGETALL cart:chaos-burst
+
+docker compose exec postgres psql -U zurishop -d zurishop -c "UPDATE inventory.stock SET remaining = 1 WHERE product_id = 'SKU-001';"
+
+curl.exe -X POST http://localhost:8003/checkout -H "Content-Type: application/json" -d '{\"cart_id\": \"chaos-burst\", \"email\": \"angry@customer.com\"}'
+
+🎤 **Interview Narrative:** 
+> *"Incidents are inevitable; slow recovery is not. I just simulated a Sev-1 payment gateway failure. Because we have structured JSON logging, I immediately filtered out the Prometheus health-check noise to find the exact connection error. In a real production environment, that Grafana error-rate panel would trigger an Alertmanager webhook to PagerDuty, paging me before customers even notice."*
+
+---
+
+## 🛡️ WORKFLOW 6: Stateful Resilience (Database vs. Cache)
+**Goal:** Prove you understand the architectural difference between persistent storage (Volumes) and transient cache, and how Docker handles state during crashes.
+
+### Step 1: Create Persistent State
+```powershell
+# Create an order
+curl.exe -X POST http://localhost:8002/cart/res-cart/items -H "Content-Type: application/json" -d '{\"product_id\": \"SKU-004\", \"quantity\": 1}'
+curl.exe -X POST http://localhost:8003/checkout -H "Content-Type: application/json" -d '{\"cart_id\": \"res-cart\", \"email\": \"resilience@zurimart.co.ke\"}'
+```
+
+### Step 2: Simulate a Total Infrastructure Crash
+```powershell
+# Hard restart the database and the cache
+docker compose restart postgres redis
+```
+
+### Step 3: Verify Persistent vs Transient State
+```powershell
+# 1. Check Postgres (Persistent Volume)
+curl.exe http://localhost:8003/orders
+# ✅ Expected: The order YOU just created is still there. Data survived the crash.
+
+# 2. Check Redis (Transient Memory)
+docker compose exec redis redis-cli DBSIZE
+# ✅ Expected: (integer) 0. All carts are gone. This is EXPECTED and CORRECT behavior.
+```
+
+🎤 **Interview Narrative:** 
+> *"This demonstrates my understanding of stateful workloads. When the infrastructure crashed, PostgreSQL retained the financial records because it is backed by a persistent Docker volume. Redis lost the shopping carts because it is an in-memory cache. Designing systems with this distinction is critical for Disaster Recovery planning and ensuring we never lose Tier-1 financial data."*
+
+---
+
+## 🤖 WORKFLOW 7: The Automated Platform Health Check
+**Goal:** Prove that you don't rely on manual clicking. You build automation to verify platform health (CI/CD readiness).
+
+### Step 1: Execute the Master Smoke Test
+```powershell
+pwsh scripts/smoke-test.ps1
+```
+
+✅ **Expected Output:**
+```text
+=== ZuriShop Smoke Test ===
+[PASS] product-api /healthz
+[PASS] cart-service /healthz
+[PASS] checkout-service /healthz
+[PASS] payment-service /healthz
+[PASS] inventory-service /healthz
+[PASS] notification-service /healthz
+[PASS] search-service /healthz
+[PASS] storefront-web
+[PASS] elasticsearch
+[PASS] prometheus
+[PASS] postgres
+[PASS] search indexing
+[PASS] search query
+[PASS] checkout flow
+[PASS] order persisted in Postgres
+ALL CHECKS PASSED
+```
+
+🎤 **Interview Narrative:** 
+> *"Manual verification doesn't scale. I wrote this PowerShell smoke test to act as the final gate in our CI/CD pipeline. Before any new code is promoted to staging, this script runs automatically. If any microservice, database connection, or search index fails this test, the pipeline halts, and the deployment is rejected. This is how we maintain reliability at speed."*
+
+---
+
+### 🎯 Final Interview Tip
+Keep this Markdown file open on one side of your screen during the interview. When they ask, *"Walk me through your project,"* you simply say: 
+
+> *"Let me share my screen and walk you through the 6 end-to-end workflows I use to validate the ZuriShop platform..."* 
+
+Then, just follow the numbers. You will look like an absolute senior-level professional.
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: infra\postgres\init.sql
+
+```sql
+-- ZuriShop database bootstrap (acts as our migration)
+-- Runs automatically on first boot of the postgres container.
+
+CREATE SCHEMA IF NOT EXISTS catalog;
+CREATE SCHEMA IF NOT EXISTS inventory;
+CREATE SCHEMA IF NOT EXISTS orders;
+
+-- ============ CATALOG ============
+CREATE TABLE IF NOT EXISTS catalog.products (
+    id       TEXT PRIMARY KEY,
+    name     TEXT NOT NULL,
+    price    NUMERIC(10,2) NOT NULL CHECK (price >= 0),
+    currency TEXT NOT NULL DEFAULT 'KES'
+);
+
+INSERT INTO catalog.products (id, name, price, currency) VALUES
+    ('SKU-001', 'Wireless Mouse',      1500, 'KES'),
+    ('SKU-002', 'Mechanical Keyboard', 6500, 'KES'),
+    ('SKU-003', 'USB-C Cable',          700, 'KES'),
+    ('SKU-004', 'Laptop Stand',        3200, 'KES')
+ON CONFLICT (id) DO NOTHING;
+
+-- ============ INVENTORY ============
+CREATE TABLE IF NOT EXISTS inventory.stock (
+    product_id TEXT PRIMARY KEY,
+    remaining  INTEGER NOT NULL CHECK (remaining >= 0)
+);
+
+INSERT INTO inventory.stock (product_id, remaining) VALUES
+    ('SKU-001', 50),
+    ('SKU-002', 20),
+    ('SKU-003', 100),
+    ('SKU-004', 10)
+ON CONFLICT (product_id) DO NOTHING;
+
+-- ============ ORDERS ============
+CREATE TABLE IF NOT EXISTS orders.orders (
+    order_id       TEXT PRIMARY KEY,
+    cart_id        TEXT NOT NULL,
+    customer_email TEXT NOT NULL,
+    total          NUMERIC(10,2) NOT NULL,
+    currency       TEXT NOT NULL,
+    status         TEXT NOT NULL,
+    created_at     TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_orders_created_at ON orders.orders (created_at DESC);
 ```
 
 
@@ -177,6 +684,10 @@ catch {
     Write-Error "Failed to generate report: $_"
     exit 1
 }
+
+# And notice what is deliberately NOT an image: 
+# legacy-reports — it stays a PowerShell script on the host, 
+# because that's the whole point (it represents the legacy Windows/PowerShell workload the JD requires, TT-17).
 ```
 
 
@@ -223,6 +734,11 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets: ["search-service:8000"]
+
+  - job_name: postgres-exporter
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["postgres-exporter:9187"]
 ```
 
 
@@ -238,6 +754,121 @@ httpx
 redis
 elasticsearch
 pydantic
+psycopg2-binary
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: scripts\smoke-test.ps1
+
+```ps1
+# ZuriShop automated smoke test — Bulletproof Edition
+$script:failed = $false
+
+function Check($name, $ok) {
+    if ($ok) { Write-Host "[PASS] $name" -ForegroundColor Green }
+    else     { Write-Host "[FAIL] $name" -ForegroundColor Red; $script:failed = $true }
+}
+
+Write-Host "=== ZuriShop Smoke Test ===" -ForegroundColor Cyan
+
+# 1. API health
+$ports = @{
+    "product-api"=8001; "cart-service"=8002; "checkout-service"=8003
+    "payment-service"=8004; "inventory-service"=8005
+    "notification-service"=8006; "search-service"=8007
+}
+foreach ($svc in $ports.Keys) {
+    try {
+        $r = Invoke-RestMethod -Uri "http://localhost:$($ports[$svc])/healthz" -TimeoutSec 5
+        Check "$svc /healthz" ($r.status -eq "healthy")
+    } catch { 
+        Write-Host "  -> Error: $($_.Exception.Message)" -ForegroundColor Yellow
+        Check "$svc /healthz" $false 
+    }
+}
+
+# 2. Storefront
+try { $s = Invoke-WebRequest -Uri http://localhost:8080 -UseBasicParsing -TimeoutSec 5; Check "storefront-web" ($s.StatusCode -eq 200) } catch { Check "storefront-web" $false }
+
+# 3. Elasticsearch
+try { $e = Invoke-RestMethod -Uri http://localhost:9200 -TimeoutSec 5; Check "elasticsearch" ($e.tagline -eq "You Know, for Search") } catch { Check "elasticsearch" $false }
+
+# 4. Prometheus
+try { Invoke-RestMethod -Uri http://localhost:9090/-/healthy -TimeoutSec 5 | Out-Null; Check "prometheus" $true } catch { Check "prometheus" $false }
+
+# 5. PostgreSQL
+try {
+    $pg = docker compose exec -T postgres psql -U zurishop -d zurishop -tAc "SELECT 1"
+    Check "postgres" ($pg.Trim() -eq "1")
+} catch { Check "postgres" $false }
+
+# 6. Search index + query
+try {
+    $seed = Invoke-RestMethod -Uri http://localhost:8007/search/index -Method Post -TimeoutSec 15
+    Check "search indexing" ($seed.indexed -eq 4)
+    $sr = Invoke-RestMethod -Uri "http://localhost:8007/search?q=keyboard" -TimeoutSec 5
+    Check "search query" ($sr.count -ge 1)
+} catch { 
+    Write-Host "  -> Search Error: $($_.Exception.Message)" -ForegroundColor Yellow
+    Check "search" $false 
+}
+
+# 7. End-to-end checkout (FORCED UTF-8 ENCODING)
+try {
+    $cartId = "smoke-" + (Get-Random)
+    
+    # Force UTF-8 byte array to prevent PowerShell encoding bugs
+    $cartBody = [System.Text.Encoding]::UTF8.GetBytes('{"product_id":"SKU-003","quantity":1}')
+    Invoke-RestMethod -Uri "http://localhost:8002/cart/$cartId/items" -Method Post -ContentType "application/json" -Body $cartBody | Out-Null
+    
+    $checkoutBody = [System.Text.Encoding]::UTF8.GetBytes("{`"cart_id`":`"$cartId`",`"email`":`"smoke@zurimart.co.ke`"}")
+    $co = Invoke-RestMethod -Uri http://localhost:8003/checkout -Method Post -ContentType "application/json" -Body $checkoutBody
+    Check "checkout flow" ($co.status -eq "completed")
+    
+    $orders = Invoke-RestMethod -Uri http://localhost:8003/orders
+    Check "order persisted in Postgres" ($orders.count -ge 1)
+} catch { 
+    Write-Host "  -> Checkout Error: $($_.Exception.Message)" -ForegroundColor Yellow
+    Check "checkout flow" $false 
+}
+
+if ($script:failed) { Write-Host "SMOKE TEST FAILED" -ForegroundColor Red; exit 1 }
+Write-Host "ALL CHECKS PASSED" -ForegroundColor Green
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: services\cart-service\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
 ```
 
 
@@ -246,25 +877,22 @@ pydantic
 # File: services\cart-service\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -302,6 +930,8 @@ redis_client = redis.Redis(
     decode_responses=True
 )
 
+CART_TTL_SECONDS = int(os.getenv("CART_TTL_SECONDS", "3600"))
+
 
 class CartItem(BaseModel):
     product_id: str
@@ -332,13 +962,15 @@ def add_item_to_cart(cart_id: str, item: CartItem):
         item.product_id,
         item.quantity
     )
+    redis_client.expire(key, CART_TTL_SECONDS)
 
     items = redis_client.hgetall(key)
 
     logging.info(
-        "Added item %s to cart %s",
+        "Added item %s to cart %s (TTL %ss)",
         item.product_id,
-        cart_id
+        cart_id,
+        CART_TTL_SECONDS
     )
 
     return {
@@ -388,28 +1020,58 @@ pydantic
 
 <div style='page-break-after: always;'></div>
 
+# File: services\checkout-service\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
+```
+
+
+<div style='page-break-after: always;'></div>
+
 # File: services\checkout-service\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -422,6 +1084,9 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from prometheus_fastapi_instrumentator import Instrumentator
+from psycopg2.pool import ThreadedConnectionPool
+from contextlib import asynccontextmanager
+import asyncio
 import httpx
 import os
 import uuid
@@ -434,15 +1099,45 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-app = FastAPI(title="checkout-service")
-
-Instrumentator().instrument(app).expose(app, endpoint="/metrics")
-
 PRODUCT_API_URL = os.getenv("PRODUCT_API_URL", "http://localhost:8001")
 CART_SERVICE_URL = os.getenv("CART_SERVICE_URL", "http://localhost:8002")
 INVENTORY_SERVICE_URL = os.getenv("INVENTORY_SERVICE_URL", "http://localhost:8005")
 PAYMENT_SERVICE_URL = os.getenv("PAYMENT_SERVICE_URL", "http://localhost:8004")
 NOTIFICATION_SERVICE_URL = os.getenv("NOTIFICATION_SERVICE_URL", "http://localhost:8006")
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set. Inject it via environment or Secrets.")
+
+
+db_pool = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- STARTUP ---
+    global db_pool
+    for attempt in range(30):
+        try:
+            db_pool = ThreadedConnectionPool(1, 5, dsn=DATABASE_URL)
+            logging.info("Connected to PostgreSQL")
+            break
+        except Exception as error:
+            logging.warning("PostgreSQL not ready (%s). Retry %s/30", error, attempt + 1)
+            await asyncio.sleep(2)
+    else:
+        raise RuntimeError("Could not connect to PostgreSQL")
+        
+    yield  # <-- App runs here
+    
+    # --- SHUTDOWN ---
+    if db_pool:
+        db_pool.closeall()
+        logging.info("PostgreSQL connection pool closed gracefully")
+
+app = FastAPI(title="checkout-service", lifespan=lifespan)
+
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 
 class CheckoutRequest(BaseModel):
@@ -452,17 +1147,12 @@ class CheckoutRequest(BaseModel):
 
 @app.get("/")
 def root():
-    return {
-        "service": "checkout-service",
-        "status": "running"
-    }
+    return {"service": "checkout-service", "status": "running"}
 
 
 @app.get("/healthz")
 def healthz():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
 @app.post("/checkout")
@@ -471,13 +1161,11 @@ async def checkout(request: CheckoutRequest):
 
     async with httpx.AsyncClient(timeout=10.0) as client:
         cart_response = await client.get(f"{CART_SERVICE_URL}/cart/{request.cart_id}")
-
         if cart_response.status_code != 200:
             raise HTTPException(status_code=400, detail="Cart not found")
 
         cart = cart_response.json()
         items = cart.get("items", {})
-
         if not items:
             raise HTTPException(status_code=400, detail="Cart is empty")
 
@@ -487,7 +1175,6 @@ async def checkout(request: CheckoutRequest):
             quantity = int(quantity)
 
             product_response = await client.get(f"{PRODUCT_API_URL}/products/{product_id}")
-
             if product_response.status_code != 200:
                 raise HTTPException(status_code=400, detail=f"Product {product_id} not found")
 
@@ -496,47 +1183,84 @@ async def checkout(request: CheckoutRequest):
 
             reserve_response = await client.post(
                 f"{INVENTORY_SERVICE_URL}/inventory/{product_id}/reserve",
-                params={"quantity": quantity}
+                params={"quantity": quantity},
             )
-
             if reserve_response.status_code != 200:
                 raise HTTPException(status_code=409, detail=f"Could not reserve stock for {product_id}")
 
-        payment_response = await client.post(
-            f"{PAYMENT_SERVICE_URL}/payments",
-            json={
-                "amount": total,
-                "currency": "KES",
-                "customer_email": request.email
-            }
-        )
+        try:
+            payment_response = await client.post(
+                f"{PAYMENT_SERVICE_URL}/payments",
+                json={"amount": total, "currency": "KES", "customer_email": request.email},
+            )
+            if payment_response.status_code != 200:
+                raise HTTPException(status_code=402, detail="Payment failed")
+        except httpx.RequestError as exc:
+            # Catches ConnectError, TimeoutException, DNS failures, etc.
+            logging.error("Payment service unreachable: %s", exc)
+            raise HTTPException(status_code=503, detail="Payment service unavailable")
 
-        if payment_response.status_code != 200:
-            raise HTTPException(status_code=402, detail="Payment failed")
+        # Persist the order (source of truth = PostgreSQL)
+        conn = db_pool.getconn()
+        try:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """INSERT INTO orders.orders
+                       (order_id, cart_id, customer_email, total, currency, status)
+                       VALUES (%s, %s, %s, %s, %s, %s)""",
+                    (order_id, request.cart_id, request.email, total, "KES", "completed"),
+                )
+            conn.commit()
+        finally:
+            db_pool.putconn(conn)
 
         await client.post(
             f"{NOTIFICATION_SERVICE_URL}/notifications",
             json={
                 "to": request.email,
                 "message": f"Your order {order_id} has been confirmed. Total: KES {total}",
-                "type": "email"
-            }
+                "type": "email",
+            },
         )
 
         await client.delete(f"{CART_SERVICE_URL}/cart/{request.cart_id}")
 
-        logging.info(
-            "Order %s completed successfully. Total: %s",
-            order_id,
-            total
-        )
+        logging.info("Order %s completed successfully. Total: %s", order_id, total)
 
         return {
             "order_id": order_id,
             "status": "completed",
             "total": total,
-            "currency": "KES"
+            "currency": "KES",
         }
+
+
+@app.get("/orders")
+def list_orders():
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                """SELECT order_id, customer_email, total, status, created_at
+                   FROM orders.orders ORDER BY created_at DESC LIMIT 20"""
+            )
+            rows = cur.fetchall()
+    finally:
+        db_pool.putconn(conn)
+
+    return {
+        "count": len(rows),
+        "orders": [
+            {
+                "order_id": r[0],
+                "email": r[1],
+                "total": float(r[2]),
+                "status": r[3],
+                "created_at": str(r[4]),
+            }
+            for r in rows
+        ],
+    }
 ```
 
 
@@ -552,6 +1276,40 @@ httpx
 redis
 elasticsearch
 pydantic
+psycopg2-binary
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: services\inventory-service\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
 ```
 
 
@@ -560,25 +1318,22 @@ pydantic
 # File: services\inventory-service\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -590,7 +1345,11 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```py
 from fastapi import FastAPI, HTTPException
 from prometheus_fastapi_instrumentator import Instrumentator
+from psycopg2.pool import ThreadedConnectionPool
+from contextlib import asynccontextmanager
+import asyncio
 import logging
+import os
 import sys
 
 logging.basicConfig(
@@ -599,80 +1358,119 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-app = FastAPI(title="inventory-service")
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set. Inject it via environment or Secrets.")
+
+
+db_pool = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- STARTUP ---
+    global db_pool
+    for attempt in range(30):
+        try:
+            db_pool = ThreadedConnectionPool(1, 5, dsn=DATABASE_URL)
+            logging.info("Connected to PostgreSQL")
+            break
+        except Exception as error:
+            logging.warning("PostgreSQL not ready (%s). Retry %s/30", error, attempt + 1)
+            await asyncio.sleep(2)
+    else:
+        raise RuntimeError("Could not connect to PostgreSQL")
+        
+    yield  # <-- App runs here
+    
+    # --- SHUTDOWN ---
+    if db_pool:
+        db_pool.closeall()
+        logging.info("PostgreSQL connection pool closed gracefully")
+
+app = FastAPI(title="inventory-service", lifespan=lifespan)
 
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
-
-INVENTORY = {
-    "SKU-001": 50,
-    "SKU-002": 20,
-    "SKU-003": 100,
-    "SKU-004": 10,
-}
 
 
 @app.get("/")
 def root():
-    return {
-        "service": "inventory-service",
-        "status": "running"
-    }
+    return {"service": "inventory-service", "status": "running"}
 
 
 @app.get("/healthz")
 def healthz():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
 @app.get("/inventory")
 def get_inventory():
-    return [
-        {
-            "product_id": product_id,
-            "remaining": stock
-        }
-        for product_id, stock in INVENTORY.items()
-    ]
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SELECT product_id, remaining FROM inventory.stock ORDER BY product_id")
+            rows = cur.fetchall()
+    finally:
+        db_pool.putconn(conn)
+
+    return [{"product_id": r[0], "remaining": r[1]} for r in rows]
 
 
 @app.get("/inventory/{product_id}")
 def get_product_inventory(product_id: str):
-    if product_id not in INVENTORY:
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT product_id, remaining FROM inventory.stock WHERE product_id = %s",
+                (product_id,),
+            )
+            row = cur.fetchone()
+    finally:
+        db_pool.putconn(conn)
+
+    if row is None:
         raise HTTPException(status_code=404, detail="Product not found in inventory")
 
-    return {
-        "product_id": product_id,
-        "remaining": INVENTORY[product_id]
-    }
+    return {"product_id": row[0], "remaining": row[1]}
 
 
 @app.post("/inventory/{product_id}/reserve")
 def reserve_inventory(product_id: str, quantity: int = 1):
-    if product_id not in INVENTORY:
-        raise HTTPException(status_code=404, detail="Product not found in inventory")
-
     if quantity <= 0:
         raise HTTPException(status_code=400, detail="Quantity must be greater than zero")
 
-    if INVENTORY[product_id] < quantity:
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            # Atomic reservation: the DB guarantees no oversell (CHECK remaining >= 0)
+            cur.execute(
+                """UPDATE inventory.stock
+                   SET remaining = remaining - %s
+                   WHERE product_id = %s AND remaining >= %s
+                   RETURNING remaining""",
+                (quantity, product_id, quantity),
+            )
+            row = cur.fetchone()
+            conn.commit()
+
+            if row is None:
+                cur.execute(
+                    "SELECT 1 FROM inventory.stock WHERE product_id = %s",
+                    (product_id,),
+                )
+                exists = cur.fetchone() is not None
+    finally:
+        db_pool.putconn(conn)
+
+    if row is None:
+        if not exists:
+            raise HTTPException(status_code=404, detail="Product not found in inventory")
         raise HTTPException(status_code=409, detail="Insufficient stock")
 
-    INVENTORY[product_id] -= quantity
+    logging.info("Reserved %s units of %s. Remaining: %s", quantity, product_id, row[0])
 
-    logging.info(
-        "Reserved %s units of %s. Remaining: %s",
-        quantity,
-        product_id,
-        INVENTORY[product_id]
-    )
-
-    return {
-        "product_id": product_id,
-        "reserved": quantity,
-        "remaining": INVENTORY[product_id]
-    }
+    return {"product_id": product_id, "reserved": quantity, "remaining": row[0]}
 ```
 
 
@@ -688,6 +1486,40 @@ httpx
 redis
 elasticsearch
 pydantic
+psycopg2-binary
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: services\notification-service\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
 ```
 
 
@@ -696,25 +1528,22 @@ pydantic
 # File: services\notification-service\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -796,28 +1625,58 @@ pydantic
 
 <div style='page-break-after: always;'></div>
 
+# File: services\payment-service\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
+```
+
+
+<div style='page-break-after: always;'></div>
+
 # File: services\payment-service\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -909,28 +1768,58 @@ pydantic
 
 <div style='page-break-after: always;'></div>
 
+# File: services\product-api\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
+```
+
+
+<div style='page-break-after: always;'></div>
+
 # File: services\product-api\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -943,7 +1832,11 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from prometheus_fastapi_instrumentator import Instrumentator
+from psycopg2.pool import ThreadedConnectionPool
+from contextlib import asynccontextmanager
+import asyncio
 import logging
+import os
 import sys
 
 logging.basicConfig(
@@ -952,7 +1845,36 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-app = FastAPI(title="product-api")
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set. Inject it via environment or Secrets.")
+
+db_pool = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- STARTUP ---
+    global db_pool
+    for attempt in range(30):
+        try:
+            db_pool = ThreadedConnectionPool(1, 5, dsn=DATABASE_URL)
+            logging.info("Connected to PostgreSQL")
+            break
+        except Exception as error:
+            logging.warning("PostgreSQL not ready (%s). Retry %s/30", error, attempt + 1)
+            await asyncio.sleep(2)
+    else:
+        raise RuntimeError("Could not connect to PostgreSQL")
+        
+    yield  # <-- App runs here
+    
+    # --- SHUTDOWN (Graceful Teardown) ---
+    if db_pool:
+        db_pool.closeall()
+        logging.info("PostgreSQL connection pool closed gracefully")
+
+app = FastAPI(title="product-api", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -963,60 +1885,50 @@ app.add_middleware(
 
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
-PRODUCTS = {
-    "SKU-001": {
-        "id": "SKU-001",
-        "name": "Wireless Mouse",
-        "price": 1500,
-        "currency": "KES"
-    },
-    "SKU-002": {
-        "id": "SKU-002",
-        "name": "Mechanical Keyboard",
-        "price": 6500,
-        "currency": "KES"
-    },
-    "SKU-003": {
-        "id": "SKU-003",
-        "name": "USB-C Cable",
-        "price": 700,
-        "currency": "KES"
-    },
-    "SKU-004": {
-        "id": "SKU-004",
-        "name": "Laptop Stand",
-        "price": 3200,
-        "currency": "KES"
-    },
-}
-
 
 @app.get("/")
 def root():
-    return {
-        "service": "product-api",
-        "status": "running"
-    }
+    return {"service": "product-api", "status": "running"}
 
 
 @app.get("/healthz")
 def healthz():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
 @app.get("/products")
 def get_products():
-    return list(PRODUCTS.values())
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SELECT id, name, price, currency FROM catalog.products ORDER BY id")
+            rows = cur.fetchall()
+    finally:
+        db_pool.putconn(conn)
+
+    return [
+        {"id": r[0], "name": r[1], "price": float(r[2]), "currency": r[3]}
+        for r in rows
+    ]
 
 
 @app.get("/products/{product_id}")
 def get_product(product_id: str):
-    if product_id not in PRODUCTS:
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT id, name, price, currency FROM catalog.products WHERE id = %s",
+                (product_id,),
+            )
+            row = cur.fetchone()
+    finally:
+        db_pool.putconn(conn)
+
+    if row is None:
         raise HTTPException(status_code=404, detail="Product not found")
 
-    return PRODUCTS[product_id]
+    return {"id": row[0], "name": row[1], "price": float(row[2]), "currency": row[3]}
 ```
 
 
@@ -1032,6 +1944,40 @@ httpx
 redis
 elasticsearch
 pydantic
+psycopg2-binary
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: services\search-service\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
 ```
 
 
@@ -1040,25 +1986,22 @@ pydantic
 # File: services\search-service\Dockerfile
 
 ```text
-FROM python:3.12-slim
-
+# ---------- Stage 1: builder (has pip, wheels, build cache) ----------
+FROM python:3.12-slim AS builder
 WORKDIR /app
-
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# ---------- Stage 2: runtime (no pip, no build tools, tiny attack surface) ----------
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
 RUN useradd -m appuser && chown -R appuser:appuser /app
-
 USER appuser
-
 EXPOSE 8000
-
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')" || exit 1
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -1071,7 +2014,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware 
 from prometheus_fastapi_instrumentator import Instrumentator
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, NotFoundError
+from contextlib import asynccontextmanager
 import httpx
 import os
 import logging
@@ -1083,7 +2027,29 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-app = FastAPI(title="search-service")
+ELASTICSEARCH_URL = os.getenv("ELASTICSEARCH_URL", "http://localhost:9200")
+PRODUCT_API_URL = os.getenv("PRODUCT_API_URL", "http://localhost:8001")
+INDEX_NAME = "products"
+
+es = Elasticsearch([ELASTICSEARCH_URL])
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- STARTUP ---
+    try:
+        if not es.indices.exists(index=INDEX_NAME):
+            es.indices.create(index=INDEX_NAME)
+            logging.info("Created Elasticsearch index: %s", INDEX_NAME)
+    except Exception as error:
+        logging.warning("Could not create Elasticsearch index: %s", error)
+        
+    yield  # <-- App runs here
+    
+    # --- SHUTDOWN ---
+    es.close()
+    logging.info("Elasticsearch client closed gracefully")
+
+app = FastAPI(title="search-service", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -1093,22 +2059,6 @@ app.add_middleware(
 )
 
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
-
-ELASTICSEARCH_URL = os.getenv("ELASTICSEARCH_URL", "http://localhost:9200")
-PRODUCT_API_URL = os.getenv("PRODUCT_API_URL", "http://localhost:8001")
-INDEX_NAME = "products"
-
-es = Elasticsearch([ELASTICSEARCH_URL])
-
-
-@app.on_event("startup")
-def create_index():
-    try:
-        if not es.indices.exists(index=INDEX_NAME):
-            es.indices.create(index=INDEX_NAME)
-            logging.info("Created Elasticsearch index: %s", INDEX_NAME)
-    except Exception as error:
-        logging.warning("Could not create Elasticsearch index: %s", error)
 
 
 @app.get("/")
@@ -1159,6 +2109,13 @@ def search_products(q: str = ""):
             "count": 0,
             "hits": []
         }
+        
+    # Gracefully handle missing index (decoupled state)
+    if not es.indices.exists(index=INDEX_NAME):
+        return {
+            "count": 0,
+            "hits": []
+        }
 
     query = {
         "query": {
@@ -1168,18 +2125,23 @@ def search_products(q: str = ""):
             }
         }
     }
-
-    response = es.search(index=INDEX_NAME, body=query)
-
-    hits = [
-        hit["_source"]
-        for hit in response["hits"]["hits"]
-    ]
-
-    return {
-        "count": len(hits),
-        "hits": hits
-    }
+    
+    try:
+        response = es.search(index=INDEX_NAME, query=query["query"])
+        hits = [
+            hit["_source"]
+            for hit in response["hits"]["hits"]
+        ]
+        return {
+            "count": len(hits),
+            "hits": hits
+        }
+    except NotFoundError:
+        # Fallback if index is deleted between the check and the search
+        return {
+            "count": 0,
+            "hits": []
+        }
 ```
 
 
@@ -1195,6 +2157,39 @@ httpx
 redis
 elasticsearch==8.13.0
 pydantic
+```
+
+
+<div style='page-break-after: always;'></div>
+
+# File: storefront-web\.dockerignore
+
+```dockerignore
+# --- Python bytecode & cache (never needed in images) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# --- Virtual environments (huge, host-only) ---
+.venv/
+venv/
+
+# --- Secrets (must NEVER be baked into an image) ---
+.env
+.env.*
+
+# --- Version control metadata ---
+.git/
+.gitignore
+
+# --- Build metadata (keeps context lean & cache stable) ---
+Dockerfile
+.dockerignore
+
+# --- Docs ---
+*.md
 ```
 
 
@@ -1265,6 +2260,7 @@ HEALTHCHECK --interval=15s --timeout=3s --start-period=10s \
     <input id="search" placeholder="Search products" />
     <button onclick="searchProducts()">Search</button>
     <button onclick="loadProducts()">Load All Products</button>
+    <button onclick="reseedSearch()">Admin: Re-seed Search</button>
 
     <h2>Output</h2>
     <pre id="output">Loading...</pre>
@@ -1295,6 +2291,16 @@ HEALTHCHECK --interval=15s --timeout=3s --start-period=10s \
       }
     }
 
+    async function reseedSearch() {
+      try {
+        const response = await fetch(`${SEARCH_API_URL}/search/index`, { method: "POST" });
+        const data = await response.json();
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById("output").textContent = `Error: ${error}`;
+      }
+    }
+
     loadProducts();
   </script>
 </body>
@@ -1310,7 +2316,7 @@ HEALTHCHECK --interval=15s --timeout=3s --start-period=10s \
 "ProductId","Name","Price","Currency","Stock"
 "SKU-001","Wireless Mouse","1500","KES","50"
 "SKU-002","Mechanical Keyboard","6500","KES","19"
-"SKU-003","USB-C Cable","700","KES","100"
+"SKU-003","USB-C Cable","700","KES","50"
 "SKU-004","Laptop Stand","3200","KES","10"
 
 ```

@@ -5,3 +5,4 @@ httpx
 redis
 elasticsearch
 pydantic
+psycopg2-binary

@@ -26,6 +26,8 @@ redis_client = redis.Redis(
     decode_responses=True
 )
 
+CART_TTL_SECONDS = int(os.getenv("CART_TTL_SECONDS", "3600"))
+
 
 class CartItem(BaseModel):
     product_id: str
@@ -56,13 +58,15 @@ def add_item_to_cart(cart_id: str, item: CartItem):
         item.product_id,
         item.quantity
     )
+    redis_client.expire(key, CART_TTL_SECONDS)
 
     items = redis_client.hgetall(key)
 
     logging.info(
-        "Added item %s to cart %s",
+        "Added item %s to cart %s (TTL %ss)",
         item.product_id,
-        cart_id
+        cart_id,
+        CART_TTL_SECONDS
     )
 
     return {

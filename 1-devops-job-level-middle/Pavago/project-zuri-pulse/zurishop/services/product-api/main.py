@@ -1,7 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from prometheus_fastapi_instrumentator import Instrumentator
+from psycopg2.pool import ThreadedConnectionPool
+from contextlib import asynccontextmanager
+import asyncio
 import logging
+import os
 import sys
 
 logging.basicConfig(
@@ -10,7 +14,36 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-app = FastAPI(title="product-api")
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set. Inject it via environment or Secrets.")
+
+db_pool = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- STARTUP ---
+    global db_pool
+    for attempt in range(30):
+        try:
+            db_pool = ThreadedConnectionPool(1, 5, dsn=DATABASE_URL)
+            logging.info("Connected to PostgreSQL")
+            break
+        except Exception as error:
+            logging.warning("PostgreSQL not ready (%s). Retry %s/30", error, attempt + 1)
+            await asyncio.sleep(2)
+    else:
+        raise RuntimeError("Could not connect to PostgreSQL")
+        
+    yield  # <-- App runs here
+    
+    # --- SHUTDOWN (Graceful Teardown) ---
+    if db_pool:
+        db_pool.closeall()
+        logging.info("PostgreSQL connection pool closed gracefully")
+
+app = FastAPI(title="product-api", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,57 +54,47 @@ app.add_middleware(
 
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
-PRODUCTS = {
-    "SKU-001": {
-        "id": "SKU-001",
-        "name": "Wireless Mouse",
-        "price": 1500,
-        "currency": "KES"
-    },
-    "SKU-002": {
-        "id": "SKU-002",
-        "name": "Mechanical Keyboard",
-        "price": 6500,
-        "currency": "KES"
-    },
-    "SKU-003": {
-        "id": "SKU-003",
-        "name": "USB-C Cable",
-        "price": 700,
-        "currency": "KES"
-    },
-    "SKU-004": {
-        "id": "SKU-004",
-        "name": "Laptop Stand",
-        "price": 3200,
-        "currency": "KES"
-    },
-}
-
 
 @app.get("/")
 def root():
-    return {
-        "service": "product-api",
-        "status": "running"
-    }
+    return {"service": "product-api", "status": "running"}
 
 
 @app.get("/healthz")
 def healthz():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
 @app.get("/products")
 def get_products():
-    return list(PRODUCTS.values())
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SELECT id, name, price, currency FROM catalog.products ORDER BY id")
+            rows = cur.fetchall()
+    finally:
+        db_pool.putconn(conn)
+
+    return [
+        {"id": r[0], "name": r[1], "price": float(r[2]), "currency": r[3]}
+        for r in rows
+    ]
 
 
 @app.get("/products/{product_id}")
 def get_product(product_id: str):
-    if product_id not in PRODUCTS:
+    conn = db_pool.getconn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT id, name, price, currency FROM catalog.products WHERE id = %s",
+                (product_id,),
+            )
+            row = cur.fetchone()
+    finally:
+        db_pool.putconn(conn)
+
+    if row is None:
         raise HTTPException(status_code=404, detail="Product not found")
 
-    return PRODUCTS[product_id]
+    return {"id": row[0], "name": row[1], "price": float(row[2]), "currency": row[3]}

@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware 
 from prometheus_fastapi_instrumentator import Instrumentator
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, NotFoundError
+from contextlib import asynccontextmanager
 import httpx
 import os
 import logging
@@ -13,7 +14,29 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-app = FastAPI(title="search-service")
+ELASTICSEARCH_URL = os.getenv("ELASTICSEARCH_URL", "http://localhost:9200")
+PRODUCT_API_URL = os.getenv("PRODUCT_API_URL", "http://localhost:8001")
+INDEX_NAME = "products"
+
+es = Elasticsearch([ELASTICSEARCH_URL])
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- STARTUP ---
+    try:
+        if not es.indices.exists(index=INDEX_NAME):
+            es.indices.create(index=INDEX_NAME)
+            logging.info("Created Elasticsearch index: %s", INDEX_NAME)
+    except Exception as error:
+        logging.warning("Could not create Elasticsearch index: %s", error)
+        
+    yield  # <-- App runs here
+    
+    # --- SHUTDOWN ---
+    es.close()
+    logging.info("Elasticsearch client closed gracefully")
+
+app = FastAPI(title="search-service", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,22 +46,6 @@ app.add_middleware(
 )
 
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
-
-ELASTICSEARCH_URL = os.getenv("ELASTICSEARCH_URL", "http://localhost:9200")
-PRODUCT_API_URL = os.getenv("PRODUCT_API_URL", "http://localhost:8001")
-INDEX_NAME = "products"
-
-es = Elasticsearch([ELASTICSEARCH_URL])
-
-
-@app.on_event("startup")
-def create_index():
-    try:
-        if not es.indices.exists(index=INDEX_NAME):
-            es.indices.create(index=INDEX_NAME)
-            logging.info("Created Elasticsearch index: %s", INDEX_NAME)
-    except Exception as error:
-        logging.warning("Could not create Elasticsearch index: %s", error)
 
 
 @app.get("/")
@@ -89,6 +96,13 @@ def search_products(q: str = ""):
             "count": 0,
             "hits": []
         }
+        
+    # Gracefully handle missing index (decoupled state)
+    if not es.indices.exists(index=INDEX_NAME):
+        return {
+            "count": 0,
+            "hits": []
+        }
 
     query = {
         "query": {
@@ -98,15 +112,20 @@ def search_products(q: str = ""):
             }
         }
     }
-
-    response = es.search(index=INDEX_NAME, body=query)
-
-    hits = [
-        hit["_source"]
-        for hit in response["hits"]["hits"]
-    ]
-
-    return {
-        "count": len(hits),
-        "hits": hits
-    }
+    
+    try:
+        response = es.search(index=INDEX_NAME, query=query["query"])
+        hits = [
+            hit["_source"]
+            for hit in response["hits"]["hits"]
+        ]
+        return {
+            "count": len(hits),
+            "hits": hits
+        }
+    except NotFoundError:
+        # Fallback if index is deleted between the check and the search
+        return {
+            "count": 0,
+            "hits": []
+        }
