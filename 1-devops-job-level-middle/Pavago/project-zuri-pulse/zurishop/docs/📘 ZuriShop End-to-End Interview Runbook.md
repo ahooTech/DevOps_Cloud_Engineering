@@ -6,6 +6,28 @@ By the end of this runbook, you will have proven every layer of the application,
 
 ---
 
+
+## 0. Service & Port Map
+
+| Layer            | Service              | Port  |
+|------------------|----------------------|-------|
+| Frontend         | storefront-web       | 8080  |
+| API              | product-api          | 8001  |
+| API              | cart-service         | 8002  |
+| API              | checkout-service     | 8003  |
+| API              | payment-service      | 8004  |
+| API              | inventory-service    | 8005  |
+| API              | notification-service | 8006  |
+| API              | search-service       | 8007  |
+| Database         | postgres             | 5432  |
+| Cache            | redis                | 6379  |
+| Search engine    | elasticsearch        | 9200  |
+| DB metrics       | postgres-exporter    | 9187  |
+| Metrics          | prometheus           | 9090  |
+| Dashboards       | grafana              | 3000  |
+
+
+
 ## 🧹 The Master Reset Commands
 
 Before starting any workflow, you need a way to guarantee a clean state. Use these commands depending on how deep of a reset you need.
